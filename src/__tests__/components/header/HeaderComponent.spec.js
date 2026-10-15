@@ -33,12 +33,15 @@ describe('HeaderComponent', () => {
         expect(cartButton.exists()).toBe(true);
     })
 
-    it('renders account button when user is authenticated', () => {
+    it('renders the sign-in link to the login page', () => {
         const wrapper = mountHeader();
+        const loginLink = wrapper.get('a.header_login');
 
-        expect(wrapper.text()).toContain('Mi Cuenta');
-        expect(wrapper.find('.header_avatar').exists()).toBe(true);
-    })
+        expect(loginLink.text()).toBe('Iniciar sesión');
+        expect(loginLink.attributes('href')).toBe('/login');
+
+        wrapper.unmount();
+    });
 
     it('renders navigation links with correct routes', () => {
         const wrapper = mountHeader();
