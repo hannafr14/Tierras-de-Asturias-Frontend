@@ -5,6 +5,7 @@ import OrderSummary from '@/components/cart/OrderSummary.vue'
 import { useCartStore } from '@/stores/cartStore'
 import { computed, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { getCsrfHeaders } from '@/services/csrfApi'
 
 const deliveryForm = reactive({
     firstName: '',
@@ -74,6 +75,10 @@ function createOrderPayload() {
 }
 
 async function handleCheckoutConfirm() {
+    if (isSubmitting.value) {
+        return
+    }
+    
     checkoutError.value = ''
 
     if (
@@ -103,13 +108,17 @@ async function handleCheckoutConfirm() {
     isSubmitting.value = true
 
     try {
+        const csrfHeaders = await getCsrfHeaders();
+
         const response = await fetch('/api/orders', {
             method: 'POST',
+            credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json',
+                ...csrfHeaders,
             },
             body: JSON.stringify(orderPayload),
-        })
+        });
 
         if (!response.ok) {
             throw new Error('Order request failed')
