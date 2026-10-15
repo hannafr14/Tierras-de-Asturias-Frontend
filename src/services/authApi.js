@@ -1,8 +1,14 @@
+import { getCsrfHeaders } from '@/services/csrfApi';
+
 export async function registerUser(userData) {
+    const csrfHeaders = await getCsrfHeaders();
+
     const response = await fetch('/api/auth/register', {
         method: 'POST',
+        credentials: 'same-origin',
         headers: {
         'Content-Type': 'application/json',
+        ...csrfHeaders,
         },
         body: JSON.stringify(userData),
     });
