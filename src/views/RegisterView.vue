@@ -1,6 +1,7 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import AuthLayout from '@/components/auth/AuthLayout.vue';
+import { registerUser } from '@/services/authApi';
 
 const form = reactive({
     firstName: '',
@@ -12,6 +13,9 @@ const form = reactive({
 });
 
 const errors = reactive({});
+const isSubmitting = ref(false);
+const submitError = ref('');
+const submitSuccess = ref('');
 
 function validateForm() {
     Object.keys(errors).forEach((key) => {
@@ -51,9 +55,39 @@ function validateForm() {
     return Object.keys(errors).length === 0;
 }
 
-function handleSubmit() {
+async function handleSubmit() {
+    if (isSubmitting.value) {
+        return;
+    }
+
+    submitError.value = '';
+    submitSuccess.value = '';
+
     if (!validateForm()) {
         return;
+    }
+
+    isSubmitting.value = true;
+
+    try {
+        await registerUser({
+        firstName: form.firstName.trim(),
+        lastName: form.lastName.trim(),
+        email: form.email.trim().toLowerCase(),
+        password: form.password,
+        });
+
+        submitSuccess.value = 'Cuenta creada correctamente. Ya puedes iniciar sesión.';
+        form.password = '';
+        form.confirmPassword = '';
+    } catch (error) {
+        if (error instanceof TypeError) {
+        submitError.value = 'No se pudo conectar con el servidor.';
+        } else {
+        submitError.value = error.message || 'No se pudo crear la cuenta.';
+        }
+    } finally {
+        isSubmitting.value = false;
     }
 }
 </script>
@@ -198,8 +232,29 @@ function handleSubmit() {
                 </span>
             </label>
 
-            <button class="register-form__submit" type="submit">
-                Crear cuenta
+            <p
+                v-if="submitError"
+                class="register-form__error"
+                role="alert"
+            >
+                {{ submitError }}
+            </p>
+
+            <p
+                v-if="submitSuccess"
+                class="register-form__success"
+                role="status"
+                >
+                {{ submitSuccess }}
+            </p>
+
+            <button
+                class="register-form__submit"
+                type="submit"
+                :disabled="isSubmitting"
+                :aria-busy="isSubmitting"
+                >
+                {{ isSubmitting ? 'Creando cuenta…' : 'Crear cuenta' }}
             </button>
 
             <p class="register-form__login">
@@ -293,6 +348,11 @@ function handleSubmit() {
         &:hover {
             background: #00531f;
         }
+
+        &:disabled {
+            opacity: 0.65;
+            cursor: wait;
+        }
     }
 
     &__login {
@@ -316,6 +376,12 @@ function handleSubmit() {
         color: #d60000;
         font-size: 12px;
         line-height: 18px;
+    }
+
+    &__success {
+        color: #006727;
+        font-size: 14px;
+        line-height: 21px;
     }
 }
 
