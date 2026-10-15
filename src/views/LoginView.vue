@@ -1,6 +1,12 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import AuthLayout from '@/components/auth/AuthLayout.vue';
+import { loginUser } from '@/services/authApi';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/authStore';
+
+const router = useRouter();
+const authStore = useAuthStore();
 
 const form = reactive({
     email: '',
@@ -8,6 +14,8 @@ const form = reactive({
 });
 
 const errors = reactive({});
+const isSubmitting = ref(false);
+const submitError = ref('');
 
 function validateForm() {
     Object.keys(errors).forEach((key) => {
@@ -27,9 +35,37 @@ function validateForm() {
     return Object.keys(errors).length === 0;
 }
 
-function handleSubmit() {
+async function handleSubmit() {
+    if (isSubmitting.value) {
+        return;
+    }
+
+    submitError.value = '';
+
     if (!validateForm()) {
         return;
+    }
+
+    isSubmitting.value = true;
+
+    try {
+        const user = await loginUser({
+        email: form.email.trim().toLowerCase(),
+        password: form.password,
+        });
+
+        authStore.setUser(user);
+        form.password = '';
+
+        await router.push('/productos');
+    } catch (error) {
+        if (error instanceof TypeError) {
+            submitError.value = 'No se pudo conectar con el servidor.';
+        } else {
+            submitError.value = error.message || 'No se pudo iniciar sesión.';
+        }
+    } finally {
+        isSubmitting.value = false;
     }
 }
 </script>
@@ -88,8 +124,21 @@ function handleSubmit() {
                 </small>
             </label>
 
-            <button class="login-form__submit" type="submit">
-                Iniciar sesión
+            <p
+                v-if="submitError"
+                class="login-form__error"
+                role="alert"
+            >
+                {{ submitError }}
+            </p>
+
+            <button
+                class="login-form__submit"
+                type="submit"
+                :disabled="isSubmitting"
+                :aria-busy="isSubmitting"
+            >
+                {{ isSubmitting ? 'Iniciando sesión…' : 'Iniciar sesión' }}
             </button>
 
             <p class="login-form__register">
