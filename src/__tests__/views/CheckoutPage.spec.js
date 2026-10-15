@@ -1,8 +1,9 @@
-import { mount } from '@vue/test-utils'
+import { mount, flushPromises } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import CheckoutPage from '@/views/CheckoutPage.vue'
 import { useCartStore } from '@/stores/cartStore'
+import { createRouter, createMemoryHistory } from 'vue-router'
 
 const mountCheckoutPage = () => {
     const pinia = createPinia()
@@ -24,6 +25,7 @@ const mountCheckoutPage = () => {
 describe('CheckoutPage', () => {
     beforeEach(() => {
         localStorage.clear()
+        sessionStorage.clear()
         vi.restoreAllMocks()
     })
 
@@ -84,19 +86,45 @@ describe('CheckoutPage', () => {
             price: 12.5,
         })
 
-        const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue({
-            ok: true,
-            json: async () => ({
-                id: 1,
-                orderNumber: 'ORD-1',
-                status: 'PENDING',
-                total: 12.5,
-            }),
+        const fetchMock = vi.spyOn(globalThis, 'fetch')
+            .mockResolvedValueOnce({
+                ok: true,
+                json: async () => ({
+                    headerName: 'X-CSRF-TOKEN',
+                    token: 'test-csrf-token',
+                }),
+            })
+            .mockResolvedValueOnce({
+                ok: true,
+                json: async () => ({
+                    id: 1,
+                    orderNumber: 'ORD-1',
+                    orderDate: '2026-10-15T10:30:00',
+                    status: 'PENDING',
+                    total: 12.5,
+                }),
+            })
+
+        const router = createRouter({
+            history: createMemoryHistory(),
+            routes: [
+                {
+                    path: '/checkout',
+                    component: CheckoutPage,
+                },
+                {
+                    path: '/checkout/success',
+                    component: { template: '<div>Order confirmed</div>' },
+                },
+            ],
         })
+
+        await router.push('/checkout')
+        await router.isReady()
 
         const wrapper = mount(CheckoutPage, {
             global: {
-                plugins: [pinia],
+                plugins: [pinia, router],
                 stubs: {
                     RouterLink: {
                         props: ['to'],
@@ -117,7 +145,31 @@ describe('CheckoutPage', () => {
 
         await wrapper.find('.order-summary_button').trigger('click')
 
-        expect(fetchMock).toHaveBeenCalledTimes(1)
+        await flushPromises()
+
+        expect(fetchMock).toHaveBeenCalledTimes(2)
+        expect(fetchMock).toHaveBeenNthCalledWith(
+            2,
+            '/api/orders',
+            expect.objectContaining({
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': 'test-csrf-token',
+                },
+            }),
+        )
+
+        expect(router.currentRoute.value.path).toBe('/checkout/success')
+
+        expect(JSON.parse(sessionStorage.getItem('tierras-last-order')))
+            .toEqual({
+                orderNumber: 'ORD-1',
+                date: '2026-10-15T10:30:00',
+                total: 12.5,
+            })
+
+        wrapper.unmount()
     })
 
     it('shows an error when required delivery fields are empty', async () => {
