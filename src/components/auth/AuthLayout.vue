@@ -80,6 +80,10 @@
     }
 }
 
+.auth-layout--top .auth-layout__content {
+  align-items: flex-start;
+}
+
 @media (max-width: 900px) {
   .auth-layout {
     grid-template-columns: 1fr;
