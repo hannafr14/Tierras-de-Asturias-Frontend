@@ -1,8 +1,9 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { mount, flushPromises } from '@vue/test-utils';
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, RouterView } from 'vue-router';
 import RegisterView from '@/views/RegisterView.vue';
 import { registerUser } from '@/services/authApi';
+import LoginView from '@/views/LoginView.vue';
 
 vi.mock('@/services/authApi', () => ({
   registerUser: vi.fn(),
@@ -19,7 +20,7 @@ const createTestRouter = () => createRouter({
     {
       path: '/login',
       name: 'login',
-      component: { template: '<div>Login</div>' },
+      component: LoginView,
     },
   ],
 });
@@ -357,6 +358,31 @@ describe('RegisterView', () => {
       expect(button.element.disabled).toBe(false);
       expect(button.text()).toBe('Crear cuenta');
       expect(button.attributes('aria-busy')).toBe('false');
+
+      wrapper.unmount();
+    });
+
+    it('navigates from registration to the login page', async () => {
+      const router = createTestRouter();
+
+      await router.push('/register');
+      await router.isReady();
+
+      const wrapper = mount(RouterView, {
+        global: {
+          plugins: [router],
+        },
+      });
+
+      expect(wrapper.findComponent(RegisterView).exists()).toBe(true);
+
+      await wrapper.get('.register-form__login a').trigger('click');
+      await flushPromises();
+
+      expect(router.currentRoute.value.path).toBe('/login');
+      expect(wrapper.findComponent(LoginView).exists()).toBe(true);
+      expect(wrapper.findComponent(RegisterView).exists()).toBe(false);
+      expect(wrapper.get('h2').text()).toBe('Bienvenido de nuevo');
 
       wrapper.unmount();
     });
