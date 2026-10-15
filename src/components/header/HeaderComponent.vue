@@ -1,15 +1,8 @@
 <script setup>
 import carritoIcon from '@/assets/carrito.svg';
-import userDefaultIcon from '@/assets/user-default.svg';
 import { useCartStore } from '@/stores/cartStore';
 
-const cartStore = useCartStore()
-const isAuth = true;
-
-const user = {
-    name: 'Mi Cuenta',
-    avatar: ''
-}
+const cartStore = useCartStore();
 </script>
 
 <template>
@@ -39,26 +32,9 @@ const user = {
                 </span>
             </RouterLink>
 
-            <button 
-                v-if="isAuth"               
-                class="header_account"
-                type="button"
-            >
-                <img
-                    class="header_avatar"
-                    :src="user.avatar || userDefaultIcon"
-                    alt="Avatar"
-                >
-                <span>{{ user.name }}</span>
-            </button>
-
-            <button
-                v-else
-                class="header_login"
-                type="button"
-            >
+            <RouterLink class="header_login" to="/login">
                 Iniciar sesión
-            </button>
+            </RouterLink>
         </div>
     </header>
 </template>
@@ -172,6 +148,11 @@ const user = {
     }
 
     &_login {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        white-space: nowrap;
         padding: 7px 18px;
         border: none;
         border-radius: 999px;
