@@ -2,11 +2,13 @@ import { describe, it, expect } from "vitest";
 import { mount } from '@vue/test-utils';
 import HeaderComponent from "@/components/header/HeaderComponent.vue";
 import { createPinia } from 'pinia';
+import { nextTick } from 'vue';
+import { useAuthStore } from '@/stores/authStore';
 
-const mountHeader = () => {
+const mountHeader = (pinia = createPinia()) => {
     return mount(HeaderComponent, {
         global: {
-            plugins: [createPinia()],
+            plugins: [pinia],
             stubs: {
                 RouterLink: {
                     props: ['to'],
@@ -49,4 +51,26 @@ describe('HeaderComponent', () => {
         expect(wrapper.find('a[href="/productos"]').exists()).toBe(true);
         expect(wrapper.find('a[href="/granjas"]').exists()).toBe(true);
     })
+
+    it('shows the user name after authentication', async () => {
+        const pinia = createPinia();
+        const wrapper = mountHeader(pinia);
+        const authStore = useAuthStore(pinia);
+
+        expect(wrapper.find('.header_login').exists()).toBe(true);
+
+        authStore.setUser({
+            id: 1,
+            firstName: 'Ana',
+            lastName: 'Garcia',
+            email: 'ana@example.com',
+        });
+
+        await nextTick();
+
+        expect(wrapper.get('.header_account').text()).toBe('Ana');
+        expect(wrapper.find('.header_login').exists()).toBe(false);
+
+        wrapper.unmount();
+    });
 })
