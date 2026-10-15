@@ -1,8 +1,11 @@
 <script setup>
 import carritoIcon from '@/assets/carrito.svg';
 import { useCartStore } from '@/stores/cartStore';
+import { useAuthStore } from '@/stores/authStore';
+import userDefaultIcon from '@/assets/user-default.svg';
 
 const cartStore = useCartStore();
+const authStore = useAuthStore();
 </script>
 
 <template>
@@ -32,7 +35,16 @@ const cartStore = useCartStore();
                 </span>
             </RouterLink>
 
-            <RouterLink class="header_login" to="/login">
+            <div v-if="authStore.isAuthenticated" class="header_account">
+                <img
+                    class="header_avatar"
+                    :src="userDefaultIcon"
+                    alt=""
+                >
+                <span>{{ authStore.user.firstName }}</span>
+            </div>
+
+            <RouterLink v-else class="header_login" to="/login">
                 Iniciar sesión
             </RouterLink>
         </div>
@@ -136,7 +148,7 @@ const cartStore = useCartStore();
         font-size: 12px;
         font-weight: 600;
         line-height: 17px;
-        cursor: pointer;
+        cursor: default;
     }
 
     &_avatar {
