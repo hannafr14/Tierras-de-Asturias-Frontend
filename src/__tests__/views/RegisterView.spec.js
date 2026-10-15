@@ -1,7 +1,12 @@
-import { describe, it, expect } from 'vitest';
-import { mount } from '@vue/test-utils';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { mount, flushPromises } from '@vue/test-utils';
 import { createRouter, createWebHistory } from 'vue-router';
 import RegisterView from '@/views/RegisterView.vue';
+import { registerUser } from '@/services/authApi';
+
+vi.mock('@/services/authApi', () => ({
+  registerUser: vi.fn(),
+}));
 
 const createTestRouter = () => createRouter({
   history: createWebHistory(),
@@ -20,6 +25,17 @@ const createTestRouter = () => createRouter({
 });
 
 describe('RegisterView', () => {
+    beforeEach(() => {
+      registerUser.mockReset();
+
+      registerUser.mockResolvedValue({
+        id: 1,
+        firstName: 'Ana',
+        lastName: 'Garcia',
+        email: 'ana@example.com',
+      });
+    });
+
     it('renders the registration page content', async () => {
         const router = createTestRouter();
 
@@ -200,6 +216,147 @@ describe('RegisterView', () => {
 
       expect(wrapper.findAll('.register-form__error')).toHaveLength(0);
       expect(wrapper.findAll('[aria-invalid="true"]')).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('submits registration data and shows success', async () => {
+      const router = createTestRouter();
+
+      await router.push('/register');
+      await router.isReady();
+
+      const wrapper = mount(RegisterView, {
+        global: {
+          plugins: [router],
+        },
+      });
+
+      await wrapper.get('input[autocomplete="given-name"]').setValue(' Ana ');
+      await wrapper.get('input[autocomplete="family-name"]').setValue(' Garcia ');
+      await wrapper.get('input[type="email"]').setValue('ANA@example.com');
+
+      const [passwordInput, confirmationInput] =
+        wrapper.findAll('input[type="password"]');
+
+      await passwordInput.setValue('password123');
+      await confirmationInput.setValue('password123');
+      await wrapper.get('input[type="checkbox"]').setValue(true);
+
+      await wrapper.get('form').trigger('submit');
+      await flushPromises();
+
+      expect(registerUser).toHaveBeenCalledTimes(1);
+      expect(registerUser).toHaveBeenCalledWith({
+        firstName: 'Ana',
+        lastName: 'Garcia',
+        email: 'ana@example.com',
+        password: 'password123',
+      });
+
+      expect(wrapper.get('[role="status"]').text())
+        .toBe('Cuenta creada correctamente. Ya puedes iniciar sesión.');
+
+      expect(passwordInput.element.value).toBe('');
+      expect(confirmationInput.element.value).toBe('');
+      expect(wrapper.get('button[type="submit"]').element.disabled).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('shows a registration error and allows retrying', async () => {
+      registerUser.mockRejectedValueOnce(
+        new Error('Este correo electrónico ya está registrado.')
+      );
+
+      const router = createTestRouter();
+
+      await router.push('/register');
+      await router.isReady();
+
+      const wrapper = mount(RegisterView, {
+        global: {
+          plugins: [router],
+        },
+      });
+
+      await wrapper.get('input[autocomplete="given-name"]').setValue('Ana');
+      await wrapper.get('input[autocomplete="family-name"]').setValue('Garcia');
+      await wrapper.get('input[type="email"]').setValue('ana@example.com');
+
+      const [passwordInput, confirmationInput] =
+        wrapper.findAll('input[type="password"]');
+
+      await passwordInput.setValue('password123');
+      await confirmationInput.setValue('password123');
+      await wrapper.get('input[type="checkbox"]').setValue(true);
+
+      await wrapper.get('form').trigger('submit');
+      await flushPromises();
+
+      expect(wrapper.get('[role="alert"]').text())
+        .toBe('Este correo electrónico ya está registrado.');
+      expect(wrapper.find('[role="status"]').exists()).toBe(false);
+      expect(wrapper.get('button[type="submit"]').element.disabled).toBe(false);
+
+      await wrapper.get('input[type="email"]').setValue('ana.new@example.com');
+      await wrapper.get('form').trigger('submit');
+      await flushPromises();
+
+      expect(registerUser).toHaveBeenCalledTimes(2);
+      expect(wrapper.find('[role="alert"]').exists()).toBe(false);
+      expect(wrapper.get('[role="status"]').text())
+        .toBe('Cuenta creada correctamente. Ya puedes iniciar sesión.');
+
+      wrapper.unmount();
+    });
+
+    it('blocks repeated submissions while registration is pending', async () => {
+      let resolveRegistration;
+
+      registerUser.mockReturnValueOnce(new Promise((resolve) => {
+        resolveRegistration = resolve;
+      }));
+
+      const router = createTestRouter();
+      await router.push('/register');
+      await router.isReady();
+
+      const wrapper = mount(RegisterView, {
+        global: {
+          plugins: [router],
+        },
+      });
+
+      await wrapper.get('input[autocomplete="given-name"]').setValue('Ana');
+      await wrapper.get('input[autocomplete="family-name"]').setValue('Garcia');
+      await wrapper.get('input[type="email"]').setValue('ana@example.com');
+
+      const [passwordInput, confirmationInput] =
+        wrapper.findAll('input[type="password"]');
+
+      await passwordInput.setValue('password123');
+      await confirmationInput.setValue('password123');
+      await wrapper.get('input[type="checkbox"]').setValue(true);
+
+      await wrapper.get('form').trigger('submit');
+
+      const button = wrapper.get('button[type="submit"]');
+
+      expect(button.element.disabled).toBe(true);
+      expect(button.text()).toBe('Creando cuenta…');
+      expect(button.attributes('aria-busy')).toBe('true');
+
+      await wrapper.get('form').trigger('submit');
+
+      expect(registerUser).toHaveBeenCalledTimes(1);
+
+      resolveRegistration({ id: 1 });
+      await flushPromises();
+
+      expect(button.element.disabled).toBe(false);
+      expect(button.text()).toBe('Crear cuenta');
+      expect(button.attributes('aria-busy')).toBe('false');
 
       wrapper.unmount();
     });
