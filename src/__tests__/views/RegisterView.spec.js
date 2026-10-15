@@ -4,6 +4,7 @@ import { createRouter, createWebHistory, RouterView } from 'vue-router';
 import RegisterView from '@/views/RegisterView.vue';
 import { registerUser } from '@/services/authApi';
 import LoginView from '@/views/LoginView.vue';
+import { createPinia } from 'pinia';
 
 vi.mock('@/services/authApi', () => ({
   registerUser: vi.fn(),
@@ -370,7 +371,7 @@ describe('RegisterView', () => {
 
       const wrapper = mount(RouterView, {
         global: {
-          plugins: [router],
+          plugins: [createPinia(), router],
         },
       });
 
