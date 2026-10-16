@@ -2,13 +2,15 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { mount, flushPromises, RouterLinkStub } from '@vue/test-utils';
 import LoginView from '@/views/LoginView.vue';
 import { createPinia } from 'pinia';
-import { createRouter, createMemoryHistory } from 'vue-router';
+import { createRouter, createMemoryHistory, RouterView } from 'vue-router';
 import { loginUser } from '@/services/authApi';
 import { useAuthStore } from '@/stores/authStore';
+import RegisterView from '@/views/RegisterView.vue';
 
 vi.mock('@/services/authApi', () => ({
     loginUser: vi.fn(),
     getCurrentUser: vi.fn(),
+    registerUser: vi.fn(),
 }));
 
 const mountLogin = async () => {
@@ -227,6 +229,37 @@ describe('LoginView', () => {
         expect(button.attributes('aria-busy')).toBe('false');
         expect(authStore.isAuthenticated).toBe(true);
         expect(router.currentRoute.value.path).toBe('/productos');
+
+        wrapper.unmount();
+    });
+
+    it('navigates from login to the registration page', async () => {
+        const router = createRouter({
+            history: createMemoryHistory(),
+            routes: [
+                { path: '/login', component: LoginView },
+                { path: '/register', component: RegisterView },
+            ],
+        });
+
+        await router.push('/login');
+        await router.isReady();
+
+        const wrapper = mount(RouterView, {
+            global: {
+                plugins: [createPinia(), router],
+            },
+        });
+
+        expect(wrapper.findComponent(LoginView).exists()).toBe(true);
+
+        await wrapper.get('.login-form__register a').trigger('click');
+        await flushPromises();
+
+        expect(router.currentRoute.value.path).toBe('/register');
+        expect(wrapper.findComponent(RegisterView).exists()).toBe(true);
+        expect(wrapper.findComponent(LoginView).exists()).toBe(false);
+        expect(wrapper.get('h2').text()).toBe('Crea tu cuenta');
 
         wrapper.unmount();
     });
