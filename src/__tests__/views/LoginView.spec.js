@@ -72,6 +72,9 @@ describe('LoginView', () => {
 
         expect(wrapper.findAll('.login-form__error')).toHaveLength(0);
 
+        expect(wrapper.get('input[type="checkbox"]').element.checked)
+            .toBe(false);
+
         wrapper.unmount();
     });
 
@@ -139,6 +142,7 @@ describe('LoginView', () => {
         expect(loginUser).toHaveBeenCalledWith({
             email: 'ana@example.com',
             password: 'password123',
+            rememberMe: false,
         });
 
         const authStore = useAuthStore(pinia);
@@ -157,6 +161,35 @@ describe('LoginView', () => {
 
         wrapper.unmount();
     });
+
+    it.each([true, false])(
+        'sends rememberMe=%s after changing the checkbox',
+        async (rememberMe) => {
+            const { wrapper } = await mountLogin();
+            const checkbox = wrapper.get('input[type="checkbox"]');
+
+            await checkbox.setValue(true);
+            await checkbox.setValue(rememberMe);
+
+            expect(checkbox.element.checked).toBe(rememberMe);
+
+            await wrapper.get('input[type="email"]')
+                .setValue('ana@example.com');
+            await wrapper.get('input[type="password"]')
+                .setValue('password123');
+            await wrapper.get('form').trigger('submit');
+            await flushPromises();
+
+            expect(loginUser).toHaveBeenCalledTimes(1);
+            expect(loginUser).toHaveBeenCalledWith({
+                email: 'ana@example.com',
+                password: 'password123',
+                rememberMe,
+            });
+
+            wrapper.unmount();
+        }
+    );
 
     it('shows a login error and allows retrying', async () => {
         loginUser.mockRejectedValueOnce(
