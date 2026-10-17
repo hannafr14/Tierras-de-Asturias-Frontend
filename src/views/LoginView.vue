@@ -11,6 +11,7 @@ const authStore = useAuthStore();
 const form = reactive({
     email: '',
     password: '',
+    rememberMe: false,
 });
 
 const errors = reactive({});
@@ -50,8 +51,9 @@ async function handleSubmit() {
 
     try {
         const user = await loginUser({
-        email: form.email.trim().toLowerCase(),
-        password: form.password,
+            email: form.email.trim().toLowerCase(),
+            password: form.password,
+            rememberMe: form.rememberMe,
         });
 
         authStore.setUser(user);
@@ -124,6 +126,15 @@ async function handleSubmit() {
                 </small>
             </label>
 
+            <label class="login-form__remember">
+                <input
+                    v-model="form.rememberMe"
+                    type="checkbox"
+                    :disabled="isSubmitting"
+                >
+                <span>Recordarme en este dispositivo</span>
+            </label>
+
             <p
                 v-if="submitError"
                 class="login-form__error"
@@ -154,6 +165,25 @@ async function handleSubmit() {
 
 .login-form {
     @include auth-form.base;
+
+    &__remember {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 20px;
+        color: #4f5a4f;
+        font-size: 13px;
+        line-height: 20px;
+        cursor: pointer;
+
+        input {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            margin: 2px 0 0;
+            accent-color: #006727;
+        }
+    }
 
     &__error {
         display: block;
