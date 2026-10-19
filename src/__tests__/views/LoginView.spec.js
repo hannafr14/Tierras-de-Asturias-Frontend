@@ -21,8 +21,8 @@ const mountLogin = async () => {
         routes: [
             { path: '/login', component: LoginView },
             {
-                path: '/productos',
-                component: { template: '<div>Productos</div>' },
+                path: '/mi-cuenta',
+                component: { template: '<div>Mi cuenta</div>' },
             },
             {
                 path: '/register',
@@ -129,7 +129,7 @@ describe('LoginView', () => {
         wrapper.unmount();
     });
 
-    it('logs in, stores the profile and opens products', async () => {
+    it('logs in, stores the profile and opens account', async () => {
         const { wrapper, router, pinia } = await mountLogin();
 
         await wrapper.get('input[type="email"]').setValue('ANA@example.com');
@@ -155,7 +155,7 @@ describe('LoginView', () => {
         });
         expect(authStore.isAuthenticated).toBe(true);
 
-        expect(router.currentRoute.value.path).toBe('/productos');
+        expect(router.currentRoute.value.path).toBe('/mi-cuenta');
         expect(wrapper.get('input[type="password"]').element.value).toBe('');
         expect(wrapper.get('button[type="submit"]').element.disabled).toBe(false);
 
@@ -218,7 +218,7 @@ describe('LoginView', () => {
         expect(loginUser).toHaveBeenCalledTimes(2);
         expect(wrapper.find('[role="alert"]').exists()).toBe(false);
         expect(authStore.isAuthenticated).toBe(true);
-        expect(router.currentRoute.value.path).toBe('/productos');
+        expect(router.currentRoute.value.path).toBe('/mi-cuenta');
 
         wrapper.unmount();
     });
@@ -261,7 +261,7 @@ describe('LoginView', () => {
         expect(button.element.disabled).toBe(false);
         expect(button.attributes('aria-busy')).toBe('false');
         expect(authStore.isAuthenticated).toBe(true);
-        expect(router.currentRoute.value.path).toBe('/productos');
+        expect(router.currentRoute.value.path).toBe('/mi-cuenta');
 
         wrapper.unmount();
     });
