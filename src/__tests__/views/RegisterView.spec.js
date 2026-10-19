@@ -2,12 +2,13 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { mount, flushPromises } from '@vue/test-utils';
 import { createRouter, createWebHistory, RouterView } from 'vue-router';
 import RegisterView from '@/views/RegisterView.vue';
-import { registerUser } from '@/services/authApi';
+import { registerUser, loginUser } from '@/services/authApi';
 import LoginView from '@/views/LoginView.vue';
 import { createPinia } from 'pinia';
 
 vi.mock('@/services/authApi', () => ({
-  registerUser: vi.fn(),
+    registerUser: vi.fn(),
+    loginUser: vi.fn(),
 }));
 
 const createTestRouter = () => createRouter({
@@ -23,12 +24,25 @@ const createTestRouter = () => createRouter({
       name: 'login',
       component: LoginView,
     },
+    {
+      path: '/mi-cuenta',
+      name: 'account',
+      component: { template: '<div>Mi cuenta</div>' },
+    },
   ],
 });
 
 describe('RegisterView', () => {
     beforeEach(() => {
       registerUser.mockReset();
+
+      loginUser.mockReset();
+      loginUser.mockResolvedValue({
+        id: 1,
+        firstName: 'Ana',
+        lastName: 'Garcia',
+        email: 'ana@example.com',
+      });
 
       registerUser.mockResolvedValue({
         id: 1,
@@ -46,7 +60,7 @@ describe('RegisterView', () => {
 
         const wrapper = mount(RegisterView, {
         global: {
-            plugins: [router],
+            plugins: [createPinia(), router],
         },
         });
 
@@ -70,7 +84,7 @@ describe('RegisterView', () => {
 
       const wrapper = mount(RegisterView, {
         global: {
-          plugins: [router],
+          plugins: [createPinia(), router],
         },
       });
 
@@ -105,7 +119,7 @@ describe('RegisterView', () => {
 
       const wrapper = mount(RegisterView, {
         global: {
-          plugins: [router],
+          plugins: [createPinia(), router],
         },
       });
 
@@ -136,7 +150,7 @@ describe('RegisterView', () => {
 
       const wrapper = mount(RegisterView, {
         global: {
-          plugins: [router],
+          plugins: [createPinia(), router],
         },
       });
 
@@ -164,7 +178,7 @@ describe('RegisterView', () => {
 
       const wrapper = mount(RegisterView, {
         global: {
-          plugins: [router],
+          plugins: [createPinia(), router],
         },
       });
 
@@ -194,7 +208,7 @@ describe('RegisterView', () => {
 
       const wrapper = mount(RegisterView, {
         global: {
-          plugins: [router],
+          plugins: [createPinia(), router],
         },
       });
 
@@ -215,6 +229,7 @@ describe('RegisterView', () => {
 
       await wrapper.get('input[type="checkbox"]').setValue(true);
       await wrapper.get('form').trigger('submit');
+      await flushPromises();
 
       expect(wrapper.findAll('.register-form__error')).toHaveLength(0);
       expect(wrapper.findAll('[aria-invalid="true"]')).toHaveLength(0);
@@ -230,7 +245,7 @@ describe('RegisterView', () => {
 
       const wrapper = mount(RegisterView, {
         global: {
-          plugins: [router],
+          plugins: [createPinia(), router],
         },
       });
 
@@ -257,11 +272,19 @@ describe('RegisterView', () => {
       });
 
       expect(wrapper.get('[role="status"]').text())
-        .toBe('Cuenta creada correctamente. Ya puedes iniciar sesión.');
+        .toBe('Cuenta creada correctamente.');
 
       expect(passwordInput.element.value).toBe('');
       expect(confirmationInput.element.value).toBe('');
-      expect(wrapper.get('button[type="submit"]').element.disabled).toBe(false);
+      expect(wrapper.get('button[type="submit"]').element.disabled).toBe(true);
+
+      expect(loginUser).toHaveBeenCalledTimes(1);
+      expect(loginUser).toHaveBeenCalledWith({
+          email: 'ana@example.com',
+          password: 'password123',
+          rememberMe: false,
+      });
+      expect(router.currentRoute.value.path).toBe('/mi-cuenta');
 
       wrapper.unmount();
     });
@@ -278,7 +301,7 @@ describe('RegisterView', () => {
 
       const wrapper = mount(RegisterView, {
         global: {
-          plugins: [router],
+          plugins: [createPinia(), router],
         },
       });
 
@@ -308,7 +331,7 @@ describe('RegisterView', () => {
       expect(registerUser).toHaveBeenCalledTimes(2);
       expect(wrapper.find('[role="alert"]').exists()).toBe(false);
       expect(wrapper.get('[role="status"]').text())
-        .toBe('Cuenta creada correctamente. Ya puedes iniciar sesión.');
+        .toBe('Cuenta creada correctamente.');
 
       wrapper.unmount();
     });
@@ -326,7 +349,7 @@ describe('RegisterView', () => {
 
       const wrapper = mount(RegisterView, {
         global: {
-          plugins: [router],
+          plugins: [createPinia(), router],
         },
       });
 
@@ -356,7 +379,7 @@ describe('RegisterView', () => {
       resolveRegistration({ id: 1 });
       await flushPromises();
 
-      expect(button.element.disabled).toBe(false);
+      expect(button.element.disabled).toBe(true);
       expect(button.text()).toBe('Crear cuenta');
       expect(button.attributes('aria-busy')).toBe('false');
 
