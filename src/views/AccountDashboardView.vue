@@ -1,19 +1,27 @@
 <script setup>
 import { useAuthStore } from '@/stores/authStore';
 import ProfileSummary from '@/components/account/ProfileSummary.vue';
+import AccountSidebar from '@/components/account/AccountSidebar.vue';
+import OrderHistory from '@/components/account/OrderHistory.vue';
 
 const authStore = useAuthStore();
 </script>
 
 <template>
     <div class="account-dashboard">
-        <div class="account-dashboard__content">
-            <h1>Mi Perfil</h1>
+        <div class="account-dashboard__layout">
+            <AccountSidebar v-if="authStore.isAuthenticated" />
 
-            <ProfileSummary
-                v-if="authStore.user"
-                :user="authStore.user"
-            />
+            <section class="account-dashboard__content">
+                <h1>Mi Perfil</h1>
+
+                <ProfileSummary
+                    v-if="authStore.user"
+                    :user="authStore.user"
+                />
+
+                <OrderHistory />
+            </section>
         </div>
     </div>
 </template>
@@ -24,9 +32,17 @@ const authStore = useAuthStore();
     padding: 32px 35px;
     background: #f9f9ff;
 
-    &__content {
+    &__layout {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        align-items: start;
+        gap: 28px;
         max-width: 1100px;
         margin: 0 auto;
+    }
+
+    &__content {
+        min-width: 0;
 
         h1 {
             margin: 0 0 24px;
@@ -34,6 +50,12 @@ const authStore = useAuthStore();
             font-size: 28px;
             line-height: 36px;
             font-weight: 700;
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__layout {
+            grid-template-columns: minmax(0, 1fr);
         }
     }
 
