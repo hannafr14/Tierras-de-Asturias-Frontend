@@ -6,6 +6,8 @@ import CheckoutPage from '@/views/CheckoutPage.vue';
 import OrderSuccessPage from '@/views/OrderSuccessPage.vue';
 import RegisterView from '@/views/RegisterView.vue';
 import LoginView from '@/views/LoginView.vue';
+import AccountDashboardView from '@/views/AccountDashboardView.vue';
+import { useAuthStore } from '@/stores/authStore';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,7 +51,22 @@ const router = createRouter({
       name: 'login',
       component: LoginView,
     },
+
+    {
+      path: '/mi-cuenta',
+      name: 'account',
+      component: AccountDashboardView,
+      meta: { requiresAuth: true },
+    },
   ],
 })
+
+router.beforeEach((to) => {
+  const authStore = useAuthStore();
+
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+    return { name: 'login' };
+  }
+});
 
 export default router

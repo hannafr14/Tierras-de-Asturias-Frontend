@@ -35,14 +35,19 @@ const authStore = useAuthStore();
                 </span>
             </RouterLink>
 
-            <div v-if="authStore.isAuthenticated" class="header_account">
+            <RouterLink
+                v-if="authStore.isAuthenticated"
+                class="header_account"
+                to="/mi-cuenta"
+                aria-label="Mi cuenta"
+            >
                 <img
                     class="header_avatar"
                     :src="userDefaultIcon"
                     alt=""
                 >
                 <span>{{ authStore.user.firstName }}</span>
-            </div>
+            </RouterLink>
 
             <RouterLink v-else class="header_login" to="/login">
                 Iniciar sesión
@@ -148,8 +153,14 @@ const authStore = useAuthStore();
         font-size: 12px;
         font-weight: 600;
         line-height: 17px;
-        cursor: default;
-    }
+        cursor: pointer;
+        text-decoration: none;
+
+        &:focus-visible {
+            outline: 2px solid #006727;
+            outline-offset: 3px;
+        }
+            }
 
     &_avatar {
         width: 18px;

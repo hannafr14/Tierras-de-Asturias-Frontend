@@ -10,7 +10,6 @@ const app = createApp(App)
 const pinia = createPinia()
 
 app.use(pinia)
-app.use(router)
 
 const authStore = useAuthStore(pinia)
 
@@ -20,6 +19,9 @@ async function startApp() {
     } catch (error) {
         console.error('Session restoration failed:', error)
     }
+
+    app.use(router)
+    await router.isReady()
 
     app.mount('#app')
 }
