@@ -59,7 +59,7 @@ async function handleSubmit() {
         authStore.setUser(user);
         form.password = '';
 
-        await router.push('/productos');
+        await router.replace('/mi-cuenta');
     } catch (error) {
         if (error instanceof TypeError) {
             submitError.value = 'No se pudo conectar con el servidor.';
