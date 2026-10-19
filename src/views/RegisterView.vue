@@ -1,7 +1,13 @@
 <script setup>
 import { reactive, ref } from 'vue';
 import AuthLayout from '@/components/auth/AuthLayout.vue';
-import { registerUser } from '@/services/authApi';
+import { registerUser, loginUser } from '@/services/authApi';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/authStore';
+
+const router = useRouter();
+const authStore = useAuthStore();
+const isAccountCreated = ref(false);
 
 const form = reactive({
     firstName: '',
@@ -56,37 +62,47 @@ function validateForm() {
 }
 
 async function handleSubmit() {
-    if (isSubmitting.value) {
-        return;
-    }
+    if (isSubmitting.value || isAccountCreated.value) return;
 
     submitError.value = '';
     submitSuccess.value = '';
-
-    if (!validateForm()) {
-        return;
-    }
+    if (!validateForm()) return;
 
     isSubmitting.value = true;
+    const email = form.email.trim().toLowerCase();
+    const password = form.password;
 
     try {
         await registerUser({
-        firstName: form.firstName.trim(),
-        lastName: form.lastName.trim(),
-        email: form.email.trim().toLowerCase(),
-        password: form.password,
+            firstName: form.firstName.trim(),
+            lastName: form.lastName.trim(),
+            email,
+            password,
         });
+        isAccountCreated.value = true;
+        submitSuccess.value = 'Cuenta creada correctamente.';
 
-        submitSuccess.value = 'Cuenta creada correctamente. Ya puedes iniciar sesión.';
-        form.password = '';
-        form.confirmPassword = '';
+        const user = await loginUser({
+            email,
+            password,
+            rememberMe: false,
+        });
+        authStore.setUser(user);
+        await router.replace('/mi-cuenta');
     } catch (error) {
-        if (error instanceof TypeError) {
-        submitError.value = 'No se pudo conectar con el servidor.';
+        if (isAccountCreated.value) {
+            submitError.value =
+                'Tu cuenta está creada, pero no se pudo iniciar sesión. Usa el enlace «Iniciar sesión».';
+        } else if (error instanceof TypeError) {
+            submitError.value = 'No se pudo conectar con el servidor.';
         } else {
-        submitError.value = error.message || 'No se pudo crear la cuenta.';
+            submitError.value = error.message || 'No se pudo crear la cuenta.';
         }
     } finally {
+        if (isAccountCreated.value) {
+            form.password = '';
+            form.confirmPassword = '';
+        }
         isSubmitting.value = false;
     }
 }
@@ -251,7 +267,7 @@ async function handleSubmit() {
             <button
                 class="register-form__submit"
                 type="submit"
-                :disabled="isSubmitting"
+                :disabled="isSubmitting || isAccountCreated"
                 :aria-busy="isSubmitting"
                 >
                 {{ isSubmitting ? 'Creando cuenta…' : 'Crear cuenta' }}
