@@ -72,3 +72,17 @@ export async function getCurrentUser() {
 
     return response.json();
 }
+
+export async function logoutUser() {
+    const csrfHeaders = await getCsrfHeaders();
+
+    const response = await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: csrfHeaders,
+    });
+
+    if (!response.ok) {
+        throw new Error('No se pudo cerrar sesión. Inténtalo de nuevo.');
+    }
+}
