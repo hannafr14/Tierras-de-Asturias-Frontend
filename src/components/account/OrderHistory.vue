@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
 import { getMyOrders } from '@/services/ordersApi';
+import OrderHistoryCard from './OrderHistoryCard.vue';
 
 const orders = ref([]);
 const isLoading = ref(false);
@@ -40,17 +41,6 @@ async function loadOrders(page = 0) {
     }
 }
 
-const currencyFormatter = new Intl.NumberFormat('es-ES', {
-    style: 'currency',
-    currency: 'EUR',
-});
-
-const dateFormatter = new Intl.DateTimeFormat('es-ES', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-});
-
 onMounted(() => loadOrders());
 </script>
 
@@ -78,24 +68,11 @@ onMounted(() => loadOrders());
         </div>
 
         <ul v-else class="order-history__list">
-            <li v-for="order in orders" :key="order.id"
-                class="order-history__item">
-                <div class="order-history__details">
-                    <strong>#{{ order.orderNumber }}</strong>
-                    <p>
-                        <time :datetime="order.orderDate">
-                            {{ dateFormatter.format(new Date(order.orderDate)) }}
-                        </time>
-                    </p>
-                    <span class="order-history__status">
-                        {{ order.status === 'PENDING' ? 'Pedido recibido' : order.status }}
-                    </span>
-                </div>
-                <div class="order-history__total">
-                    <span>TOTAL</span>
-                    <strong>{{ currencyFormatter.format(order.total) }}</strong>
-                </div>
-            </li>
+            <OrderHistoryCard
+                v-for="order in orders"
+                :key="order.id"
+                :order="order"
+            />
         </ul>
 
         <nav v-if="!errorMessage" class="order-history__pagination"
@@ -172,49 +149,8 @@ onMounted(() => loadOrders());
     list-style: none;
 }
 
-.order-history__item {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 16px;
-    padding: 16px;
-    border: 1px solid #cbd5c6;
-    border-radius: 8px;
-    background: #f9f9ff;
-}
-
-.order-history__details { min-width: 0; overflow-wrap: anywhere; }
-.order-history__details strong { color: #172033; font-size: 14px; }
-.order-history__details p { margin: 8px 0; color: #4f5a4f; font-size: 13px; }
-
-.order-history__status {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 4px;
-    background: #e8edff;
-    color: #35445d;
-    font-size: 12px;
-}
-
-.order-history__total { display: grid; gap: 6px; text-align: right; }
-.order-history__total span { color: #4f5a4f; font-size: 11px; }
-.order-history__total strong { color: #006727; font-size: 20px; }
-
 .order-history button:focus-visible {
     outline: 2px solid #006727;
     outline-offset: 3px;
-}
-
-@media (max-width: 576px) {
-    .order-history__item {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .order-history__total {
-        padding-top: 12px;
-        border-top: 1px solid #ecefed;
-        text-align: left;
-        overflow-wrap: anywhere;
-    }
 }
 </style>
