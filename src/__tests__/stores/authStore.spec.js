@@ -77,4 +77,49 @@ describe('authStore', () => {
         expect(authStore.user).toEqual(profile);
         expect(authStore.isAuthenticated).toBe(true);
     });
+
+    it.each([
+        { id: 1, firstName: 'Ana', email: 'ana@example.com' },
+        null,
+    ])('clears the error after a successful retry returning %j', async (profile) => {
+        const authStore = useAuthStore();
+
+        getCurrentUser
+            .mockRejectedValueOnce(new Error('Network error'))
+            .mockResolvedValueOnce(profile);
+
+        await expect(authStore.restoreSession())
+            .rejects.toThrow('Network error');
+
+        expect(authStore.sessionError)
+            .toBe('No se pudo comprobar tu sesión. Inténtalo de nuevo.');
+        expect(authStore.isRestoringSession).toBe(false);
+
+        await authStore.restoreSession();
+
+        expect(getCurrentUser).toHaveBeenCalledTimes(2);
+        expect(authStore.sessionError).toBe('');
+        expect(authStore.user).toEqual(profile);
+        expect(authStore.isAuthenticated).toBe(profile !== null);
+        expect(authStore.isRestoringSession).toBe(false);
+    });
+
+    it('tracks loading while the session request is pending', async () => {
+        let resolveRequest;
+        getCurrentUser.mockReturnValueOnce(new Promise((resolve) => {
+            resolveRequest = resolve;
+        }));
+
+        const authStore = useAuthStore();
+        expect(authStore.isRestoringSession).toBe(false);
+
+        const request = authStore.restoreSession();
+        expect(authStore.isRestoringSession).toBe(true);
+
+        resolveRequest(null);
+        await request;
+
+        expect(authStore.isRestoringSession).toBe(false);
+        expect(authStore.sessionError).toBe('');
+    });
 });
