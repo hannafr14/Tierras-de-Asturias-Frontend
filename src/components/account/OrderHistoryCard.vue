@@ -27,6 +27,10 @@ const dateFormatter = new Intl.DateTimeFormat('es-ES', {
                 <time :datetime="order.orderDate">
                     {{ dateFormatter.format(new Date(order.orderDate)) }}
                 </time>
+                <span>
+                    &middot; {{ order.productCount }}
+                    {{ order.productCount === 1 ? 'producto' : 'productos' }}
+                </span>
             </p>
 
             <span class="order-history-card__status">
