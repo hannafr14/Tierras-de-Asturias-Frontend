@@ -1,12 +1,10 @@
 <script setup>
-import AccountLogoutButton from './AccountLogoutButton.vue';
 import ordersIcon from '@/assets/orders.svg';
 </script>
 
 <template>
     <nav class="account-sidebar" aria-label="Mi cuenta">
         <p class="account-sidebar__title">MI CUENTA</p>
-
         <RouterLink
             class="account-sidebar__link"
             to="/mi-cuenta"
@@ -15,8 +13,6 @@ import ordersIcon from '@/assets/orders.svg';
             <img :src="ordersIcon" alt="" width="16" height="16">
             <span>Mis Pedidos</span>
         </RouterLink>
-
-        <AccountLogoutButton />
     </nav>
 </template>
 
@@ -55,6 +51,12 @@ import ordersIcon from '@/assets/orders.svg';
             outline: 2px solid #006727;
             outline-offset: 3px;
         }
+    }
+}
+
+@media (max-width: 576px) {
+    .account-sidebar__title {
+        display: none;
     }
 }
 </style>

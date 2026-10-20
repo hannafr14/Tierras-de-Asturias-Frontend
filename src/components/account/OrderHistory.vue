@@ -124,7 +124,6 @@ onMounted(() => loadOrders());
 </template>
 
 <style scoped>
-.order-history { margin-top: 24px; }
 .order-history h2 { margin: 0 0 6px; font-size: 16px; }
 .order-history__description { margin: 0; color: #4f5a4f; font-size: 14px; }
 
@@ -147,8 +146,7 @@ onMounted(() => loadOrders());
     margin-top: 24px;
 }
 
-.order-history__pagination button,
-.order-history__pagination span {
+.order-history__pagination button {
     display: grid;
     place-items: center;
     width: 32px;
@@ -178,11 +176,11 @@ onMounted(() => loadOrders());
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 16px;
+    padding: 16px;
     border: 1px solid #cbd5c6;
     border-radius: 8px;
-    background: #fff;
+    background: #f9f9ff;
 }
 
 .order-history__details { min-width: 0; overflow-wrap: anywhere; }
@@ -210,8 +208,6 @@ onMounted(() => loadOrders());
 @media (max-width: 576px) {
     .order-history__item {
         grid-template-columns: minmax(0, 1fr);
-        gap: 16px;
-        padding: 16px;
     }
 
     .order-history__total {

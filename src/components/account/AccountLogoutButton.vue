@@ -50,8 +50,6 @@ async function handleLogout() {
 
 <style scoped lang="scss">
 .account-logout {
-    margin-top: 24px;
-
     &__button {
         min-height: 44px;
         max-width: 100%;
