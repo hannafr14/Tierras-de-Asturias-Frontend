@@ -28,36 +28,46 @@ defineProps({
 .profile-summary {
     display: flex;
     align-items: center;
-    gap: 24px;
-    padding: 24px;
+    gap: 20px;
+    padding: 20px;
     background: #f0f8f3;
     border: 1px solid #deebe2;
     border-radius: 8px;
 
     &__avatar {
         flex-shrink: 0;
-        width: 88px;
-        height: 88px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
         object-fit: cover;
     }
 
     &__details {
         min-width: 0;
+        max-width: 100%;
         overflow-wrap: anywhere;
 
         h2 {
-            margin: 0 0 8px;
+            margin: 0 0 6px;
+            color: #172033;
             font-size: 18px;
             line-height: 26px;
-            color: #172033;
         }
 
         p {
             margin: 0;
             color: #4f5a4f;
             font-size: 14px;
+            line-height: 20px;
         }
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-summary {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
     }
 }
 </style>
