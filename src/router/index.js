@@ -8,6 +8,7 @@ import RegisterView from '@/views/RegisterView.vue';
 import LoginView from '@/views/LoginView.vue';
 import AccountDashboardView from '@/views/AccountDashboardView.vue';
 import { useAuthStore } from '@/stores/authStore';
+import OrderDetailsView from '@/views/OrderDetailsView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +57,13 @@ const router = createRouter({
       path: '/mi-cuenta',
       name: 'account',
       component: AccountDashboardView,
+      meta: { requiresAuth: true },
+    },
+
+    {
+      path: '/mi-cuenta/pedidos/:id',
+      name: 'order-details',
+      component: OrderDetailsView,
       meta: { requiresAuth: true },
     },
   ],

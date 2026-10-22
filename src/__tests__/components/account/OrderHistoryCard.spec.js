@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { mount } from '@vue/test-utils';
+import { mount, RouterLinkStub } from '@vue/test-utils';
 import OrderHistoryCard from '@/components/account/OrderHistoryCard.vue';
 
 const order = {
@@ -17,6 +17,9 @@ describe('OrderHistoryCard', () => {
     beforeEach(() => {
         wrapper = mount(OrderHistoryCard, {
             props: { order: { ...order } },
+            global: {
+                stubs: { RouterLink: RouterLinkStub },
+            },
         });
     });
 
@@ -55,5 +58,12 @@ describe('OrderHistoryCard', () => {
         });
         expect(wrapper.get('.order-history-card__details p span').text())
             .toContain(label);
+    });
+
+    it('links to the details of this order', () => {
+        expect(wrapper.getComponent(RouterLinkStub).props('to')).toEqual({
+            name: 'order-details',
+            params: { id: order.id },
+        });
     });
 });

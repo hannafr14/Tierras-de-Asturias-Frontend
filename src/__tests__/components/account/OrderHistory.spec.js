@@ -1,7 +1,15 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { flushPromises, mount } from '@vue/test-utils';
+import { flushPromises, mount, RouterLinkStub } from '@vue/test-utils';
 import OrderHistory from '@/components/account/OrderHistory.vue';
 import { getMyOrders } from '@/services/ordersApi';
+
+function mountHistory() {
+    return mount(OrderHistory, {
+        global: {
+            stubs: { RouterLink: RouterLinkStub },
+        },
+    });
+}
 
 vi.mock('@/services/ordersApi', () => ({
     getMyOrders: vi.fn(),
@@ -34,7 +42,7 @@ describe('OrderHistory', () => {
             page: { size: 3, number: 0, totalElements: 1, totalPages: 1 },
         });
 
-        wrapper = mount(OrderHistory);
+        wrapper = mountHistory();
         await flushPromises();
 
         expect(getMyOrders).toHaveBeenCalledExactlyOnceWith(0);
@@ -49,7 +57,7 @@ describe('OrderHistory', () => {
             page: { size: 3, number: 0, totalElements: 0, totalPages: 0 },
         });
 
-        wrapper = mount(OrderHistory);
+        wrapper = mountHistory();
         await flushPromises();
 
         expect(wrapper.get('[role="status"]').text())
@@ -63,7 +71,7 @@ describe('OrderHistory', () => {
             resolveRequest = resolve;
         }));
 
-        wrapper = mount(OrderHistory);
+        wrapper = mountHistory();
         await wrapper.vm.$nextTick();
 
         expect(wrapper.get('[role="status"]').text())
@@ -88,7 +96,7 @@ describe('OrderHistory', () => {
             new Error('No se pudieron cargar los pedidos.')
         );
 
-        wrapper = mount(OrderHistory);
+        wrapper = mountHistory();
         await flushPromises();
 
         expect(wrapper.get('[role="alert"]').text())
@@ -106,7 +114,7 @@ describe('OrderHistory', () => {
                 page: { size: 3, number: 0, totalElements: 1, totalPages: 1 },
             });
 
-        wrapper = mount(OrderHistory);
+        wrapper = mountHistory();
         await flushPromises();
         await wrapper.get('.order-history__empty button').trigger('click');
         await flushPromises();
@@ -134,7 +142,7 @@ describe('OrderHistory', () => {
         const previous = '[aria-label="Página anterior"]';
         const next = '[aria-label="Página siguiente"]';
 
-        wrapper = mount(OrderHistory);
+        wrapper = mountHistory();
         await flushPromises();
 
         expect(wrapper.get(previous).element.disabled).toBe(true);
