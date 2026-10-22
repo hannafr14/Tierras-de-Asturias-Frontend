@@ -167,7 +167,10 @@ async function handleCheckoutConfirm() {
 
             <div class="checkout-page_layout">
                 <div class="checkout-page_forms">
-                    <CheckoutDeliveryForm v-model="deliveryForm" />
+                    <CheckoutDeliveryForm
+                        :model-value="deliveryForm"
+                        @update:model-value="Object.assign(deliveryForm, $event)"
+                    />
 
                     <p v-if="checkoutError" class="checkout-page_error">
                         {{ checkoutError }}
