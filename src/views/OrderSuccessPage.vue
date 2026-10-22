@@ -3,10 +3,12 @@ import { computed, onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useCartStore } from '@/stores/cartStore'
 import OrderConfirmationSummary from '@/components/order/OrderConfirmationSummary.vue'
+import { useAuthStore } from '@/stores/authStore'
 
 const LAST_ORDER_STORAGE_KEY = 'tierras-last-order'
 
 const cartStore = useCartStore()
+const authStore = useAuthStore()
 const lastOrder = ref(null)
 
 const formattedDate = computed(() => {
@@ -69,12 +71,21 @@ onMounted(() => {
             </p>
 
             <div class="order-success-page_actions">
-                <RouterLink class="order-success-page_primary" to="/productos">
-                    Seguir Comprando
+                <RouterLink
+                    v-if="authStore.isAuthenticated"
+                    class="order-success-page_primary"
+                    to="/mi-cuenta"
+                >
+                    Ver mis pedidos
                 </RouterLink>
 
-                <RouterLink class="order-success-page_secondary" to="/granjas">
-                    Ver Granjas
+                <RouterLink
+                    :class="authStore.isAuthenticated
+                        ? 'order-success-page_secondary'
+                        : 'order-success-page_primary'"
+                    to="/productos"
+                >
+                    Seguir Comprando
                 </RouterLink>
             </div>
 

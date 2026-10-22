@@ -4,10 +4,15 @@ import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
 import OrderSuccessPage from '@/views/OrderSuccessPage.vue'
 import { useCartStore } from '@/stores/cartStore'
+import { useAuthStore } from '@/stores/authStore'
 
-const mountOrderSuccessPage = () => {
+const mountOrderSuccessPage = (profile = null) => {
     const pinia = createPinia()
     setActivePinia(pinia)
+
+    if (profile) {
+        useAuthStore(pinia).setUser(profile)
+    }
 
     return mount(OrderSuccessPage, {
         global: {
@@ -34,7 +39,8 @@ describe('OrderSuccessPage', () => {
         expect(wrapper.text()).toContain('Pedido confirmado')
         expect(wrapper.text()).toContain('Gracias por apoyar a los productores locales de Asturias')
         expect(wrapper.text()).toContain('Seguir Comprando')
-        expect(wrapper.text()).toContain('Ver Granjas')
+        expect(wrapper.text()).not.toContain('Ver mis pedidos')
+        expect(wrapper.findAll('.order-success-page_actions a')).toHaveLength(1)
     })
 
     it('renders confirmed order information from sessionStorage', async () => {
@@ -93,5 +99,21 @@ describe('OrderSuccessPage', () => {
 
         expect(continueShoppingLink.exists()).toBe(true)
         expect(continueShoppingLink.attributes('href')).toBe('/productos')
+    })
+
+    it('shows my orders and continue shopping for an authenticated user', () => {
+        const wrapper = mountOrderSuccessPage({
+            id: 1,
+            firstName: 'Ana',
+            email: 'ana@example.com',
+        })
+
+        const myOrdersLink = wrapper.get('.order-success-page_primary')
+
+        expect(myOrdersLink.text()).toBe('Ver mis pedidos')
+        expect(myOrdersLink.attributes('href')).toBe('/mi-cuenta')
+        expect(wrapper.get('.order-success-page_secondary').attributes('href'))
+            .toBe('/productos')
+        expect(wrapper.findAll('.order-success-page_actions a')).toHaveLength(2)
     })
 })
