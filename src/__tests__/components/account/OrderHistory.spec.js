@@ -169,4 +169,39 @@ describe('OrderHistory', () => {
         expect(wrapper.get('[aria-current="page"]').text()).toBe('1');
         expect(wrapper.get(previous).element.disabled).toBe(true);
     });
+
+    it('loads the page selected by its number', async () => {
+        getMyOrders
+            .mockResolvedValueOnce({
+                content: Array.from({ length: 3 }, (_, index) => ({
+                    ...order,
+                    id: 18 + index,
+                    orderNumber: `ORD-${18 + index}`,
+                })),
+                page: {
+                    size: 3, number: 0, totalElements: 4, totalPages: 2,
+                },
+            })
+            .mockResolvedValueOnce({
+                content: [{ ...order, id: 21, orderNumber: 'ORD-21' }],
+                page: {
+                    size: 3, number: 1, totalElements: 4, totalPages: 2,
+                },
+            });
+
+        wrapper = mountHistory();
+        await flushPromises();
+
+        expect(wrapper.findAll('.order-history-card')).toHaveLength(3);
+
+        await wrapper.get('[aria-label="Página 2"]').trigger('click');
+        await flushPromises();
+
+        expect(getMyOrders).toHaveBeenCalledTimes(2);
+        expect(getMyOrders).toHaveBeenNthCalledWith(2, 1);
+        expect(wrapper.get('[aria-current="page"]').text()).toBe('2');
+        expect(wrapper.findAll('.order-history-card')).toHaveLength(1);
+        expect(wrapper.text()).toContain('#ORD-21');
+        expect(wrapper.text()).not.toContain('#ORD-18');
+    });
 });
