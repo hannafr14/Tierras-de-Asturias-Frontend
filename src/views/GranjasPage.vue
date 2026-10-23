@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router'
 import { getFarms } from '@/services/catalogApi';
 import StateMessage from '@/components/common/StateMessage.vue';
 import CatalogLayout from '@/components/catalog/CatalogLayout.vue';
@@ -11,6 +12,10 @@ import FarmCard from '@/components/cards/FarmCard.vue';
 import MapSection from '@/components/map/MapSection.vue';
 
 const categories = ['Todos', 'Quesos', 'Sidra', 'Miel', 'Verduras', 'Frutos', 'Vinos'];
+const router = useRouter()
+const openFarm = (id) => {
+    router.push({ name: 'farm-details', params: { id } })
+}
 const activeCategory = ref('Todos');
 const searchQuery = ref('');
 const farms = ref([]);
@@ -110,6 +115,7 @@ onMounted(async () => {
                         :name="farm.name"
                         :location="farm.address"
                         :tags="farm.categories"
+                        @view-farm="openFarm(farm.id)"
                         @click="selectedFarmId = farm.id"
                     />
                 </div>
@@ -120,6 +126,7 @@ onMounted(async () => {
             <MapSection 
                 :farms="farms"
                 :selected-farm-id="selectedFarmId"
+                @view-farm="openFarm"
             />
         </template>
     </CatalogLayout>

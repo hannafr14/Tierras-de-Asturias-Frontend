@@ -6,6 +6,7 @@ import FarmCard from '@/components/cards/FarmCard.vue'
 import markerIcon from '@/assets/marker-icon-granja.svg'
 
 const mapElement = ref(null)
+const emit = defineEmits(['view-farm'])
 
 const props = defineProps({
     farms: {
@@ -58,6 +59,7 @@ const renderMarkers = () => {
             location: farm.address,
             tags: farm.categories,
             variant: 'compact',
+            onViewFarm: () => emit('view-farm', farm.id),
         })
 
         farmPopupApp.mount(popupContainer)

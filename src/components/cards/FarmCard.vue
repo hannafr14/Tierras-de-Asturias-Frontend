@@ -2,6 +2,8 @@
 import fallbackImage from '@/assets/image-placeholder.svg'
 import locationIcon from '@/assets/location.svg'
 
+const emit = defineEmits(['view-farm'])
+
 const props = defineProps({
     image: {
         type: String,
@@ -64,7 +66,11 @@ function handleImageError(event) {
                 </span>
             </div>
 
-            <button class="farm-card_button" type="button">
+            <button
+                class="farm-card_button"
+                type="button"
+                @click.stop="emit('view-farm')"
+            >
                 Ver granja
             </button>
         </div>

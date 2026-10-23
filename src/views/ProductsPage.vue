@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router'
 import { getFarms, getProducts } from '@/services/catalogApi';
 import StateMessage from '@/components/common/StateMessage.vue';
 import CatalogLayout from '@/components/catalog/CatalogLayout.vue';
@@ -19,6 +20,10 @@ const farms = ref([]);
 const selectedFarmId = ref(null);
 const productQuantities = ref({})
 const cartStore = useCartStore()
+const router = useRouter()
+const openFarm = (id) => {
+    router.push({ name: 'farm-details', params: { id } })
+}
 const isLoading = ref(false);
 const errorMessage = ref('');
 const catalogPageRef = ref(null)
@@ -236,6 +241,7 @@ onBeforeUnmount(() => {
             <MapSection 
                 :farms="farms"
                 :selected-farm-id="selectedFarmId"
+                @view-farm="openFarm"
             />
         </template>
     </CatalogLayout>
