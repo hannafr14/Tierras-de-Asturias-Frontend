@@ -10,6 +10,7 @@ import AccountDashboardView from '@/views/AccountDashboardView.vue';
 import { useAuthStore } from '@/stores/authStore';
 import OrderDetailsView from '@/views/OrderDetailsView.vue';
 import ProductDetailsView from '@/views/ProductDetailsView.vue';
+import FarmDetailsView from '@/views/FarmDetailsView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/granjas',
       name:  'granjas',
       component: GranjasPage,
+    },
+    {
+      path: '/granjas/:id',
+      name: 'farm-details',
+      component: FarmDetailsView,
     },
     {
       path: '/cart',
