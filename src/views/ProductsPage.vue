@@ -192,6 +192,7 @@ onBeforeUnmount(() => {
                     <ProductCard
                         v-for="product in filteredProducts"
                         :key="product.id"
+                        :product-id="product.id"
                         :image="product.image"
                         :name="product.name"
                         :farm-name="product.farmName"

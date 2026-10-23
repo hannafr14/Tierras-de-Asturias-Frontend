@@ -3,6 +3,7 @@ import cartIcon from '@/assets/carrito.svg'
 import fallbackImage from '@/assets/image-placeholder.svg'
 import locationIcon from '@/assets/location.svg'
 import QuantityControl from '@/components/common/QuantityControl.vue'
+import { RouterLink } from 'vue-router'
 
 const emit = defineEmits(['add-to-cart', 'increase', 'decrease'])
 
@@ -31,6 +32,10 @@ defineProps({
         type: Number,
         default: 0,
     },
+    productId: {
+        type: Number,
+        required: true,
+    },
 })
 
 function handleImageError(event) {
@@ -48,7 +53,15 @@ function handleImageError(event) {
         >
 
         <div class="product-card_body">
-            <h3 class="product-card_title">{{ name }}</h3>
+            <h3 class="product-card_title">
+                <RouterLink
+                    class="product-card_link"
+                    :to="`/productos/${productId}`"
+                    @click.stop
+                >
+                    {{ name }}
+                </RouterLink>
+            </h3>
 
             <p class="product-card_farm">
                 {{ farmName }}
@@ -185,6 +198,14 @@ function handleImageError(event) {
         display: flex;
         align-items: center;
         gap: 8px;
+    }
+
+    &_link {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover { text-decoration: underline; }
+        &:focus-visible { outline: 2px solid #007a3d; outline-offset: 3px; }
     }
 }
 

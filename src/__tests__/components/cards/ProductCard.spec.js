@@ -1,16 +1,22 @@
 import { describe, it, expect } from 'vitest'
-import { mount } from '@vue/test-utils'
+import { mount, RouterLinkStub } from '@vue/test-utils'
 import ProductCard from '@/components/cards/ProductCard.vue'
 
 const mountProductCard = () => {
     return mount(ProductCard, {
         props: {
+            productId: 1,
             image: 'https://example.com/product.jpg',
             name: 'Queso Gamonéu',
             farmName: 'Finca La Vara',
             location: 'Oviedo',
             price: '12.50€',
             cartQuantity: 2,
+        },
+        global: {
+            stubs: {
+                RouterLink: RouterLinkStub,
+            },
         },
     })
 }
@@ -53,5 +59,13 @@ describe('ProductCard', () => {
         await cartButton.trigger('click')
 
         expect(wrapper.emitted('add-to-cart')).toHaveLength(1)
+    })
+
+    it('links the product name to its details page', () => {
+        const wrapper = mountProductCard()
+        const link = wrapper.findComponent(RouterLinkStub)
+
+        expect(link.props('to')).toBe('/productos/1')
+        expect(link.text()).toBe('Queso Gamonéu')
     })
 })

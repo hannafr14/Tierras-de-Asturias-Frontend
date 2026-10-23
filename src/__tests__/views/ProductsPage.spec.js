@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount } from '@vue/test-utils'
+import { mount, RouterLinkStub } from '@vue/test-utils'
 import { createPinia } from 'pinia'
 import ProductsPage from '@/views/ProductsPage.vue'
 import { useCartStore } from '@/stores/cartStore'
@@ -48,6 +48,7 @@ describe('ProductsPage', () => {
             global: {
                 plugins: [createPinia()],
                 stubs: {
+                    RouterLink: RouterLinkStub,
                     CatalogLayout: {
                         template: '<div><slot name="content" /><slot name="map" /></div>',
                     },
@@ -72,6 +73,7 @@ describe('ProductsPage', () => {
             global: {
                 plugins: [createPinia()],
                 stubs: {
+                    RouterLink: RouterLinkStub,
                     CatalogLayout: {
                         template: '<div><slot name="content" /><slot name="map" /></div>',
                     },
@@ -97,6 +99,7 @@ describe('ProductsPage', () => {
             global: {
                 plugins: [createPinia()],
                 stubs: {
+                    RouterLink: RouterLinkStub,
                     CatalogLayout: {
                         template: '<div><slot name="content" /><slot name="map" /></div>',
                     },
@@ -124,6 +127,7 @@ describe('ProductsPage', () => {
             global: {
                 plugins: [createPinia()],
                 stubs: {
+                    RouterLink: RouterLinkStub,
                     CatalogLayout: {
                         template: '<div><slot name="content" /><slot name="map" /></div>',
                     },
