@@ -35,3 +35,39 @@ export async function getProductById(id) {
 
     return response.json()
 }
+
+export async function getFarmById(id) {
+    const response = await fetch(
+        `/api/farms/${encodeURIComponent(id)}`
+    )
+
+    if (response.status === 404) {
+        throw new Error('Granja no encontrada.')
+    }
+
+    if (!response.ok) {
+        throw new Error(
+            'No se pudo cargar la granja. Inténtalo de nuevo.'
+        )
+    }
+
+    return response.json()
+}
+
+export async function getFarmProducts(id) {
+    const response = await fetch(
+        `/api/farms/${encodeURIComponent(id)}/products`
+    )
+
+    if (response.status === 404) {
+        throw new Error('Granja no encontrada.')
+    }
+
+    if (!response.ok) {
+        throw new Error(
+            'No se pudieron cargar los productos de la granja.'
+        )
+    }
+
+    return response.json()
+}
