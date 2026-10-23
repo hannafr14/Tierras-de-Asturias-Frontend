@@ -53,6 +53,36 @@ async function mountPage(id = '1') {
 }
 
 describe('ProductDetailsView', () => {
+    it.each([
+        [500, 'g', 'Peso', '500 g'],
+        [1, 'kg', 'Peso', '1 kg'],
+        [250, 'ml', 'Volumen', '250 ml'],
+        [0.75, 'l', 'Volumen', '0,75 l'],
+    ])('displays size %s %s', async (sizeValue, sizeUnit, label, value) => {
+        getProductById.mockResolvedValueOnce({
+            ...product, sizeValue, sizeUnit,
+        })
+        await mountPage()
+
+        const attributes = wrapper.findAll('.product-details_attribute')
+        expect(attributes).toHaveLength(2)
+        expect(attributes[1].get('dt').text()).toBe(label)
+        expect(attributes[1].get('dd').text().replace(/\s+/g, ' ')).toBe(value)
+    })
+
+    it.each([
+        [null, null],
+        [0, 'g'],
+        [500, 'unknown'],
+    ])('hides invalid size %s %s', async (sizeValue, sizeUnit) => {
+        getProductById.mockResolvedValueOnce({
+            ...product, sizeValue, sizeUnit,
+        })
+        await mountPage()
+
+        expect(wrapper.findAll('.product-details_attribute')).toHaveLength(1)
+    })
+
     it('loads and displays the selected product', async () => {
         getProductById.mockResolvedValueOnce(product)
         await mountPage()

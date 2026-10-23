@@ -114,6 +114,16 @@ watch(
                                 <dt>Granja</dt>
                                 <dd>{{ product.farmName }}</dd>
                             </div>
+                            <div
+                                v-if="product.sizeValue > 0 && ['g', 'kg', 'ml', 'l'].includes(product.sizeUnit)"
+                                class="product-details_attribute"
+                            >
+                                <dt>{{ ['g', 'kg'].includes(product.sizeUnit) ? 'Peso' : 'Volumen' }}</dt>
+                                <dd>
+                                    {{ product.sizeValue.toLocaleString('es-ES') }}
+                                    {{ product.sizeUnit }}
+                                </dd>
+                            </div>
                         </dl>
 
                         <div class="product-details_actions">
