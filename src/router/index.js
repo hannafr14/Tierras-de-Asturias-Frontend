@@ -9,6 +9,7 @@ import LoginView from '@/views/LoginView.vue';
 import AccountDashboardView from '@/views/AccountDashboardView.vue';
 import { useAuthStore } from '@/stores/authStore';
 import OrderDetailsView from '@/views/OrderDetailsView.vue';
+import ProductDetailsView from '@/views/ProductDetailsView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/productos',
       name: 'productos',
       component: ProductsPage,
+    },
+    {
+      path: '/productos/:id',
+      name: 'product-details',
+      component: ProductDetailsView,
     },
     {
       path: '/granjas',
