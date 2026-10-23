@@ -1,13 +1,15 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 import { getFarmById } from '@/services/catalogApi'
 import StateMessage from '@/components/common/StateMessage.vue'
+import fallbackImage from '@/assets/image-placeholder.svg'
 
 const route = useRoute()
 const farm = ref(null)
 const isLoading = ref(true)
 const errorMessage = ref('')
+const imageFailed = ref(false)
 
 watch(
     () => route.params.id,
@@ -16,6 +18,7 @@ watch(
         onCleanup(() => { cancelled = true })
 
         farm.value = null
+        imageFailed.value = false
         isLoading.value = true
         errorMessage.value = ''
 
@@ -42,9 +45,64 @@ watch(
             type="loading" message="Cargando granja..." />
         <StateMessage v-else-if="errorMessage" role="alert"
             type="error" :message="errorMessage" />
-        <div v-else-if="farm">
-            <h1>{{ farm.name }}</h1>
-            <p>{{ farm.address }}</p>
-        </div>
+        <template v-else-if="farm">
+            <nav class="farm-details_breadcrumbs" aria-label="Ruta de navegación">
+                <RouterLink to="/granjas">Granjas</RouterLink>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">{{ farm.name }}</span>
+            </nav>
+
+            <header class="farm-details_hero">
+                <img
+                    class="farm-details_hero-image"
+                    :src="imageFailed ? fallbackImage : (farm.image || fallbackImage)"
+                    :alt="imageFailed || !farm.image ? 'Imagen no disponible' : farm.name"
+                    @error="imageFailed = true"
+                />
+                <div class="farm-details_hero-content">
+                    <h1>{{ farm.name }}</h1>
+                    <p>{{ farm.address }}</p>
+                </div>
+            </header>
+        </template>
     </section>
 </template>
+
+<style scoped lang="scss">
+.farm-details {
+    --farm-gutter: 35px;
+    color: #111827;
+
+    &_breadcrumbs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 16px var(--farm-gutter);
+        font-size: 13px;
+        overflow-wrap: anywhere;
+        a { color: #596457; text-underline-offset: 3px; }
+    }
+
+    &_hero { position: relative; display: grid; align-items: end; min-height: 300px; }
+    &_hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    &_hero-content {
+        position: relative;
+        padding: 24px var(--farm-gutter);
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        overflow-wrap: anywhere;
+        h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.2; }
+        p { margin: 0; font-size: 14px; line-height: 1.5; }
+    }
+}
+@media (max-width: 768px) {
+    .farm-details {
+        --farm-gutter: 20px;
+        &_hero { min-height: 240px; }
+        &_hero-content h1 { font-size: 26px; }
+    }
+}
+@media (max-width: 576px) {
+    .farm-details { --farm-gutter: 12px; }
+}
+</style>
