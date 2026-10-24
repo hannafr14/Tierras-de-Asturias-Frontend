@@ -17,6 +17,10 @@ const props = defineProps({
         type: Number,
         default: null,
     },
+    showPopups: {
+        type: Boolean,
+        default: true,
+    },
 })
 
 let map = null
@@ -50,27 +54,26 @@ const renderMarkers = () => {
             return
         }
 
-        const popupContainer = document.createElement('div')
-        popupContainer.className = 'map-popup'
-
-        const farmPopupApp = createApp(FarmCard, {
-            image: farm.image,
-            name: farm.name,
-            location: farm.address,
-            tags: farm.categories,
-            variant: 'compact',
-            onViewFarm: () => emit('view-farm', farm.id),
-        })
-
-        farmPopupApp.mount(popupContainer)
-
         const marker = L.marker([farm.latitude, farm.longitude], {
             icon: customMarkerIcon,
-        })
-            .addTo(markersLayer)
-            .bindPopup(popupContainer, {
-                closeButton: false,
+        }).addTo(markersLayer)
+
+        if (props.showPopups) {
+            const popupContainer = document.createElement('div')
+            popupContainer.className = 'map-popup'
+
+            const farmPopupApp = createApp(FarmCard, {
+                image: farm.image,
+                name: farm.name,
+                location: farm.address,
+                tags: farm.categories,
+                variant: 'compact',
+                onViewFarm: () => emit('view-farm', farm.id),
             })
+
+            farmPopupApp.mount(popupContainer)
+            marker.bindPopup(popupContainer, { closeButton: false })
+        }
 
         markersByFarmId.set(farm.id, marker)
     })
@@ -87,8 +90,14 @@ const openSelectedFarmPopup = () => {
         return
     }
 
-    marker.openPopup()
-    map.setView(marker.getLatLng(), map.getZoom())
+    if (props.showPopups) {
+        marker.openPopup()
+    }
+
+    map.setView(
+        marker.getLatLng(),
+        props.farms.length === 1 ? 12 : map.getZoom()
+    )
 }
 
 onMounted(() => {
@@ -101,6 +110,7 @@ onMounted(() => {
     markersLayer = L.layerGroup().addTo(map)
 
     renderMarkers()
+    openSelectedFarmPopup()
 
     setTimeout(updateMapSize, 0)
     window.addEventListener('resize', updateMapSize)
