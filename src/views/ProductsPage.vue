@@ -12,10 +12,17 @@ import ProductCard from '@/components/cards/ProductCard.vue';
 import MapSection from '@/components/map/MapSection.vue';
 import { useCartStore } from '@/stores/cartStore';
 
-const categories = ['Todos', 'Quesos', 'Sidra', 'Miel', 'Verduras', 'Carnes', 'Frutos', 'Salchichas'];
 const activeCategory = ref('Todos');
 const searchQuery = ref('');
 const products = ref([]);
+const categories = computed(() => [
+    'Todos',
+    ...[...new Set(
+        products.value
+            .map(product => product.category)
+            .filter(Boolean)
+    )].sort((a, b) => a.localeCompare(b, 'es')),
+])
 const farms = ref([]);
 const selectedFarmId = ref(null);
 const productQuantities = ref({})
