@@ -81,6 +81,1099 @@
           "source": "https://fincaelribeiro.es/wp-content/uploads/2024/08/vista-area-de-finca-el-ribeiro.jpg"
         }
       ]
+    },
+    {
+      "externalId": "queseria_asiegu",
+      "website": "https://queseriaasiegu.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-asiegu/logo.png",
+          "source": "https://queseriaasiegu.com/img/cms/logotipo-queseria-asiegu.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-asiegu/banner.jpg",
+          "source": "https://queseriaasiegu.com/img/cms/queseria-asiego-1.jpeg"
+        }
+      ]
+    },
+    {
+      "externalId": "vega_de_ario",
+      "website": "https://queseriavegadeario.misquesosasturianos.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-vega-de-ario/logo.jpg",
+          "source": "https://queseriavegadeario.misquesosasturianos.com/wp-content/uploads/2020/05/logo-queseria-gamoneu-vega-de-ario.jpg"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-vega-de-ario/banner.jpg",
+          "source": "https://queseriavegadeario.misquesosasturianos.com/wp-content/uploads/2023/11/visitas-guiadas-queseria-asturiana-benia-onis-queso-gamoneu-1.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "los_caserinos",
+      "website": "https://loscaserinos.com/?v=fefc4a79cecf",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-los-caserinos/logo.png",
+          "source": "https://loscaserinos.com/wp-content/uploads/2021/12/cropped-los-caserinos-productos-asturianos.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-los-caserinos/banner.jpg",
+          "source": "https://loscaserinos.com/wp-content/uploads/2021/12/visitas-guiadas-familias-asturias.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_demues",
+      "website": "https://www.laqueseriademues.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-demues/logo.jpg",
+          "source": "https://www.laqueseriademues.com/-_-/res/c9437023-653a-4072-a169-bd9b18c96b1b/images/files/c9437023-653a-4072-a169-bd9b18c96b1b/0bc6f72c-73e9-41ef-ae30-ae6a880d5b47/256-98/bbb1cc915d60bf7d80f5b8018ae654cbabc06766"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-demues/banner.jpg",
+          "source": "https://www.laqueseriademues.com/-_-/res/c9437023-653a-4072-a169-bd9b18c96b1b/images/files/c9437023-653a-4072-a169-bd9b18c96b1b/73e23358-5fee-402d-a17d-f9035a3d1687/1600-1200/c4c90b7bff89143cd6c660d96bf84898a6e9c770"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_ovin",
+      "website": "https://asociaciondequeserosartesanos.com/queso-ovin/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-ovin/logo.png",
+          "source": "https://asociaciondequeserosartesanos.com/asturias/wp-content/uploads/sites/3/2015/03/ovin_02.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-ovin/banner.jpg",
+          "source": "https://asociaciondequeserosartesanos.com/asturias/wp-content/uploads/sites/3/2015/03/ovin_01.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "olaya_miel",
+      "website": "https://olayamiel.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/olaya-miel-aller/logo.png",
+          "source": "https://olayamiel.com/wp-content/uploads/2023/06/logo.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/olaya-miel-aller/banner.png",
+          "source": "https://olayamiel.com/wp-content/uploads/2021/11/nuevo.png"
+        }
+      ]
+    },
+    {
+      "externalId": "eria_de_valles",
+      "website": "https://eriadevalles.es/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/eria-de-valles-oviedo/logo.png",
+          "source": "https://eriadevalles.es/wp-content/uploads/2020/06/logo-eria-de-valles.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/eria-de-valles-oviedo/banner.jpg",
+          "source": "https://eriadevalles.es/wp-content/uploads/2020/07/slider-home-miel-natural.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "reinastur",
+      "website": "https://www.reinastur.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/reinastur-grado/logo.png",
+          "source": "https://www.reinastur.com/cdn/shop/files/logotipo_reinastur_mejor_miel_del_norte.png?height=300&v=1778160543"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/reinastur-grado/banner.jpg",
+          "source": "https://www.reinastur.com/cdn/shop/files/foto_la_mejor_miel_de_espana_reinastur.webp?v=1783588722&width=3840"
+        }
+      ]
+    },
+    {
+      "externalId": "miel_lapuela",
+      "website": "https://mieldelapuela.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/miel-lapuela-cangas-del-narcea/logo.png",
+          "source": "https://mieldelapuela.com/wp-content/uploads/2024/06/logo-la-puela.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/miel-lapuela-cangas-del-narcea/banner.webp",
+          "source": "https://mieldelapuela.com/wp-content/uploads/2021/08/Pack-6-mieles-Lapuela.webp"
+        }
+      ]
+    },
+    {
+      "externalId": "llagar_sidra_jr",
+      "website": "https://sidrajr.es/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/llagar-sidra-jr-cabuenes/logo.png",
+          "source": "https://sidrajr.es/wp-content/uploads/2022/06/LOGO_SIDRA_JR.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/llagar-sidra-jr-cabuenes/banner.jpg",
+          "source": "https://sidrajr.es/wp-content/uploads/2021/05/sidra_jr_1-scaled.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "finca_casomera",
+      "website": "https://www.fincacasomera.es/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/finca-casomera-casomera/logo.webp",
+          "source": "https://www.fincacasomera.es/assets/watercolor-logo-BZBBD7rz.webp"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/finca-casomera-casomera/banner.webp",
+          "source": "https://www.fincacasomera.es/assets/bush-landscape-ByH_rZgV.webp"
+        }
+      ]
+    },
+    {
+      "externalId": "arandanos_la_pena",
+      "website": "https://www.arandanosecologicos.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/arandanos-la-pena-salas/logo.png",
+          "source": "https://www.arandanosecologicos.com/wp-content/uploads/2024/01/Group-1.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/arandanos-la-pena-salas/banner.jpg",
+          "source": "https://www.arandanosecologicos.com/wp-content/uploads/2024/05/Section-2024-05-22T093540.625.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "picaran",
+      "website": "https://picaran.es/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/picaran-finca-ecologica-picaroso-grado/logo.svg",
+          "source": "https://picaran.es/wp-content/uploads/2023/06/simbolo_arandanos_02.svg"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/picaran-finca-ecologica-picaroso-grado/banner.jpg",
+          "source": "https://picaran.es/wp-content/uploads/2022/09/plato_moras_frambuesas_arandanos.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "los_arandanos",
+      "website": "https://losarandanos.es/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/los-arandanos-taramundi/logo.jpg",
+          "source": "https://losarandanos.es/wp-content/uploads/2026/06/logotipo-finca-ecologica.jpg"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/los-arandanos-taramundi/banner.webp",
+          "source": "https://losarandanos.es/wp-content/uploads/2026/06/DSC07144-1.webp"
+        }
+      ]
+    },
+    {
+      "externalId": "finca_el_cabillon",
+      "website": "https://fincaelcabillon.org/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/finca-el-cabillon-tapia-de-casariego/logo.png",
+          "source": "https://fincaelcabillon.org/wp-content/uploads/Logo-Finca-El-Cabillon-Horizontal.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/finca-el-cabillon-tapia-de-casariego/banner.jpg",
+          "source": "https://fincaelcabillon.org/wp-content/uploads/trabajadores-de-la-finca-delante-de-la-nave.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "oles_gourmet",
+      "website": "https://olesgourmet.com/web/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/oles-gourmet-granja-fitories-villaviciosa/logo.png",
+          "source": "https://olesgourmet.com/web/wp-content/uploads/2017/12/logo_oles.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/oles-gourmet-granja-fitories-villaviciosa/banner.jpg",
+          "source": "https://olesgourmet.com/web/wp-content/uploads/2018/12/Todos-los-botes-y-cajas-cerca-2.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "bodega_monasterio_de_corias",
+      "website": "https://monasteriodecorias.es/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/bodega-monasterio-de-corias/logo.svg",
+          "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/LOGOTIPO-corias.svg"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/bodega-monasterio-de-corias/banner.jpg",
+          "source": "https://monasteriodecorias.es/wp-content/uploads/2024/06/Bodegas-Monasterio-de-Corias_054-1-scaled.jpeg"
+        }
+      ]
+    },
+    {
+      "externalId": "siluvio_bodegas_y_vinedos",
+      "website": "https://siluvio.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/siluvio-bodegas-y-vinedos-ibias/logo.png",
+          "source": "https://siluvio.com/wp-content/uploads/2020/03/logo-2-1024x1024.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/siluvio-bodegas-y-vinedos-ibias/banner.jpg",
+          "source": "https://siluvio.com/wp-content/uploads/2025/03/DJI_0583-1-scaled.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "bodega_vina_cuedo",
+      "website": "https://www.bodegavc.es/es/inicio/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/bodega-vina-cuedo-ibias/logo.png",
+          "source": "https://i1.wp.com/www.bodegavc.es/wp-content/uploads/2017/04/Vina_Cuedo_logo-2-1.png?ssl=1"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/bodega-vina-cuedo-ibias/banner.jpg",
+          "source": "https://www.bodegavc.es/wp-content/uploads/2017/05/El-territorio.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "escolinas",
+      "website": "https://escolinas.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/escolinas-cangas/logo.png",
+          "source": "https://escolinas.com/wp-content/uploads/2020/03/cropped-logo-escolinas-1.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/escolinas-cangas/banner.jpg",
+          "source": "https://escolinas.com/wp-content/uploads/2025/08/vinedos.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_la_peral",
+      "website": "https://lapaneradeasturias.com/empresas/quesos-la-peral/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-la-peral/logo.png",
+          "source": "https://www.gourmets.net/img/Expositores/4000342.jpg",
+          "sourcePage": "https://www.gourmets.net/salon-gourmets/2026/exhibitors-catalogue/quesos-la-peral"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-la-peral/banner.png",
+          "source": "https://www.gourmets.net/img/Productos/1390212.jpg",
+          "sourcePage": "https://www.gourmets.net/salon-gourmets/2026/exhibitors-catalogue/quesos-la-peral"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_temia",
+      "website": "https://asociaciondequeserosartesanos.com/asturias/temia/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/queseria-temia/card.jpg",
+          "source": "https://asociaciondequeserosartesanos.com/asturias/wp-content/uploads/sites/3/2015/03/IMG-20191129-WA0016-300x300.jpg",
+          "sourcePage": "https://asociaciondequeserosartesanos.com/asturias/temia/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-temia/banner.jpg",
+          "source": "https://doafuegalpitu.es/wp-content/uploads/2023/08/queseria-temia.jpg",
+          "sourcePage": "https://doafuegalpitu.es/productores/"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_ca_sanchu",
+      "website": "https://asociaciondequeserosartesanos.com/asturias/ca-sanchu/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/queseria-ca-sanchu/card.jpg",
+          "source": "https://asociaciondequeserosartesanos.com/asturias/wp-content/uploads/sites/3/2015/03/ca-sanchu-2019-732x732.jpg",
+          "sourcePage": "https://asociaciondequeserosartesanos.com/asturias/ca-sanchu/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-ca-sanchu/banner.jpg",
+          "source": "https://doafuegalpitu.es/wp-content/uploads/2023/08/queseria-casa-sanchu.jpg",
+          "sourcePage": "https://doafuegalpitu.es/productores/"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_el_cabriteru",
+      "website": "https://queseriaelcabriteru.com/",
+      "cardKind": "product-label",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/queseria-el-cabriteru/card.png",
+          "source": "https://queseriaelcabriteru.com/wp-content/uploads/2020/04/El-Cabriteru-etiqueta-verde-queso-leche-mezcla-1.png",
+          "sourcePage": "https://queseriaelcabriteru.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-el-cabriteru/banner.jpg",
+          "source": "https://queseriaelcabriteru.com/wp-content/uploads/2018/08/Quesos_El_Cabriteru_Arenas_de_Cabrales.jpg",
+          "sourcePage": "https://queseriaelcabriteru.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_main",
+      "website": "https://www.latiendadelcabrales.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-main/logo.png",
+          "source": "https://quesosdecabrales.es/wp-content/uploads/2015/07/logo-quseria-main.png",
+          "sourcePage": "https://quesosdecabrales.es/home/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-main/banner.jpg",
+          "source": "https://quesosdecabrales.es/wp-content/uploads/2015/03/queseria-main-la-queseria.jpg",
+          "sourcePage": "https://quesosdecabrales.es/la-queseria-main/"
+        }
+      ]
+    },
+    {
+      "externalId": "quesos_taramundi",
+      "website": "https://www.turismoasturias.es/descubre/gastronomia/queserias/queseria-quesos-de-taramundi",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/quesos-de-taramundi/card.jpg",
+          "source": "https://www.turismoasturias.es/documents/39908/d184dd66-300e-9855-f622-499c8ce92fa5?t=1674194259612",
+          "sourcePage": "https://www.turismoasturias.es/descubre/gastronomia/queserias/queseria-quesos-de-taramundi"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/quesos-de-taramundi/banner.jpg",
+          "source": "https://www.turismoasturias.es/documents/39908/65979/2021-taramundi+%281%29.jpg/b875edab-5c93-bbc7-54d3-4cfad80d3259",
+          "sourcePage": "https://www.turismoasturias.es/descubre/gastronomia/queserias/queseria-quesos-de-taramundi"
+        }
+      ]
+    },
+    {
+      "externalId": "la_penona",
+      "website": "https://queserialapenona.jimdofree.com/la-queser%C3%ADa/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/queseria-la-penona/card.jpg",
+          "source": "https://image.jimcdn.com/app/cms/image/transf/dimension%3D701x1024%3Aformat%3Djpg/path/sb2876473d5dc7d2e/image/i2b8ad8011dd6ac64/version/1385552723/image.jpg",
+          "sourcePage": "existing farmers.json"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-la-penona/banner.jpg",
+          "source": "https://www.turismoasturias.es/documents/39908/63117/La+Queseria+II.jpg/bbd71770-ad5c-fbea-1ba6-5af250e72ee6",
+          "sourcePage": "https://www.turismoasturias.es/-/blogs/asi-es-somao-pueblo-ejemplar-de-asturias-2020"
+        }
+      ]
+    },
+    {
+      "externalId": "leche_leche",
+      "website": "https://www.lecheleche.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/leche-leche/logo.png",
+          "source": "https://www.lecheleche.com/wp-content/uploads/2019/03/LOGO_SUPERIOR.png",
+          "sourcePage": "https://www.lecheleche.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/leche-leche/banner.jpg",
+          "source": "https://www.lecheleche.com/wp-content/uploads/2019/07/leche_fresca-2.jpg",
+          "sourcePage": "https://www.lecheleche.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "vega_de_tordin",
+      "website": "https://vegadetordin.com/",
+      "cardKind": "product-label",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/queseria-vega-de-tordin/card.jpg",
+          "source": "https://vegadetordin.com/src/img/etiquetas/quesocabrales_etiqueta.jpg",
+          "sourcePage": "https://vegadetordin.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-vega-de-tordin/banner.jpg",
+          "source": "https://vegadetordin.com/src/img/fotos/ganaderia/vaca_pastos.jpg",
+          "sourcePage": "https://vegadetordin.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "rebollin",
+      "website": "https://doafuegalpitu.es/productores/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/quesos-artesanos-rebollin/card.jpg",
+          "source": "https://doafuegalpitu.es/wp-content/uploads/2025/06/queseria-agrovaldessdgsd.jpg",
+          "sourcePage": "https://doafuegalpitu.es/productores/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/quesos-artesanos-rebollin/banner.jpg",
+          "source": "https://doafuegalpitu.es/wp-content/uploads/2025/06/queseria-agrovaldessdgsd.jpg",
+          "sourcePage": "https://doafuegalpitu.es/productores/"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_la_collada",
+      "website": "https://asociaciondequeserosartesanos.com/asturias/la-collada-2/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/queseria-la-collada/card.jpg",
+          "source": "https://asociaciondequeserosartesanos.com/asturias/wp-content/uploads/sites/3/2015/03/Quesos-de-La-Queser%C3%ADa-Artesanal-La-Collada-e1689160285117-732x720.jpg",
+          "sourcePage": "https://asociaciondequeserosartesanos.com/asturias/la-collada-2/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-la-collada/banner.jpg",
+          "source": "https://asociaciondequeserosartesanos.com/asturias/wp-content/uploads/sites/3/2015/03/Quesos-de-La-Queser%C3%ADa-Artesanal-La-Collada-e1689160285117-732x720.jpg",
+          "sourcePage": "https://asociaciondequeserosartesanos.com/asturias/la-collada-2/"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_la_borbolla",
+      "website": "https://doafuegalpitu.es/productores/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/queseria-la-borbolla/card.jpg",
+          "source": "https://doafuegalpitu.es/wp-content/uploads/2023/08/queseria-la-borbolla.jpg",
+          "sourcePage": "https://doafuegalpitu.es/productores/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-la-borbolla/banner.jpg",
+          "source": "https://doafuegalpitu.es/wp-content/uploads/2023/08/queseria-la-borbolla.jpg",
+          "sourcePage": "https://doafuegalpitu.es/productores/"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_el_viso",
+      "website": "https://doafuegalpitu.es/productores/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/queseria-el-viso/card.jpg",
+          "source": "https://doafuegalpitu.es/wp-content/uploads/2023/08/queseria-el-visu.jpg",
+          "sourcePage": "https://doafuegalpitu.es/productores/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-el-viso/banner.jpg",
+          "source": "https://doafuegalpitu.es/wp-content/uploads/2023/08/queseria-el-visu.jpg",
+          "sourcePage": "https://doafuegalpitu.es/productores/"
+        }
+      ]
+    },
+    {
+      "externalId": "alejandro_casielles_1913",
+      "website": "https://queseriacasielles1913.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-alejandro-casielles-1913/logo.png",
+          "source": "https://queseriacasielles1913.com/wp-content/uploads/2025/07/queseria_alejandro_casielles_favicon_negro.png",
+          "sourcePage": "https://queseriacasielles1913.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-alejandro-casielles-1913/banner.jpg",
+          "source": "https://queseriacasielles1913.com/wp-content/uploads/2024/01/queseria-1080x675-1.jpg",
+          "sourcePage": "https://queseriacasielles1913.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_collera",
+      "website": "https://www.queseriacollera.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-collera/logo.png",
+          "source": "https://www.queseriacollera.com/modulo_base/img//logo.png",
+          "sourcePage": "https://www.queseriacollera.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-collera/banner.jpg",
+          "source": "https://www.queseriacollera.com/udecontrol_datos/galerias/grandes/23.jpg",
+          "sourcePage": "https://www.queseriacollera.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "miel_la_calduya",
+      "website": "https://www.mielartesana.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/miel-la-calduya-pesoz/logo.webp",
+          "source": "https://www.mielartesana.com/img/miel_la_calduya_asturias.webp",
+          "sourcePage": "https://www.mielartesana.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/miel-la-calduya-pesoz/banner.webp",
+          "source": "https://www.mielartesana.com/img/la_calduya_abeja_iberica.webp",
+          "sourcePage": "https://www.mielartesana.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "miel_el_caxiellu",
+      "website": "https://mercadoartesanoyecologico.com/project/miel-el-caxiellu/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/miel-el-caxiellu-grado/card.jpg",
+          "source": "https://mercadoartesanoyecologico.com/wp-content/uploads/2023/10/miel-caxiellu_eco.jpg",
+          "sourcePage": "https://mercadoartesanoyecologico.com/project/miel-el-caxiellu/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/miel-el-caxiellu-grado/banner.jpg",
+          "source": "https://mercadoartesanoyecologico.com/wp-content/uploads/2023/10/miel-caxiellu_ceco_III.jpg",
+          "sourcePage": "https://mercadoartesanoyecologico.com/project/miel-el-caxiellu/"
+        }
+      ]
+    },
+    {
+      "externalId": "el_tio_angel_miel_de_asturias",
+      "website": "https://fuentesdelnarcea.com/productor_local/el-tio-angel-miel-de-asturias/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/el-tio-angel-miel-de-asturias/card.jpg",
+          "source": "https://fuentesdelnarcea.com/wp-content/uploads/2021/05/miel-el-tio-angel.jpg",
+          "sourcePage": "https://fuentesdelnarcea.com/productor_local/el-tio-angel-miel-de-asturias/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/el-tio-angel-miel-de-asturias/banner.jpg",
+          "source": "https://fuentesdelnarcea.com/wp-content/uploads/2021/05/apicultor-el-tio-angel.jpg",
+          "sourcePage": "https://fuentesdelnarcea.com/productor_local/el-tio-angel-miel-de-asturias/"
+        }
+      ]
+    },
+    {
+      "externalId": "miel_outurelos",
+      "website": "https://mielouturelos.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/miel-outurelos-ibias/logo.webp",
+          "source": "https://sondelugo.com/wp-content/uploads/outurelos-logo.webp",
+          "sourcePage": "https://sondelugo.com/es/produtores/outurelos-es/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/miel-outurelos-ibias/banner.webp",
+          "source": "https://sondelugo.com/wp-content/uploads/abejas-panal-outurelos.webp",
+          "sourcePage": "https://sondelugo.com/es/produtores/outurelos-es/"
+        }
+      ]
+    },
+    {
+      "externalId": "miel_fuentes_del_narcea",
+      "website": "https://fuentesdelnarcea.com/productor_local/miel-fuentes-del-narcea/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/miel-fuentes-del-narcea/card.jpg",
+          "source": "https://fuentesdelnarcea.com/wp-content/uploads/2022/08/d0cc3748-6aed-4f1a-92c4-b67bf157bf98.jpg",
+          "sourcePage": "https://fuentesdelnarcea.com/productor_local/miel-fuentes-del-narcea/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/miel-fuentes-del-narcea/banner.jpg",
+          "source": "https://fuentesdelnarcea.com/wp-content/uploads/2022/08/d0cc3748-6aed-4f1a-92c4-b67bf157bf98.jpg",
+          "sourcePage": "https://fuentesdelnarcea.com/productor_local/miel-fuentes-del-narcea/"
+        }
+      ]
+    },
+    {
+      "externalId": "miel_casa_el_campo",
+      "website": "https://lapaneradeasturias.com/empresas/miel-casa-el-campo/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/miel-casa-el-campo-valdes/logo.jpg",
+          "source": "https://www.empresia.es/marca/getImg?urlMarca=http://imagensignos.oepm.local/imagenes/000398/0001347270.jpg",
+          "sourcePage": "https://www.empresia.es/distintivo/miel-casa-el-campo/oepm/m-3574149/"
+        }
+      ]
+    },
+    {
+      "externalId": "miel_la_boalesa",
+      "website": "https://www.naviaturismo.com/Laboalesa",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/miel-la-boalesa-boal/card.jpg",
+          "source": "https://www.naviaturismo.com/v_portal/inc/imagen.asp?f=FOTO_51472.jpg&c=29",
+          "sourcePage": "https://www.naviaturismo.com/Laboalesa"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/miel-la-boalesa-boal/banner.jpg",
+          "source": "https://www.naviaturismo.com/v_portal/inc/imagen.asp?f=FOTO_385.jpg&c=29",
+          "sourcePage": "https://www.naviaturismo.com/Laboalesa"
+        }
+      ]
+    },
+    {
+      "externalId": "sidra_fran",
+      "website": "https://sidrafran.es/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/sidra-fran-lugones/logo.gif",
+          "source": "https://sidrafran.es/wp-content/uploads/2021/11/Sidrafran-logo-color-chico-2.gif",
+          "sourcePage": "https://sidrafran.es/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/sidra-fran-lugones/banner.jpg",
+          "source": "https://sidrafran.es/wp-content/uploads/2021/12/Toneles-de-SIdra-Fran-Lugones-2.jpg",
+          "sourcePage": "https://sidrafran.es/"
+        }
+      ]
+    },
+    {
+      "externalId": "llagar_sidra_menendez",
+      "website": "https://www.sidramenendez.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/llagar-sidra-menendez-fano/logo.png",
+          "source": "https://www.sidramenendez.com/system/sites/logos/000/000/001/original/logo.png?1527247849",
+          "sourcePage": "https://www.sidramenendez.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/llagar-sidra-menendez-fano/banner.jpg",
+          "source": "https://www.sidramenendez.com/system/cms_multimedia/cms_medias/files/000/000/003/original/img-destacado.jpg?1519290352",
+          "sourcePage": "https://www.sidramenendez.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "llagar_bernueces",
+      "website": "https://llagarbernueces.com/",
+      "cardKind": "brand-header",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/llagar-bernueces-castiello/card.png",
+          "source": "https://llagarbernueces.com/wp-content/uploads/2022/07/njih.png",
+          "sourcePage": "https://llagarbernueces.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/llagar-bernueces-castiello/banner.jpg",
+          "source": "https://llagarbernueces.com/wp-content/uploads/2022/07/BTWL6264-3-1024x576.jpg",
+          "sourcePage": "https://llagarbernueces.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "sidra_cortina",
+      "website": "https://www.sidracortina.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/sidra-cortina-amandi/logo.png",
+          "source": "https://www.sidracortina.com/tienda-sidra/img/sidra-cortina-logo-1605090235.jpg",
+          "sourcePage": "https://www.sidracortina.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/sidra-cortina-amandi/banner.jpg",
+          "source": "https://www.sidracortina.com/wp-content/uploads/portada-web-2.jpg",
+          "sourcePage": "https://www.sidracortina.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "llagar_herminio",
+      "website": "https://sidreriallagarherminio.es/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/llagar-herminio-colloto/logo.png",
+          "source": "https://sidreriallagarherminio.es/wp-content/uploads/2022/08/cropped-logo-llagar-herminio.png",
+          "sourcePage": "https://sidreriallagarherminio.es/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/llagar-herminio-colloto/banner.jpg",
+          "source": "https://sidreriallagarherminio.es/wp-content/uploads/2022/08/visitas-llagar-herminio-2.jpg",
+          "sourcePage": "https://sidreriallagarherminio.es/"
+        }
+      ]
+    },
+    {
+      "externalId": "llagar_sidra_pamirandi",
+      "website": "https://www.rutalquesuylasidra.com/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/llagar-sidra-pamirandi-asiegu/card.jpg",
+          "source": "https://lajueya.net/wp-content/uploads/2024/04/Sidra-Pamirandi.jpg",
+          "sourcePage": "https://lajueya.net/index.php/2024/03/22/sidra-pamirandi/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/llagar-sidra-pamirandi-asiegu/banner.jpg",
+          "source": "https://lajueya.net/wp-content/uploads/2024/04/Sidra-Pamirandi.jpg",
+          "sourcePage": "https://lajueya.net/index.php/2024/03/22/sidra-pamirandi/"
+        }
+      ]
+    },
+    {
+      "externalId": "llagar_castanon",
+      "website": "https://sidracastanon.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/llagar-castanon-quintueles/logo.png",
+          "source": "https://sidracastanon.com/wp-content/uploads/2022/03/logo-castanon.png",
+          "sourcePage": "https://sidracastanon.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/llagar-castanon-quintueles/banner.jpg",
+          "source": "https://sidracastanon.com/wp-content/uploads/2022/03/exteriores-llagar-castanon-3.jpg",
+          "sourcePage": "https://sidracastanon.com/nuestro-llagar/"
+        }
+      ]
+    },
+    {
+      "externalId": "llagar_alonso",
+      "website": "https://www.llagaralonso.com/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/llagar-alonso-cianu/card.jpg",
+          "source": "https://www.llagaralonso.com/-_-/res/3062313f-027d-449a-9806-8563ef3b1f4c/images/files/3062313f-027d-449a-9806-8563ef3b1f4c/c51e1510-df9a-486e-89ba-9dd4659bd368/384-256/ee786488c69b8f056580d7a4d7337b91d48ae907",
+          "sourcePage": "https://www.llagaralonso.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/llagar-alonso-cianu/banner.jpg",
+          "source": "https://www.llagaralonso.com/-_-/res/3062313f-027d-449a-9806-8563ef3b1f4c/images/files/3062313f-027d-449a-9806-8563ef3b1f4c/135b1304-ca0d-4d4e-8405-8e5e852c62ea/800-479/215d176b539603377b7ad689c154d5eb1295c866",
+          "sourcePage": "https://www.llagaralonso.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "sidra_viuda_de_angelon",
+      "website": "https://www.sidraturismoasturias.es/llagares/viuda-angelon/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/sidra-viuda-de-angelon-nava/logo.png",
+          "source": "https://www.sidraturismoasturias.es/wp-content/uploads/elementor/thumbs/logo-sidra-vda-angelon-rbxyt07r8a7nofwhwo901mupybwxfdas2i8z4yktd4.png",
+          "sourcePage": "https://www.sidraturismoasturias.es/llagares/viuda-angelon/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/sidra-viuda-de-angelon-nava/banner.jpg",
+          "source": "https://www.sidraturismoasturias.es/wp-content/uploads/2023/08/fachada-sidra-Viuda-de-Angelon-scaled.jpg",
+          "sourcePage": "https://www.sidraturismoasturias.es/llagares/viuda-angelon/"
+        }
+      ]
+    },
+    {
+      "externalId": "arandanos_y_manzanas_de_muno",
+      "website": "https://arandanosmanzanas.es/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/arandanos-y-manzanas-de-muno-siero/card.png",
+          "source": "https://arandanosmanzanas.es/wp-content/uploads/2020/12/2.png",
+          "sourcePage": "https://arandanosmanzanas.es/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/arandanos-y-manzanas-de-muno-siero/banner.jpg",
+          "source": "https://arandanosmanzanas.es/wp-content/uploads/2021/01/2015-03-18-17.50.06-2-2-e1611319875153.jpg",
+          "sourcePage": "https://arandanosmanzanas.es/"
+        }
+      ]
+    },
+    {
+      "externalId": "arandanos_el_caleyu",
+      "website": "https://arandanoselcaleyu.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/arandanos-el-caleyu-picos-de-europa/logo.png",
+          "source": "http://www.arandanoselcaleyu.com/wp-content/uploads/2023/06/logo-Caleyu_113234.png",
+          "sourcePage": "http://www.arandanoselcaleyu.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/arandanos-el-caleyu-picos-de-europa/banner.jpg",
+          "source": "http://www.arandanoselcaleyu.com/wp-content/uploads/2023/06/IMG-20230612-WA0016-750x750.jpg",
+          "sourcePage": "http://www.arandanoselcaleyu.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "berries_nature_park",
+      "website": "https://berriesnaturepark.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/berries-nature-park-santa-marina-siero/logo.png",
+          "source": "https://berriesnaturepark.com/wp-content/uploads/2021/09/logo-berries-nature-park-transparencia.png",
+          "sourcePage": "existing farmers.json"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/berries-nature-park-santa-marina-siero/banner.jpg",
+          "source": "https://berriesnaturepark.com/wp-content/uploads/2021/10/berries-nature-park-alimentos-del-paraiso-natural-copae.jpg",
+          "sourcePage": "https://berriesnaturepark.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "arandanos_el_cierron",
+      "website": "https://www.arandanoselcierron.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/arandanos-el-cierron-fuentes-villaviciosa/logo.png",
+          "source": "https://international.asturex.org/agro/assets/img/logos/companies/1008.jpg",
+          "sourcePage": "https://international.asturex.org/agro/ficha_empresa/1008/p1"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/arandanos-el-cierron-fuentes-villaviciosa/banner.jpg",
+          "source": "https://international.asturex.org/agro/assets/img/galeria/2691.jpg",
+          "sourcePage": "https://international.asturex.org/agro/ficha_empresa/1008/p1"
+        }
+      ]
+    },
+    {
+      "externalId": "bodega_senorio_de_ibias",
+      "website": "https://www.fuentesdelnarcea.org/senorio-de-ibias/bodegas-dop-cangas/senorio-de-ibias_1687_65_2503_0_1_in.html",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/bodega-senorio-de-ibias/logo.png",
+          "source": "https://www.gourmets.net/img/Expositores/3941982.jpg",
+          "sourcePage": "https://www.gourmets.net/salon-gourmets/2025/exhibitors-catalogue/senorio-de-ibias-bodega-y-vinedos"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/bodega-senorio-de-ibias/banner.jpg",
+          "source": "https://www.fuentesdelnarcea.org/v_portal/inc/clicklink.asp?t=1&cod=7179&c=0",
+          "sourcePage": "https://www.fuentesdelnarcea.org/senorio-de-ibias/bodegas-dop-cangas/senorio-de-ibias_1687_65_2503_0_1_in.html"
+        }
+      ]
+    },
+    {
+      "externalId": "bodega_martinez_parrondo",
+      "website": "https://www.fuentesdelnarcea.org/bodega/bodegas-dop-cangas/bodega-martinez-parrondo_2048_65_3107_0_1_in.html",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/bodega-martinez-parrondo-cangas/logo.png",
+          "source": "https://www.gourmets.net/img/Expositores/4002237.jpg",
+          "sourcePage": "https://www.gourmets.net/salon-gourmets/2026/exhibitors-catalogue/bodega-martinez-parrondo"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/bodega-martinez-parrondo-cangas/banner.jpg",
+          "source": "https://www.fuentesdelnarcea.org/v_portal/inc/clicklink.asp?t=1&cod=8334&c=0",
+          "sourcePage": "https://www.gourmets.net/salon-gourmets/2026/exhibitors-catalogue/bodega-martinez-parrondo"
+        }
+      ]
+    },
+    {
+      "externalId": "bodega_las_danzas",
+      "website": "https://bodegalasdanzas.es/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/bodega-las-danzas-cangas/logo.webp",
+          "source": "https://bodegalasdanzas.es/wp-content/uploads/2020/06/logo_las_danzas_oro.png.webp",
+          "sourcePage": "https://bodegalasdanzas.es/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/bodega-las-danzas-cangas/banner.jpg",
+          "source": "https://bodegalasdanzas.es/wp-content/uploads/2020/09/vinedos2.jpg",
+          "sourcePage": "https://bodegalasdanzas.es/"
+        }
+      ]
+    },
+    {
+      "externalId": "bodega_la_verdea",
+      "website": "https://bodegaslaverdea.com/",
+      "cardKind": "logo",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/bodega-la-verdea-puenticiella/logo.png",
+          "source": "https://bodegaslaverdea.com/wp-content/uploads/2021/10/laverdea.png",
+          "sourcePage": "https://bodegaslaverdea.com/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/bodega-la-verdea-puenticiella/banner.jpg",
+          "source": "https://bodegaslaverdea.com/wp-content/uploads/2024/04/1000030327.jpg",
+          "sourcePage": "https://bodegaslaverdea.com/"
+        }
+      ]
+    },
+    {
+      "externalId": "bodega_vidas",
+      "website": "https://bodegavidas.com/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/bodega-vidas-cangas/card.jpg",
+          "source": "https://www.turismoasturias.es/documents/39908/65931/BodegaVidas2.jpg/d1238137-361c-05f3-bfb5-8f23b57953a7",
+          "sourcePage": "https://www.turismoasturias.es/descubre/gastronomia/bodegas/bodega-vidas"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/bodega-vidas-cangas/banner.jpg",
+          "source": "https://www.turismoasturias.es/documents/39908/65931/BodegaVidas2.jpg/d1238137-361c-05f3-bfb5-8f23b57953a7",
+          "sourcePage": "https://www.turismoasturias.es/descubre/gastronomia/bodegas/bodega-vidas"
+        }
+      ]
+    },
+    {
+      "externalId": "casa_manunca",
+      "website": "https://casamanunca.com/",
+      "cardKind": "photo-alternative",
+      "images": [
+        {
+          "role": "card",
+          "file": "/images/farms/casa-manunca-cangas/card.png",
+          "source": "https://condeprendes.com/wp-content/uploads/2026/04/4551500273.png",
+          "sourcePage": "https://condeprendes.com/producto/galiana-de-limes-tinto/"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/casa-manunca-cangas/banner.png",
+          "source": "https://condeprendes.com/wp-content/uploads/2026/04/4551489666-600x443.png",
+          "sourcePage": "https://condeprendes.com/producto/galiana-de-limes-tinto/"
+        }
+      ]
     }
   ]
 }
