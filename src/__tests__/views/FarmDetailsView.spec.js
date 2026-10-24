@@ -34,11 +34,14 @@ describe('FarmDetailsView', () => {
     it('loads and displays the farm', async () => {
         getFarmById.mockResolvedValueOnce({
             id: 7, name: 'La Saregana', address: 'Asturias',
+            description: 'Granja familiar asturiana.',
         })
         await mountPage()
         expect(getFarmById).toHaveBeenCalledExactlyOnceWith('7')
         expect(wrapper.get('h1').text()).toBe('La Saregana')
         expect(wrapper.text()).toContain('Asturias')
+        expect(wrapper.get('.farm-details_history p').text())
+            .toBe('Granja familiar asturiana.')
     })
 
     it('shows loading while the request is pending', async () => {

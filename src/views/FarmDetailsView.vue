@@ -64,6 +64,16 @@ watch(
                     <p>{{ farm.address }}</p>
                 </div>
             </header>
+            <section
+                v-if="farm.description"
+                class="farm-details_about"
+                aria-labelledby="farm-history-title"
+            >
+                <article class="farm-details_history">
+                    <h2 id="farm-history-title">Nuestra Historia</h2>
+                    <p>{{ farm.description }}</p>
+                </article>
+            </section>
         </template>
     </section>
 </template>
@@ -93,6 +103,32 @@ watch(
         overflow-wrap: anywhere;
         h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.2; }
         p { margin: 0; font-size: 14px; line-height: 1.5; }
+    }
+
+    &_about {
+        padding: 40px var(--farm-gutter);
+        background: #f4f6f3;
+    }
+
+    &_history {
+        max-width: 680px;
+        min-width: 0;
+        overflow-wrap: anywhere;
+
+        h2 {
+            margin: 0 0 16px;
+            color: #006727;
+            font-size: 22px;
+            line-height: 1.3;
+        }
+
+        p {
+            margin: 0;
+            color: #3f4a3e;
+            font-size: 15px;
+            line-height: 1.75;
+            white-space: pre-line;
+        }
     }
 }
 @media (max-width: 768px) {
