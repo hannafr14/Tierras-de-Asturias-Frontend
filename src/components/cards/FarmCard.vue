@@ -93,7 +93,10 @@ function handleImageError(event) {
         width: 100%;
         height: 190px;
         display: block;
-        object-fit: cover;
+        object-fit: scale-down;
+        padding: 12px;
+        box-sizing: border-box;
+        background: #fff;
         border-radius: 7px;
         margin: 0 auto;
     }
@@ -239,6 +242,20 @@ function handleImageError(event) {
         border-radius: 5px;
         font-size: 9px;
         line-height: 12px;
+    }
+}
+.farm-card:not(.farm-card--compact) {
+    padding: 0;
+    overflow: hidden;
+
+    .farm-card_image {
+        padding: 0;
+        object-fit: contain;
+        border-radius: 0;
+    }
+
+    .farm-card_body {
+        padding: 14px;
     }
 }
 </style>
