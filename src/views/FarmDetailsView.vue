@@ -1,16 +1,48 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { getFarmById } from '@/services/catalogApi'
+import { getFarmById, getFarmProducts } from '@/services/catalogApi'
 import StateMessage from '@/components/common/StateMessage.vue'
 import MapSection from '@/components/map/MapSection.vue'
+import ProductCard from '@/components/cards/ProductCard.vue'
+import { useCartStore } from '@/stores/cartStore'
 import fallbackImage from '@/assets/image-placeholder.svg'
 
 const route = useRoute()
+const cartStore = useCartStore()
+const priceFormatter = new Intl.NumberFormat('es-ES', {
+    style: 'currency',
+    currency: 'EUR',
+})
 const farm = ref(null)
 const isLoading = ref(true)
 const errorMessage = ref('')
 const imageFailed = ref(false)
+const products = ref([])
+const isProductsLoading = ref(true)
+const productsError = ref('')
+const productQuantities = ref({})
+
+function getProductQuantity(id) {
+    return productQuantities.value[id] ?? 1
+}
+
+function changeProductQuantity(id, change) {
+    productQuantities.value[id] = Math.max(
+        1,
+        getProductQuantity(id) + change
+    )
+}
+
+function addProductToCart(product) {
+    const quantity = getProductQuantity(product.id)
+
+    for (let index = 0; index < quantity; index += 1) {
+        cartStore.addToCart(product)
+    }
+
+    productQuantities.value[product.id] = 1
+}
 
 const hasCoordinates = computed(() =>
     Number.isFinite(farm.value?.latitude) &&
@@ -24,6 +56,7 @@ watch(
         onCleanup(() => { cancelled = true })
 
         farm.value = null
+        productQuantities.value = {}
         imageFailed.value = false
         isLoading.value = true
         errorMessage.value = ''
@@ -39,6 +72,31 @@ watch(
             }
         } finally {
             if (!cancelled) isLoading.value = false
+        }
+    },
+    { immediate: true }
+)
+watch(
+    () => route.params.id,
+    async (id, previousId, onCleanup) => {
+        let cancelled = false
+        onCleanup(() => { cancelled = true })
+
+        products.value = []
+        isProductsLoading.value = true
+        productsError.value = ''
+
+        try {
+            const data = await getFarmProducts(id)
+            if (!cancelled) products.value = data
+        } catch (error) {
+            if (!cancelled) {
+                productsError.value = error instanceof TypeError
+                    ? 'No se pudo conectar con el servidor.'
+                    : error.message || 'No se pudieron cargar los productos.'
+            }
+        } finally {
+            if (!cancelled) isProductsLoading.value = false
         }
     },
     { immediate: true }
@@ -91,6 +149,35 @@ watch(
                     </div>
                     <p><strong>Dirección</strong><br />{{ farm.address }}</p>
                 </aside>
+            </section>
+            <section class="farm-details_products" aria-labelledby="farm-products-title">
+                <h2 id="farm-products-title">Productos de esta granja</h2>
+
+                <StateMessage v-if="isProductsLoading" role="status"
+                    type="loading" message="Cargando productos..." />
+                <StateMessage v-else-if="productsError" role="alert"
+                    type="error" :message="productsError" />
+                <StateMessage v-else-if="!products.length" role="status"
+                    type="empty" message="Esta granja todavía no tiene productos." />
+
+                <div v-else class="farm-details_products-grid">
+                    <ProductCard
+                        v-for="product in products"
+                        :key="product.id"
+                        variant="farm"
+                        :product-id="product.id"
+                        :image="product.image || fallbackImage"
+                        :name="product.name"
+                        :description="product.description || ''"
+                        :farm-name="farm.name"
+                        :location="farm.address"
+                        :price="priceFormatter.format(product.price)"
+                        :cart-quantity="getProductQuantity(product.id)"
+                        @increase="changeProductQuantity(product.id, 1)"
+                        @decrease="changeProductQuantity(product.id, -1)"
+                        @add-to-cart="addProductToCart(product)"
+                    />
+                </div>
             </section>
         </template>
     </section>
@@ -169,6 +256,17 @@ watch(
         }
     }
 }
+.farm-details_products {
+    padding: 40px var(--farm-gutter);
+    background: #fff;
+
+    h2 { margin: 0 0 24px; font-size: 22px; }
+}
+.farm-details_products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
 @media (max-width: 768px) {
     .farm-details {
         --farm-gutter: 20px;
@@ -176,9 +274,13 @@ watch(
         &_hero-content h1 { font-size: 26px; }
         &_about { grid-template-columns: minmax(0, 1fr); gap: 24px; }
         &_location { grid-column: auto; }
+        &_products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 }
 @media (max-width: 576px) {
-    .farm-details { --farm-gutter: 12px; }
+    .farm-details {
+        --farm-gutter: 12px;
+        &_products-grid { grid-template-columns: minmax(0, 1fr); }
+    }
 }
 </style>

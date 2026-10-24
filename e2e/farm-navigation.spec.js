@@ -18,6 +18,8 @@ test.beforeEach(async ({ page }) => {
         route.fulfill({ json: [farm] }))
     await page.route('**/api/farms/7', route =>
         route.fulfill({ json: farm }))
+    await page.route('**/api/farms/7/products', route =>
+        route.fulfill({ json: [product] }))
     await page.route('**/api/products', route =>
         route.fulfill({ json: [product] }))
 })
