@@ -1,0 +1,86 @@
+{
+  "retrievedOn": "2026-10-24",
+  "rightsNotice": "Copyright and trademark rights remain with their respective owners. Permission for republication has not been verified. Attribution alone does not grant usage rights.",
+  "farms": [
+    {
+      "externalId": "queseria_rey_silo",
+      "website": "https://www.reysilo.es/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-rey-silo/logo.png",
+          "source": "https://www.reysilo.es/uploads/fotos/REYSILO_logo_cab.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-rey-silo/banner.jpg",
+          "source": "https://www.reysilo.es/uploads/fotos/portada1.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "queseria_ca_llechi",
+      "website": "https://www.queseriacallechi.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/queseria-ca-llechi/logo.png",
+          "source": "https://www.queseriacallechi.com/wp-content/uploads/2024/05/cropped-LOGO01_COLOR-1-2048x560.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/queseria-ca-llechi/banner.jpg",
+          "source": "https://www.queseriacallechi.com/wp-content/uploads/2024/06/ovejas-campo-callechi.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "la_solana_de_allande",
+      "website": "https://www.lasolanadeallande.com/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/la-solana-de-allande/logo.png",
+          "source": "https://www.lasolanadeallande.com/wp-content/uploads/2025/01/LASOLANA-WEB-Logo-wordpress_retina.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/la-solana-de-allande/banner.png",
+          "source": "https://www.lasolanadeallande.com/wp-content/uploads/2025/01/LASOLANA-WEB-Slider-3.png"
+        }
+      ]
+    },
+    {
+      "externalId": "llagar_sidra_crespo",
+      "website": "https://www.sidracrespo.es/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/llagar-sidra-crespo-sales/logo.png",
+          "source": "https://www.sidracrespo.es/img/logocrespo.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/llagar-sidra-crespo-sales/banner.jpg",
+          "source": "https://www.sidracrespo.es/img/home-img-1.jpg"
+        }
+      ]
+    },
+    {
+      "externalId": "finca_el_ribeiro",
+      "website": "https://fincaelribeiro.es/",
+      "images": [
+        {
+          "role": "logo",
+          "file": "/images/farms/finca-el-ribeiro/logo.png",
+          "source": "https://fincaelribeiro.es/wp-content/uploads/2020/08/finca-el-ribeiro-logo.png"
+        },
+        {
+          "role": "banner",
+          "file": "/images/farms/finca-el-ribeiro/banner.jpg",
+          "source": "https://fincaelribeiro.es/wp-content/uploads/2024/08/vista-area-de-finca-el-ribeiro.jpg"
+        }
+      ]
+    }
+  ]
+}
