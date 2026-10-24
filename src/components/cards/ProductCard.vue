@@ -265,8 +265,27 @@ function handleImageError(event) {
 
     .product-card_image {
         height: 190px;
+        padding: 12px;
+        box-sizing: border-box;
         object-fit: contain;
         border-radius: 0;
+        background: #f5f6f5;
+    }
+
+    .product-card_cart-button {
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        background: #eef7f0;
+
+        &:hover {
+            background: #dceee1;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #007a3d;
+            outline-offset: 2px;
+        }
     }
 
     .product-card_body {
