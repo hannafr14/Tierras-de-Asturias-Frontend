@@ -49,6 +49,22 @@ const hasCoordinates = computed(() =>
     Number.isFinite(farm.value?.longitude)
 )
 
+const historyParagraphs = computed(() => {
+    const description = farm.value?.description?.trim()
+    if (!description) return []
+
+    const paragraphs = description.split(/\n\s*\n/).map(paragraph => paragraph.trim()).filter(Boolean)
+    if (paragraphs.length > 1 || description.length <= 220) return paragraphs
+
+    const sentences = Array.from(
+        new Intl.Segmenter('es', { granularity: 'sentence' }).segment(description),
+        ({ segment }) => segment
+    )
+    return sentences.length > 1
+        ? [sentences[0].trim(), sentences.slice(1).join('').trim()]
+        : paragraphs
+})
+
 watch(
     () => route.params.id,
     async (id, previousId, onCleanup) => {
@@ -119,8 +135,8 @@ watch(
             <header class="farm-details_hero">
                 <img
                     class="farm-details_hero-image"
-                    :src="imageFailed ? fallbackImage : (farm.image || fallbackImage)"
-                    :alt="imageFailed || !farm.image ? 'Imagen no disponible' : farm.name"
+                    :src="imageFailed ? fallbackImage : (farm.bannerImage || fallbackImage)"
+                    :alt="imageFailed || !farm.bannerImage ? 'Imagen no disponible' : farm.name"
                     @error="imageFailed = true"
                 />
                 <div class="farm-details_hero-content">
@@ -135,11 +151,13 @@ watch(
             >
                 <article v-if="farm.description" class="farm-details_history">
                     <h2 id="farm-history-title">Nuestra Historia</h2>
-                    <p>{{ farm.description }}</p>
+                    <p v-for="(paragraph, index) in historyParagraphs" :key="index">
+                        {{ paragraph }}
+                    </p>
                 </article>
 
                 <aside v-if="hasCoordinates" class="farm-details_location">
-                    <h2>Ubicación de la Finca</h2>
+                    <h2>Ubicación</h2>
                     <div class="farm-details_location-map">
                         <MapSection
                             :farms="[farm]"
@@ -186,25 +204,34 @@ watch(
 <style scoped lang="scss">
 .farm-details {
     --farm-gutter: 35px;
+    --farm-content-gutter: max(var(--farm-gutter), calc((100% - 1200px) / 2));
     color: #111827;
 
     &_breadcrumbs {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
-        padding: 16px var(--farm-gutter);
+        padding: 16px var(--farm-content-gutter);
         font-size: 13px;
         overflow-wrap: anywhere;
         a { color: #596457; text-underline-offset: 3px; }
     }
 
     &_hero { position: relative; display: grid; align-items: end; min-height: 300px; }
-    &_hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    &_hero-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
+    }
     &_hero-content {
         position: relative;
-        padding: 24px var(--farm-gutter);
-        background: rgba(0, 0, 0, 0.6);
+        padding: 16px var(--farm-content-gutter);
+        background: rgba(0, 0, 0, 0.45);
         color: #fff;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
         overflow-wrap: anywhere;
         h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.2; }
         p { margin: 0; font-size: 14px; line-height: 1.5; }
@@ -212,10 +239,10 @@ watch(
 
     &_about {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
         align-items: start;
         gap: 32px;
-        padding: 40px var(--farm-gutter);
+        padding: 40px var(--farm-content-gutter);
         background: #f4f6f3;
     }
 
@@ -231,7 +258,7 @@ watch(
     }
 
     &_location-map {
-        height: 220px;
+        height: 180px;
         :deep(.map-section), :deep(.map-section_map) { min-height: 0; height: 100%; }
     }
 
@@ -254,18 +281,25 @@ watch(
             line-height: 1.75;
             white-space: pre-line;
         }
+
+        p + p { margin-top: 12px; }
     }
 }
 .farm-details_products {
-    padding: 40px var(--farm-gutter);
+    padding: 40px var(--farm-content-gutter);
     background: #fff;
 
     h2 { margin: 0 0 24px; font-size: 22px; }
 }
 .farm-details_products-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 24px;
+}
+@media (max-width: 1024px) {
+    .farm-details_products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 @media (max-width: 768px) {
     .farm-details {

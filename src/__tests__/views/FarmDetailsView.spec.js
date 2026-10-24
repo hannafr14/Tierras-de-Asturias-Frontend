@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 import FarmDetailsView from '@/views/FarmDetailsView.vue'
 import { getFarmById, getFarmProducts } from '@/services/catalogApi'
 import { useCartStore } from '@/stores/cartStore'
+import fallbackImage from '@/assets/image-placeholder.svg'
 
 vi.mock('@/services/catalogApi', () => ({
     getFarmById: vi.fn(),
@@ -50,6 +51,81 @@ async function mountPage() {
 }
 
 describe('FarmDetailsView', () => {
+    it('splits a long description into paragraphs without changing the text', async () => {
+        const first = 'Esta granja familiar elabora productos tradicionales con leche de su propia ganaderia.'
+        const rest = 'La produccion combina recetas artesanas con el trabajo diario de varias generaciones. Sus productos mantienen el vinculo con el entorno rural y ofrecen una seleccion de quesos y yogures.'
+        const description = `${first} ${rest}`
+        getFarmById.mockResolvedValueOnce({ id: 7, name: 'Granja', description })
+        await mountPage()
+
+        const paragraphs = wrapper.findAll('.farm-details_history p').map(paragraph => paragraph.text())
+        expect(paragraphs).toEqual([first, rest])
+        expect(paragraphs.join(' ')).toBe(description)
+    })
+
+    it('preserves paragraph breaks already present in the description', async () => {
+        getFarmById.mockResolvedValueOnce({
+            id: 7, name: 'Granja', description: 'Primera parte.\n\nSegunda parte.',
+        })
+        await mountPage()
+
+        expect(wrapper.findAll('.farm-details_history p').map(paragraph => paragraph.text()))
+            .toEqual(['Primera parte.', 'Segunda parte.'])
+    })
+
+    it('keeps a long description with no sentence breaks intact', async () => {
+        const description = 'Texto de la granja '.repeat(20).trim()
+        getFarmById.mockResolvedValueOnce({ id: 7, name: 'Granja', description })
+        await mountPage()
+
+        expect(wrapper.findAll('.farm-details_history p')).toHaveLength(1)
+        expect(wrapper.get('.farm-details_history p').text()).toBe(description)
+    })
+
+    it('uses the banner image rather than the farm logo in the hero', async () => {
+        getFarmById.mockResolvedValueOnce({
+            id: 7, name: 'La Saregana', address: 'Asturias',
+            image: 'logo.jpg', bannerImage: 'banner.jpg',
+        })
+        await mountPage()
+
+        const image = wrapper.get('.farm-details_hero-image')
+        expect(image.attributes('src')).toBe('banner.jpg')
+        expect(image.attributes('alt')).toBe('La Saregana')
+    })
+
+    it.each([undefined, null, ''])('uses a placeholder when the banner is %s', async (bannerImage) => {
+        getFarmById.mockResolvedValueOnce({
+            id: 7, name: 'La Saregana', address: 'Asturias',
+            image: 'logo.jpg', bannerImage,
+        })
+        await mountPage()
+
+        const image = wrapper.get('.farm-details_hero-image')
+        expect(image.attributes('src')).toBe(fallbackImage)
+        expect(image.attributes('alt')).toBe('Imagen no disponible')
+    })
+
+    it('handles a broken banner and resets the fallback for the next farm', async () => {
+        getFarmById.mockResolvedValueOnce({
+            id: 7, name: 'La Saregana', address: 'Asturias',
+            image: 'logo.jpg', bannerImage: 'broken-banner.jpg',
+        })
+        const router = await mountPage()
+        await wrapper.get('.farm-details_hero-image').trigger('error')
+        expect(wrapper.get('.farm-details_hero-image').attributes('src')).toBe(fallbackImage)
+        expect(wrapper.get('.farm-details_hero-image').attributes('alt')).toBe('Imagen no disponible')
+
+        getFarmById.mockResolvedValueOnce({
+            id: 8, name: 'Otra granja', address: 'Asturias',
+            image: 'other-logo.jpg', bannerImage: 'other-banner.jpg',
+        })
+        await router.push('/granjas/8')
+        await flushPromises()
+        expect(wrapper.get('.farm-details_hero-image').attributes('src')).toBe('other-banner.jpg')
+        expect(wrapper.get('.farm-details_hero-image').attributes('alt')).toBe('Otra granja')
+    })
+
     it('renders compact products and adds the selected quantity to the cart', async () => {
         const product = {
             id: 2, name: 'Queso artesano', description: 'Queso de la granja.',
