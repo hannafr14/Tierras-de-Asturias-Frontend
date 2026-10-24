@@ -22,6 +22,26 @@ const mountProductCard = () => {
 }
 
 describe('ProductCard', () => {
+    it('renders the farm variant with quantity controls and without farm metadata', async () => {
+        const wrapper = mountProductCard()
+        await wrapper.setProps({ variant: 'farm', description: 'Queso artesano.' })
+
+        expect(wrapper.classes()).toContain('product-card--farm')
+        expect(wrapper.get('.product-card_description').text()).toBe('Queso artesano.')
+        expect(wrapper.find('.product-card_farm').exists()).toBe(false)
+        expect(wrapper.find('.product-card_location').exists()).toBe(false)
+        expect(wrapper.get('.quantity-control_value').text()).toBe('2')
+        expect(wrapper.findComponent(RouterLinkStub).props('to')).toBe('/productos/1')
+
+        await wrapper.get('button[aria-label="Increase quantity"]').trigger('click')
+        await wrapper.get('button[aria-label="Decrease quantity"]').trigger('click')
+        expect(wrapper.emitted('increase')).toHaveLength(1)
+        expect(wrapper.emitted('decrease')).toHaveLength(1)
+        await wrapper.get('button[aria-label="Add to cart"]').trigger('click')
+        expect(wrapper.emitted('add-to-cart')).toHaveLength(1)
+        wrapper.unmount()
+    })
+
     it('renders product information', () => {
         const wrapper = mountProductCard()
 

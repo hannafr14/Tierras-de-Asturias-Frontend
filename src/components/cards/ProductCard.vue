@@ -36,6 +36,8 @@ defineProps({
         type: Number,
         required: true,
     },
+    variant: { type: String, default: 'default' },
+    description: { type: String, default: '' },
 })
 
 function handleImageError(event) {
@@ -44,7 +46,10 @@ function handleImageError(event) {
 </script>
 
 <template>
-    <article class="product-card">
+    <article
+        class="product-card"
+        :class="{ 'product-card--farm': variant === 'farm' }"
+    >
         <img
             class="product-card_image"
             :src="image"
@@ -63,11 +68,18 @@ function handleImageError(event) {
                 </RouterLink>
             </h3>
 
-            <p class="product-card_farm">
+            <p
+                v-if="variant === 'farm' && description"
+                class="product-card_description"
+            >
+                {{ description }}
+            </p>
+
+            <p v-if="variant !== 'farm'" class="product-card_farm">
                 {{ farmName }}
             </p>
 
-            <p class="product-card_location">
+            <p v-if="variant !== 'farm'" class="product-card_location">
                 <img
                     class="product-card_location-icon"
                     :src="locationIcon"
@@ -243,6 +255,37 @@ function handleImageError(event) {
             font-size: 12px;
             line-height: 17px;
         }
+    }
+}
+.product-card--farm {
+    max-width: none;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 8px;
+
+    .product-card_image {
+        height: 190px;
+        object-fit: contain;
+        border-radius: 0;
+    }
+
+    .product-card_body {
+        padding: 20px;
+    }
+
+    .product-card_footer {
+        padding: 4px 20px 20px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .product-card_title { overflow-wrap: anywhere; }
+
+    .product-card_description {
+        margin: 0;
+        color: #596457;
+        font-size: 12px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
     }
 }
 </style>
