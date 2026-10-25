@@ -262,12 +262,12 @@ describe('CheckoutPage', () => {
 
         await wrapper.find('.order-summary_button').trigger('click')
 
-        expect(wrapper.text()).toContain('Introduce un teléfono español válido: 9 dígitos, con +34 opcional.')
+        expect(wrapper.text()).toContain('Introduce un teléfono español de 9 dígitos que empiece por 6, 7, 8 o 9. El prefijo +34 es opcional.')
         expect(fetchMock).not.toHaveBeenCalled()
     })
 
     it.each([
-        '60000000', '+34', '500000000', '+33600000000',
+        '60000000', '+34', '500000000', '+34576575757', '+33600000000',
         '++34600000000', '600+000000', '60000000a', '6        1',
     ])('does not submit a checkout with invalid phone %s', async phone => {
         localStorage.setItem('tierras-cart', JSON.stringify([
@@ -284,7 +284,7 @@ describe('CheckoutPage', () => {
         await wrapper.get('.order-summary_button').trigger('click')
 
         expect(wrapper.get('[role="alert"]').text())
-            .toContain('9 d\u00edgitos, con +34 opcional.')
+            .toContain('9 d\u00edgitos que empiece por 6, 7, 8 o 9. El prefijo +34 es opcional.')
         expect(fetchMock).not.toHaveBeenCalled()
         wrapper.unmount()
     })

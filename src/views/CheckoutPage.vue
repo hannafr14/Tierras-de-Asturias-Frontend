@@ -118,7 +118,7 @@ async function handleCheckoutConfirm() {
     }
 
     if (!isPhoneValid.value) {
-        checkoutError.value = 'Introduce un teléfono español válido: 9 dígitos, con +34 opcional.'
+        checkoutError.value = 'Introduce un teléfono español de 9 dígitos que empiece por 6, 7, 8 o 9. El prefijo +34 es opcional.'
         return
     }
 
