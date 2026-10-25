@@ -132,4 +132,10 @@ const cartStore = useCartStore()
         }
     }
 }
+
+@media (max-width: 576px) {
+    .cart-page {
+        min-height: calc(100dvh - 44px - 76px);
+    }
+}
 </style>
