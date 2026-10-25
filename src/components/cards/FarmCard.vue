@@ -247,17 +247,28 @@ function handleImageError(event) {
     }
 }
 .farm-card:not(.farm-card--compact) {
+    display: flex;
+    flex-direction: column;
     padding: 0;
     overflow: hidden;
 
     .farm-card_image {
+        flex-shrink: 0;
         padding: 0;
         object-fit: contain;
         border-radius: 0;
     }
 
     .farm-card_body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
         padding: 14px;
+    }
+
+    .farm-card_button {
+        flex-shrink: 0;
+        margin-top: auto;
     }
 }
 </style>
