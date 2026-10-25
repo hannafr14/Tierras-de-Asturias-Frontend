@@ -4,9 +4,10 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import FarmCard from '@/components/cards/FarmCard.vue'
 import markerIcon from '@/assets/marker-icon-granja.svg'
+import selectedMarkerIcon from '@/assets/marker-icon-granja-selected.svg'
 
 const mapElement = ref(null)
-const emit = defineEmits(['view-farm'])
+const emit = defineEmits(['view-farm', 'update:selectedFarmId'])
 
 const props = defineProps({
     farms: {
@@ -21,6 +22,20 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+})
+
+const customMarkerIcon = L.icon({
+    iconUrl: markerIcon,
+    iconSize: [46, 46],
+    iconAnchor: [23, 23],
+    popupAnchor: [0, -23],
+})
+
+const activeMarkerIcon = L.icon({
+    iconUrl: selectedMarkerIcon,
+    iconSize: [46, 46],
+    iconAnchor: [23, 23],
+    popupAnchor: [0, -23],
 })
 
 let map = null
@@ -42,13 +57,6 @@ const renderMarkers = () => {
     markersLayer.clearLayers()
     markersByFarmId.clear()
 
-    const customMarkerIcon = L.icon({
-        iconUrl: markerIcon,
-        iconSize: [46, 46],
-        iconAnchor: [23, 23],
-        popupAnchor: [0, -23],
-    })
-
     props.farms.forEach((farm) => {
         if (!farm.latitude || !farm.longitude) {
             return
@@ -57,6 +65,14 @@ const renderMarkers = () => {
         const marker = L.marker([farm.latitude, farm.longitude], {
             icon: customMarkerIcon,
         }).addTo(markersLayer)
+
+        marker.on('click', () => emit('update:selectedFarmId', farm.id))
+        marker.on('keypress', (event) => {
+            if (event.originalEvent.key === 'Enter' || event.originalEvent.key === ' ') {
+                event.originalEvent.preventDefault()
+                emit('update:selectedFarmId', farm.id)
+            }
+        })
 
         if (props.showPopups) {
             const popupContainer = document.createElement('div')
@@ -72,7 +88,7 @@ const renderMarkers = () => {
             })
 
             farmPopupApp.mount(popupContainer)
-            marker.bindPopup(popupContainer, { closeButton: false })
+            marker.bindPopup(popupContainer, { closeButton: false, autoPan: false })
         }
 
         markersByFarmId.set(farm.id, marker)
@@ -80,6 +96,17 @@ const renderMarkers = () => {
 }
 
 const openSelectedFarmPopup = () => {
+    markersByFarmId.forEach((marker, farmId) => {
+        const isSelected = farmId === props.selectedFarmId
+
+        const icon = isSelected ? activeMarkerIcon : customMarkerIcon
+
+        if (marker.getIcon() !== icon) {
+            marker.setIcon(icon)
+        }
+        marker.setZIndexOffset(isSelected ? 10000 : 0)
+    })
+
     if (!props.selectedFarmId || !map) {
         return
     }
@@ -90,14 +117,27 @@ const openSelectedFarmPopup = () => {
         return
     }
 
-    if (props.showPopups) {
+    map.stop()
+
+    if (props.farms.length === 1) {
+        map.setView(marker.getLatLng(), 12, { animate: false })
+    }
+
+    if (props.showPopups && !marker.isPopupOpen()) {
         marker.openPopup()
     }
 
-    map.setView(
-        marker.getLatLng(),
-        props.farms.length === 1 ? 12 : map.getZoom()
-    )
+    const popupElement = props.showPopups ? marker.getPopup()?.getElement() : null
+    const horizontalPadding = popupElement ? popupElement.offsetWidth / 2 + 24 : 40
+    const topPadding = popupElement ? popupElement.offsetHeight + 60 : 40
+
+    // Leave room for the popup above the marker without recentering visible farms.
+    map.panInside(marker.getLatLng(), {
+        paddingTopLeft: [horizontalPadding, topPadding],
+        paddingBottomRight: [horizontalPadding, 40],
+        animate: true,
+        duration: 0.35,
+    })
 }
 
 onMounted(() => {

@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import GranjasPage from '@/views/GranjasPage.vue'
+import MapSection from '@/components/map/MapSection.vue'
+import FarmCard from '@/components/cards/FarmCard.vue'
 
 vi.mock('@/services/catalogApi', () => {
     return {
@@ -36,6 +38,30 @@ beforeEach(() => {
 })
 
 describe('GranjasPage', () => {
+    it('shares farm selection between map markers and cards', async () => {
+        const wrapper = mount(GranjasPage, {
+            global: {
+                stubs: {
+                    CatalogLayout: {
+                        template: '<div><slot name="content" /><slot name="map" /></div>',
+                    },
+                    MapSection: true,
+                },
+            },
+        })
+
+        await new Promise((resolve) => setTimeout(resolve, 0))
+
+        const map = wrapper.findComponent(MapSection)
+        await map.vm.$emit('update:selectedFarmId', 2)
+
+        expect(map.props('selectedFarmId')).toBe(2)
+
+        await wrapper.findAllComponents(FarmCard)[0].trigger('click')
+
+        expect(map.props('selectedFarmId')).toBe(1)
+    })
+
     it('loads and renders farms', async () => {
         const wrapper = mount(GranjasPage, {
             global: {

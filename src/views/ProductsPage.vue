@@ -312,7 +312,7 @@ onBeforeUnmount(() => {
         <template #map>
             <MapSection 
                 :farms="farms"
-                :selected-farm-id="selectedFarmId"
+                v-model:selected-farm-id="selectedFarmId"
                 @view-farm="openFarm"
             />
         </template>
