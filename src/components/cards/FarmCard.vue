@@ -202,6 +202,8 @@ function handleImageError(event) {
 
     .farm-card_image {
         height: 95px;
+        padding: 0;
+        object-fit: contain;
         border-radius: 6px;
     }
 
