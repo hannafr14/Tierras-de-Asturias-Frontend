@@ -7,13 +7,31 @@ import CatalogLayout from '@/components/catalog/CatalogLayout.vue';
 import CategoryFilter from '@/components/catalog/CategoryFilter.vue';
 import CatalogTabs from '@/components/catalog/CatalogTabs.vue';
 import SearchBar from '@/components/catalog/SearchBar.vue';
-import FiltersButton from '@/components/catalog/FiltersButton.vue';
 import ProductCard from '@/components/cards/ProductCard.vue';
 import MapSection from '@/components/map/MapSection.vue';
 import { useCartStore } from '@/stores/cartStore';
+import filterIcon from '@/assets/filter.svg'
 
 const activeCategory = ref('Todos');
 const searchQuery = ref('');
+const sortOrder = ref('default')
+const sortMenu = ref(null)
+const sortOptions = [
+    { value: 'default', label: 'Por defecto' },
+    { value: 'name-asc', label: 'Nombre: A–Z' },
+    { value: 'name-desc', label: 'Nombre: Z–A' },
+    { value: 'price-asc', label: 'Precio: menor a mayor' },
+    { value: 'price-desc', label: 'Precio: mayor a menor' },
+]
+
+const chooseSort = (value) => {
+    sortOrder.value = value
+
+    if (sortMenu.value) {
+        sortMenu.value.open = false
+        sortMenu.value.querySelector('summary')?.focus()
+    }
+}
 const products = ref([]);
 const categories = computed(() => [
     'Todos',
@@ -80,6 +98,31 @@ const filteredProducts = computed(() => {
 
         return matchesSearch && matchesCategory
     })
+})
+
+const sortedProducts = computed(() => {
+    const result = [...filteredProducts.value]
+
+    switch (sortOrder.value) {
+        case 'name-asc':
+            return result.sort((a, b) =>
+                a.name.localeCompare(b.name, 'es', { sensitivity: 'base' })
+            )
+
+        case 'name-desc':
+            return result.sort((a, b) =>
+                b.name.localeCompare(a.name, 'es', { sensitivity: 'base' })
+            )
+
+        case 'price-asc':
+            return result.sort((a, b) => a.price - b.price)
+
+        case 'price-desc':
+            return result.sort((a, b) => b.price - a.price)
+
+        default:
+            return result
+    }
 })
 
 const selectProductFarm = (product) => {
@@ -179,7 +222,29 @@ onBeforeUnmount(() => {
                         placeholder="Buscar productos"
                     />
 
-                    <FiltersButton />
+                    <details
+                        ref="sortMenu"
+                        class="catalog-page_sort"
+                        @keydown.esc.stop.prevent="chooseSort(sortOrder)"
+                    >
+                        <summary class="catalog-page_sort-trigger">
+                            <img :src="filterIcon" alt="">
+                            <span>Filtros</span>
+                        </summary>
+
+                        <div class="catalog-page_sort-list">
+                            <button
+                                v-for="option in sortOptions"
+                                :key="option.value"
+                                type="button"
+                                :class="{ 'is-active': sortOrder === option.value }"
+                                :aria-pressed="sortOrder === option.value"
+                                @click="chooseSort(option.value)"
+                            >
+                                {{ option.label }}
+                            </button>
+                        </div>
+                    </details>
                 </div>
 
                 <StateMessage
@@ -202,7 +267,7 @@ onBeforeUnmount(() => {
 
                 <div v-else class="catalog-page_list">
                     <ProductCard
-                        v-for="product in filteredProducts"
+                        v-for="product in sortedProducts"
                         :key="product.id"
                         :product-id="product.id"
                         :image="product.image"
@@ -288,7 +353,76 @@ onBeforeUnmount(() => {
         justify-content: space-between;
         gap: 16px;
     }
+    &_sort {
+        position: relative;
+        flex: 0 0 auto;
 
+        summary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 36px;
+            padding: 0 18px;
+            border: 1px solid #BECABA;
+            border-radius: 6px;
+            background: #E9EEFC;
+            color: #3F4A3E;
+            font-size: 14px;
+            font-weight: 600;
+            list-style: none;
+            cursor: pointer;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+
+            &:focus-visible {
+                outline: 2px solid #007A3D;
+                outline-offset: 2px;
+            }
+        }
+
+        img {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    &_sort-list {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        z-index: 50;
+        width: 240px;
+        max-width: calc(100vw - 32px);
+        padding: 6px;
+        border: 1px solid #DEE5DC;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(17, 24, 39, 0.12);
+
+        button {
+            width: 100%;
+            min-height: 38px;
+            padding: 8px 12px;
+            border: 0;
+            border-radius: 4px;
+            background: transparent;
+            color: #3F4A3E;
+            font: inherit;
+            font-size: 14px;
+            text-align: left;
+            cursor: pointer;
+
+            &:hover,
+            &.is-active {
+                background: #EDF6EF;
+                color: #006B35;
+            }
+        }
+    }
+    
     &_list {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
