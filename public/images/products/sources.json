@@ -1,0 +1,414 @@
+{
+  "retrievedOn": "2026-10-25",
+  "rightsNotice": "Copyright and trademark rights remain with the respective owners. Permission for republication has not been verified. Attribution alone does not grant usage rights. Confirm permission before public/commercial publication.",
+  "scope": "Local copies of product photographs replacing failed remote URLs, plus the Los Arandanos juice bottle replacing a quality-seal illustration. No generated product images. Source prices are documented in the backend repository.",
+  "images": [
+    {
+      "farmExternalId": "queseria_el_cabriteru",
+      "product": "El Cabriteru Queso Azul de leche cruda de oveja y cabra. Cuña",
+      "file": "/images/products/queseria-el-cabriteru/el-cabriteru-queso-azul-de-leche-cruda-de-oveja-y-cabra-cuna.jpg",
+      "source": "https://queseriaelcabriteru.com/wp-content/uploads/2025/10/El-Cabriteru-queso-azul-mezcla-cuna-500_.jpg",
+      "sourcePage": "https://queseriaelcabriteru.com/producto/queso-azul-mezcla-de-dos-leches-oveja-cabra/",
+      "sha256": "04d836fa072b5a1f43298cff13d7c2e9bff2b9bf6076e0c9c57d7782d61b4b35"
+    },
+    {
+      "farmExternalId": "queseria_el_cabriteru",
+      "product": "El Cabriteru Queso Azul 100% leche cruda de cabra. Cuña",
+      "file": "/images/products/queseria-el-cabriteru/el-cabriteru-queso-azul-100-leche-cruda-de-cabra-cuna.jpg",
+      "source": "https://queseriaelcabriteru.com/wp-content/uploads/2025/10/El-Cabriteru-queso-azul-cabra-cuna-500_.jpg",
+      "sourcePage": "https://queseriaelcabriteru.com/producto/queso-azul-leche-cruda-de-cabra/",
+      "sha256": "04d836fa072b5a1f43298cff13d7c2e9bff2b9bf6076e0c9c57d7782d61b4b35"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Queso Fresco Rebollín",
+      "file": "/images/products/rebollin/queso-fresco-rebollin.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto08-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto08-scaled.jpg",
+      "sha256": "2214f7bcf3f2c1f2e7eb4da85cd0098815ce695a4d3824f2d99d82aeaec91679"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Queso Afuega'l Pitu Rojo",
+      "file": "/images/products/rebollin/queso-afuega-l-pitu-rojo.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto03-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto03-scaled.jpg",
+      "sha256": "d0cd038fb3b073f5e90daf9156177e820bc6d3ea5202944d37a6ac12659586ec"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Queso DOP Afuega'l Pitu Blanco",
+      "file": "/images/products/rebollin/queso-dop-afuega-l-pitu-blanco.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto06-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto06-scaled.jpg",
+      "sha256": "52ddecda7ecdb012e8284b05b1b0017b82095c9c16317f6d671b843bf62f2d5c"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Queso Fusión de Sidra",
+      "file": "/images/products/rebollin/queso-fusion-de-sidra.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto37-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto37-scaled.jpg",
+      "sha256": "6243a625d7d763dd83810515f269474e32f57900fbc16dbea8339bc360e8c604"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Queso Semicurado Como Una Cabra",
+      "file": "/images/products/rebollin/queso-semicurado-como-una-cabra.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto32-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto32-scaled.jpg",
+      "sha256": "68a5bad6697bd231e73ed4683e4ae619c8c06a43b52bb8a557f691b5345b0f26"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Queso de Cabra Artesano",
+      "file": "/images/products/rebollin/queso-de-cabra-artesano.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto34-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto34-scaled.jpg",
+      "sha256": "a507a1e9da24857d00b211d121c73e26553cfc021d630f1b5ccd97e36bca8a62"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Queso de Vaca Sin Lactosa",
+      "file": "/images/products/rebollin/queso-de-vaca-sin-lactosa.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/Sin-Lactosa-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/Sin-Lactosa-scaled.jpg",
+      "sha256": "d146f59aa03ca6fb0d5b2f990e7e03449cc3392b6973a7fd5bc5db977e4cefe3"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Queso de Vaca Pasterizada Pequeño",
+      "file": "/images/products/rebollin/queso-de-vaca-pasterizada-pequeno.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto28-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto28-scaled.jpg",
+      "sha256": "8767b8cd1beb3583150026cec813bbe09d78b8d8c6e255c57289ebabe9ef20a6"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Pack 3 Quesos Rebollín",
+      "file": "/images/products/rebollin/pack-3-quesos-rebollin.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto13-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto13-scaled.jpg",
+      "sha256": "cf5c68b83592eacf2f8865f5c5aca1c8d793d2d8f8e4360bae254e76278b2a53"
+    },
+    {
+      "farmExternalId": "rebollin",
+      "product": "Pack Lote 6 Quesos Rebollín",
+      "file": "/images/products/rebollin/pack-lote-6-quesos-rebollin.jpg",
+      "source": "https://i0.wp.com/www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto12-scaled.jpg",
+      "sourcePage": "https://www.rebollin.es/tienda/",
+      "originalSource": "https://www.rebollin.es/wp-content/uploads/2020/03/FJ_Foto12-scaled.jpg",
+      "sha256": "6a01cbccf54dfa2543281582a5873537fddc8d06a1f8597cf4c485f9fbd9ad23"
+    },
+    {
+      "farmExternalId": "queseria_la_collada",
+      "product": "Queso Los Beyos IGP",
+      "file": "/images/products/queseria-la-collada/queso-los-beyos-igp.jpg",
+      "source": "https://especiales.lne.es/quesos-asturias/img/139.jpg",
+      "sourcePage": "https://especiales.lne.es/quesos-asturias/tipo/beyos",
+      "sha256": "c8c0832fcbb56f23026aa2ef885d27e4225021b2f110bbf6fabcddd4fc8ee975"
+    },
+    {
+      "farmExternalId": "queseria_la_collada",
+      "product": "Queso Artesano de Vaca",
+      "file": "/images/products/queseria-la-collada/queso-artesano-de-vaca.jpg",
+      "source": "https://especiales.lne.es/quesos-asturias/img/142.jpg",
+      "sourcePage": "https://especiales.lne.es/quesos-asturias/tipo/beyos",
+      "sha256": "a4d3325910ec686626499c099d8b70a25638ba440023db05fc7c20d4b7ea4229",
+      "note": "Photo from the La Collada cow-cheese entry in the illustrated cheesemaker catalogue."
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Queso Fresco Sin Sal",
+      "file": "/images/products/queseria-la-borbolla/queso-fresco-sin-sal.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2020/09/queso-fresco-sin-sal-queseria-la-borbolla.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2020/09/queso-fresco-sin-sal-queseria-la-borbolla.jpg",
+      "sha256": "2792fc5081f5b10d28e7cac646e7429055efa7a6e035f8fa143ab0dee412d0df"
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Pack «Culto al Afuega'l Pitu»",
+      "file": "/images/products/queseria-la-borbolla/pack-culto-al-afuega-l-pitu.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2020/09/inboka_quesos087006.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2020/09/inboka_quesos087006.jpg",
+      "sha256": "d48fcc295a09a76c74cd4fcbe13e9abc91a169f1d1b4e7dd1664927a3b6df4e6"
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Pack «Festín Gastronómico»",
+      "file": "/images/products/queseria-la-borbolla/pack-festin-gastronomico.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2020/09/afuega-l-pitu-oferta-pack-degustacion.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2020/09/afuega-l-pitu-oferta-pack-degustacion.jpg",
+      "sha256": "5f7445a97b1e99e5127d15c95cf657e1dc999725c704341c6d29174622d92dcf"
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Queso Fresco",
+      "file": "/images/products/queseria-la-borbolla/queso-fresco.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2020/10/comprar-queso-fresco-queseria-la-borbolla.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2020/10/comprar-queso-fresco-queseria-la-borbolla.jpg",
+      "sha256": "a7b894501146a88a5859927a798adc2d598b6d75062a1154c866936ed4f13c28"
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Afuega'l Pitu Atroncau Blancu DOP",
+      "file": "/images/products/queseria-la-borbolla/afuega-l-pitu-atroncau-blancu-dop.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2019/08/afuega-l-pitu-atroncau-blanco-queseria-la-borbolla-origen-protegido.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2019/08/afuega-l-pitu-atroncau-blanco-queseria-la-borbolla-origen-protegido.jpg",
+      "sha256": "bd9dde6dc2cb88aabf703291a8ff138c90b77128fbbc517bd4c564397e9858a6"
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Pack «Cata entre amigos»",
+      "file": "/images/products/queseria-la-borbolla/pack-cata-entre-amigos.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2019/07/afuega-l-pitu-oferta-pack-promocional-quesos-curados.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2019/07/afuega-l-pitu-oferta-pack-promocional-quesos-curados.jpg",
+      "sha256": "920a0275135b823fb26dc2629b63a8ef17d9ca3e09041e35b89acedc59194775"
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Barreña de Mariluz",
+      "file": "/images/products/queseria-la-borbolla/barrena-de-mariluz.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2019/07/barrena-de-mariluz-queseria-la-borbolla.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2019/07/barrena-de-mariluz-queseria-la-borbolla.jpg",
+      "sha256": "047020554676e18f14e9dd40acf77165b522224d950d16bb947001b890dd8d73"
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Afuega'l Pitu Trapu Roxu DOP",
+      "file": "/images/products/queseria-la-borbolla/afuega-l-pitu-trapu-roxu-dop.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2019/07/afuega-l-pitu-trapu-roxu-la-borbolla-denomiacion-de-origen-protegido.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2019/07/afuega-l-pitu-trapu-roxu-la-borbolla-denomiacion-de-origen-protegido.jpg",
+      "sha256": "5f68c9bdf01b99d5e917d99ac4b7cc0629519ac5b308fa88d630a4379df809e5"
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Afuega'l Pitu Trapu Blancu DOP",
+      "file": "/images/products/queseria-la-borbolla/afuega-l-pitu-trapu-blancu-dop.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2019/08/afuega-l-pitu-trapu-blanco-queso-tradicional-asturiano-gourmet-la-borbolla.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2019/08/afuega-l-pitu-trapu-blanco-queso-tradicional-asturiano-gourmet-la-borbolla.jpg",
+      "sha256": "bfd848a05961d29ded9c00542b6a627077d1395867304be4afa603ce7d77e6c4"
+    },
+    {
+      "farmExternalId": "queseria_la_borbolla",
+      "product": "Afuega'l Pitu Atroncau Roxu DOP",
+      "file": "/images/products/queseria-la-borbolla/afuega-l-pitu-atroncau-roxu-dop.jpg",
+      "source": "https://i0.wp.com/queserialaborbolla.es/wp-content/uploads/2019/07/afuegal-pitu-roxu-la-borbolla-queso-artesano.jpg",
+      "sourcePage": "https://queserialaborbolla.es/tienda-online/",
+      "originalSource": "https://queserialaborbolla.es/wp-content/uploads/2019/07/afuegal-pitu-roxu-la-borbolla-queso-artesano.jpg",
+      "sha256": "dbc156ac617412ea22d7b73951ca0d5d82ebb5c525dde6baadabc538b0ea3624"
+    },
+    {
+      "farmExternalId": "miel_outurelos",
+      "product": "Miel cruda de castaño",
+      "file": "/images/products/miel-outurelos/miel-cruda-de-castano.webp",
+      "source": "https://sondelugo.com/wp-content/uploads/outurelos-castineiro.webp",
+      "sourcePage": "https://sondelugo.com/es/produto/mel-de-castineiro-el-pais-del-abeyeiro-es/",
+      "sha256": "c20a21280069393dd3a4b2049d7e5719b3ed6ca3c5b11f76e272d4bafe052fa7"
+    },
+    {
+      "farmExternalId": "miel_outurelos",
+      "product": "Miel cruda de brezo de otoño",
+      "file": "/images/products/miel-outurelos/miel-cruda-de-brezo-de-otono.webp",
+      "source": "https://sondelugo.com/wp-content/uploads/outurelos-breixo.webp",
+      "sourcePage": "https://sondelugo.com/es/produto/mel-de-uz-breixo-outono-el-pais-del-abeyeiro-es/",
+      "sha256": "470bf2cc826f2b35eea3dd6a6601cd30ee301c95351b2964010a27db607326ec",
+      "note": "The retailer currently reuses its Cortin photo for multiple Outurelos heather-honey seasons and weights. This is a representative producer photo, not a verified pack-specific image."
+    },
+    {
+      "farmExternalId": "miel_outurelos",
+      "product": "Miel cruda de brezo de primavera",
+      "file": "/images/products/miel-outurelos/miel-cruda-de-brezo-de-primavera.jpg",
+      "source": "https://www.especiatetienda.com/wp-content/uploads/2023/03/brezo-primavera-500.jpg",
+      "sourcePage": "https://www.especiatetienda.com/shop/miel-de-brezo-otono-500g/",
+      "sha256": "10b04c009f2ebdf1300c9560c3bfae2a94e3c4fbd01a2104b4371ab685c3b619"
+    },
+    {
+      "farmExternalId": "miel_outurelos",
+      "product": "Miel cruda de brezo en tarro pequeño",
+      "file": "/images/products/miel-outurelos/miel-cruda-de-brezo-en-tarro-pequeno.webp",
+      "source": "https://sondelugo.com/wp-content/uploads/outurelos-breixo.webp",
+      "sourcePage": "https://sondelugo.com/es/produto/mel-de-uz-breixo-primavera-el-pais-del-abeyeiro-es/",
+      "sha256": "470bf2cc826f2b35eea3dd6a6601cd30ee301c95351b2964010a27db607326ec",
+      "note": "The retailer currently reuses its Cortin photo for multiple Outurelos heather-honey seasons and weights. This is a representative producer photo, not a verified pack-specific image."
+    },
+    {
+      "farmExternalId": "miel_casa_el_campo",
+      "product": "Miel milflores",
+      "file": "/images/products/miel-casa-el-campo/miel-milflores.jpg",
+      "source": "https://i0.wp.com/mielcasaelcampo.com/wp-content/uploads/2022/08/bote-miel-300x300.jpg",
+      "sourcePage": "https://mielcasaelcampo.com/tienda-online/",
+      "originalSource": "https://mielcasaelcampo.com/wp-content/uploads/2022/08/bote-miel-300x300.jpg",
+      "sha256": "dac6e77947b25376bc684396683a462706d3bd14adc9472b46c78b801f76b30a"
+    },
+    {
+      "farmExternalId": "miel_casa_el_campo",
+      "product": "Miel milflores pequeña",
+      "file": "/images/products/miel-casa-el-campo/miel-milflores-pequena.jpg",
+      "source": "https://i0.wp.com/mielcasaelcampo.com/wp-content/uploads/2022/08/bote-miel-300x300.jpg",
+      "sourcePage": "https://mielcasaelcampo.com/tienda-online/",
+      "originalSource": "https://mielcasaelcampo.com/wp-content/uploads/2022/08/bote-miel-300x300.jpg",
+      "sha256": "dac6e77947b25376bc684396683a462706d3bd14adc9472b46c78b801f76b30a"
+    },
+    {
+      "farmExternalId": "miel_casa_el_campo",
+      "product": "Miel en panal",
+      "file": "/images/products/miel-casa-el-campo/miel-en-panal.jpg",
+      "source": "https://i0.wp.com/mielcasaelcampo.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-01-12-at-11.05.29.jpeg",
+      "sourcePage": "https://mielcasaelcampo.com/tienda-online/",
+      "originalSource": "https://mielcasaelcampo.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-01-12-at-11.05.29.jpeg",
+      "sha256": "634529c51cd3103d805bb105a55a5fc4ae4ea40bbe4d7f65700fa57bde08a090"
+    },
+    {
+      "farmExternalId": "miel_casa_el_campo",
+      "product": "Polen de flores",
+      "file": "/images/products/miel-casa-el-campo/polen-de-flores.jpg",
+      "source": "https://i0.wp.com/mielcasaelcampo.com/wp-content/uploads/2022/02/WhatsApp-Image-2021-12-14-at-14.27.01.jpeg",
+      "sourcePage": "https://mielcasaelcampo.com/tienda-online/",
+      "originalSource": "https://mielcasaelcampo.com/wp-content/uploads/2022/02/WhatsApp-Image-2021-12-14-at-14.27.01.jpeg",
+      "sha256": "fc42ea71cd008125ca142b70f19fca878287737cebaf972362db6d47cc052f01"
+    },
+    {
+      "farmExternalId": "miel_casa_el_campo",
+      "product": "Lote regalo Miel Casa El Campo",
+      "file": "/images/products/miel-casa-el-campo/lote-regalo-miel-casa-el-campo.jpg",
+      "source": "https://i0.wp.com/mielcasaelcampo.com/wp-content/uploads/2022/08/20220816_132924-300x300.jpg",
+      "sourcePage": "https://mielcasaelcampo.com/tienda-online/",
+      "originalSource": "https://mielcasaelcampo.com/wp-content/uploads/2022/08/20220816_132924-300x300.jpg",
+      "sha256": "eb9252237472dd55219e08c99d9b36a6c08e66176cef142ebbcf9a2dbdbdb8bb"
+    },
+    {
+      "farmExternalId": "sidra_viuda_de_angelon",
+      "product": "Sidra espumosa Prau Monga DOP – 6 botellas",
+      "file": "/images/products/sidra-viuda-de-angelon/product-227.jpg",
+      "source": "https://www.pimientayperejil.com/wp-content/uploads/2024/03/Sidra-Prau-Monga-Brut-Nature.jpg",
+      "sourcePage": "https://www.pimientayperejil.com/tienda/bebidas/sidra/sidra-brut-prau-monga/",
+      "sha256": "0e7baec94287930a17dbfccf0029314b37fa0160fb6fc54a0cc26e38b58f0ec9",
+      "note": "Photograph shows one bottle; the product is explicitly a case of six bottles."
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Faba asturiana IGP – 1 kg",
+      "file": "/images/products/finca-el-ribeiro/faba-asturiana-igp-1-kg.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2023/10/dsc3191-1.webp",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2023/10/dsc3191-1.webp",
+      "sha256": "1994bf1ac205fa4279ad717c220e01b683d0e1ca7ec938dd7b17f90934eb6df6"
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Faba asturiana IGP – 500 g",
+      "file": "/images/products/finca-el-ribeiro/faba-asturiana-igp-500-g.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2023/10/faba-fabes-asturiana-igp-mfrh-original-scaled-2048x2048.jpg",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2023/10/faba-fabes-asturiana-igp-mfrh-original-scaled-2048x2048.jpg",
+      "sha256": "f2fde189d5074f870e90c66344d54665ca6f7a0067ee64ed6c3254b4fe8190a5"
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Alubia blanca de segunda categoría – 1 kg",
+      "file": "/images/products/finca-el-ribeiro/alubia-blanca-de-segunda-categoria-1-kg.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2025/02/alubia-blanca-categoria-segunda-300x300.jpeg",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2025/02/alubia-blanca-categoria-segunda-300x300.jpeg",
+      "sha256": "716eebf58dddce3d27e5eaf8e3c29eaf295b8c39f460fe40d7f28882d7450cea"
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Aguacates ecológicos Hass – 3 kg",
+      "file": "/images/products/finca-el-ribeiro/aguacates-ecologicos-hass-3-kg.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2023/11/aguacate-en-el-arbol-cultivado-de-asturias-300x300.webp",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2023/11/aguacate-en-el-arbol-cultivado-de-asturias-300x300.webp",
+      "sha256": "8e7a2e9c490ff95647e2ba7006de74684ffca42c792a5e11ffaf062aa109b5ca"
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Arándanos ecológicos frescos",
+      "file": "/images/products/finca-el-ribeiro/arandanos-ecologicos-frescos.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2023/10/arandanos-ecologicos-05-kg-producto-asturiano.webp",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2023/10/arandanos-ecologicos-05-kg-producto-asturiano.webp",
+      "sha256": "eac2338cfe77ae8d3ef33e1a54cfa1c70092de9019b5439926d31f13224c8cfd"
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Zumo artesanal de arándanos",
+      "file": "/images/products/finca-el-ribeiro/zumo-artesanal-de-arandanos.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2024/04/dsd8448-editar.jpg",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2024/04/dsd8448-editar.jpg",
+      "sha256": "679ffec8264174aba07c146049540ee51ad1f6758273687fb0d9528d2d99a745"
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Mermelada artesana de arándanos",
+      "file": "/images/products/finca-el-ribeiro/mermelada-artesana-de-arandanos.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2023/10/mermelada-de-arandanos-de-finca-el-ribeiro.webp",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2023/10/mermelada-de-arandanos-de-finca-el-ribeiro.webp",
+      "sha256": "730d1c179ca8066e3ec8e417f2bc0f6c7449db4071caec3d124a14a093a27fa6"
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Mermelada ecológica de arándanos",
+      "file": "/images/products/finca-el-ribeiro/mermelada-ecologica-de-arandanos.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2024/01/mermelada-de-arandanos-ecologica-asturiana-mfrh-original-scaled-2048x2048.jpg",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2024/01/mermelada-de-arandanos-ecologica-asturiana-mfrh-original-scaled-2048x2048.jpg",
+      "sha256": "e2f10678c10d3e88363abb71349e2e6d55193f8dbb3068909fc4fe4b58a23431"
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Mermelada artesana de manzana",
+      "file": "/images/products/finca-el-ribeiro/mermelada-artesana-de-manzana.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2023/10/mermelada-de-manzanas-de-finca-el-ribeiro.webp",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2023/10/mermelada-de-manzanas-de-finca-el-ribeiro.webp",
+      "sha256": "fd78932d3683ada5e873e321947d5a411a0b0a196d86b2f9b9b3ff9b594d9435"
+    },
+    {
+      "farmExternalId": "finca_el_ribeiro",
+      "product": "Caja gourmet de productos asturianos",
+      "file": "/images/products/finca-el-ribeiro/caja-gourmet-de-productos-asturianos.jpg",
+      "source": "https://i0.wp.com/fincaelribeiro.es/wp-content/uploads/2025/11/WhatsApp-Image-2025-11-06-at-16.04.03-300x300.jpeg",
+      "sourcePage": "https://fincaelribeiro.es/tienda/",
+      "originalSource": "https://fincaelribeiro.es/wp-content/uploads/2025/11/WhatsApp-Image-2025-11-06-at-16.04.03-300x300.jpeg",
+      "sha256": "b1b2d95154cb2dca4ef612bc73f75455bea5a17639c345d8ccaa6037ec11e9e1"
+    },
+    {
+      "farmExternalId": "los_arandanos",
+      "product": "Arándanos ecológicos frescos",
+      "file": "/images/products/los-arandanos/arandanos-ecologicos-frescos.webp",
+      "source": "https://losarandanos.es/wp-content/uploads/2026/06/Arandanos-6.webp",
+      "sourcePage": "https://losarandanos.es/conservas-artesanas/",
+      "sha256": "b5bc2f009212465922c4c9177a92ef65adccde2553a620c8e266fbe8f184fb84"
+    },
+    {
+      "farmExternalId": "los_arandanos",
+      "product": "Zumo ecológico de arándanos",
+      "file": "/images/products/los-arandanos/zumo-ecologico-de-arandanos.webp",
+      "source": "https://losarandanos.es/wp-content/uploads/2026/06/DSC07136-1.webp",
+      "sourcePage": "https://losarandanos.es/conservas-artesanas/",
+      "sha256": "b34dfd5328f870ab1cf6be0c8c768250a5284763c774dbf2b6e123574481e1c6"
+    }
+  ]
+}
