@@ -3,6 +3,81 @@ const form = defineModel({
     type: Object,
     required: true,
 })
+
+function phoneDigitLimit(value) {
+    return value.replace(/[\p{Zs}-]/gu, '').startsWith('+') ? 11 : 9
+}
+
+function cleanPhoneInput(value) {
+    const cleaned = value.replace(/[^0-9+\p{Zs}-]/gu, '')
+    const limit = phoneDigitLimit(cleaned)
+    let count = 0
+
+    for (const digit of cleaned.matchAll(/[0-9]/g)) {
+        if (++count > limit) {
+            return cleaned.slice(0, digit.index).replace(/[\p{Zs}-]+$/u, '')
+        }
+    }
+
+    return cleaned
+}
+
+function cleanPostalCodeInput(value) {
+    return value.replace(/[^0-9]/g, '').slice(0, 5)
+}
+
+function handleBeforeDigitInput(event, limit) {
+    if (event.isComposing || event.inputType !== 'insertText' || !/^[0-9]$/.test(event.data ?? '')) {
+        return
+    }
+
+    const input = event.target
+    const proposed = input.value.slice(0, input.selectionStart)
+        + event.data + input.value.slice(input.selectionEnd)
+    const digits = proposed.match(/[0-9]/g)?.length ?? 0
+
+    // Block an extra typed digit without discarding the existing end of the number.
+    if (digits > limit(proposed)) event.preventDefault()
+}
+
+function handleBeforePhoneInput(event) {
+    handleBeforeDigitInput(event, phoneDigitLimit)
+}
+
+function handleBeforePostalCodeInput(event) {
+    handleBeforeDigitInput(event, () => 5)
+}
+
+function handleCleanedInput(event, field, cleanInput) {
+    if (event.isComposing) return
+
+    const input = event.target
+    const value = input.value
+    const start = input.selectionStart
+    const end = input.selectionEnd
+    const cleaned = cleanInput(value)
+
+    form.value[field] = cleaned
+
+    if (value !== cleaned) {
+        input.value = cleaned
+
+        if (start !== null && end !== null) {
+            input.setSelectionRange(
+                cleanInput(value.slice(0, start)).length,
+                cleanInput(value.slice(0, end)).length
+            )
+        }
+    }
+}
+
+function handlePhoneInput(event) {
+    handleCleanedInput(event, 'phone', cleanPhoneInput)
+}
+
+function handlePostalCodeInput(event) {
+    handleCleanedInput(event, 'postalCode', cleanPostalCodeInput)
+}
 </script>
 
 <template>
@@ -22,29 +97,38 @@ const form = defineModel({
 
             <label class="checkout-delivery-form_field">
                 <span>Ciudad</span>
-                <input v-model="form.city" type="text" placeholder="Oviedo" />
+                <input v-model="form.city" type="text" maxlength="100"
+                    autocomplete="address-level2" required placeholder="Oviedo" />
             </label>
 
             <label class="checkout-delivery-form_field">
                 <span>Código Postal</span>
-                <input v-model="form.postalCode" type="text" placeholder="33001" />
+                <input :value="form.postalCode" type="text" inputmode="numeric"
+                    autocomplete="postal-code" pattern="[0-9]{5}" required placeholder="33001"
+                    @beforeinput="handleBeforePostalCodeInput"
+                    @input="handlePostalCodeInput" @compositionend="handlePostalCodeInput" />
             </label>
 
             <div class="checkout-delivery-form_address">
                 <span class="checkout-delivery-form_address-label">Dirección de Envío</span>
 
                 <label class="checkout-delivery-form_field">
-                    <input v-model="form.streetAddress" type="text" placeholder="Calle y número" />
+                    <input v-model="form.streetAddress" type="text" maxlength="200"
+                        autocomplete="address-line1" required placeholder="Calle y número" />
                 </label>
 
                 <label class="checkout-delivery-form_field">
-                    <input v-model="form.apartment" type="text" placeholder="Piso, puerta ..." />
+                    <input v-model="form.apartment" type="text" maxlength="100"
+                        autocomplete="address-line2" placeholder="Piso, puerta ..." />
                 </label>
             </div>
 
             <label class="checkout-delivery-form_field checkout-delivery-form_field--wide">
                 <span>Teléfono de Contacto</span>
-                <input v-model="form.phone" type="tel" placeholder="+34 600 000 000" />
+                <input :value="form.phone" type="tel" inputmode="tel"
+                    autocomplete="tel" placeholder="+34 600 000 000"
+                    @beforeinput="handleBeforePhoneInput"
+                    @input="handlePhoneInput" @compositionend="handlePhoneInput" />
             </label>
         </form>
     </section>

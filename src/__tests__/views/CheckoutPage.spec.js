@@ -72,7 +72,8 @@ describe('CheckoutPage', () => {
         expect(wrapper.find('.order-summary_button').exists()).toBe(false)
     })
 
-    it('creates an order with valid delivery data', async () => {
+    it.each(['600000000', '+34 600 000 000', '600-000-000', '6000000000'])(
+        'creates an order with a normalized delivery phone %s', async phone => {
         const pinia = createPinia()
         setActivePinia(pinia)
 
@@ -136,12 +137,13 @@ describe('CheckoutPage', () => {
 
         const inputs = wrapper.findAll('input')
 
-        await inputs[0].setValue('Ana')
-        await inputs[1].setValue('Garcia')
-        await inputs[2].setValue('Oviedo')
-        await inputs[3].setValue('33001')
-        await inputs[4].setValue('Calle Mayor 12')
-        await inputs[6].setValue('+34 600 000 000')
+        await inputs[0].setValue(' Ana ')
+        await inputs[1].setValue(' Garcia ')
+        await inputs[2].setValue(' Oviedo ')
+        await inputs[3].setValue(' 00301 ')
+        await inputs[4].setValue(' Calle Pe\u00f1a, 12-B ')
+        await inputs[5].setValue(' 3\u00ba A ')
+        await inputs[6].setValue(phone)
 
         await wrapper.find('.order-summary_button').trigger('click')
 
@@ -161,6 +163,13 @@ describe('CheckoutPage', () => {
         )
 
         expect(router.currentRoute.value.path).toBe('/checkout/success')
+
+        expect(JSON.parse(fetchMock.mock.calls[1][1].body).delivery.phone)
+            .toBe('+34600000000')
+        expect(JSON.parse(fetchMock.mock.calls[1][1].body).delivery).toMatchObject({
+            firstName: 'Ana', lastName: 'Garcia', city: 'Oviedo', postalCode: '00301',
+            streetAddress: 'Calle Pe\u00f1a, 12-B', apartment: '3\u00ba A',
+        })
 
         expect(JSON.parse(sessionStorage.getItem('tierras-last-order')))
             .toEqual({
@@ -253,7 +262,56 @@ describe('CheckoutPage', () => {
 
         await wrapper.find('.order-summary_button').trigger('click')
 
-        expect(wrapper.text()).toContain('Introduce un teléfono válido.')
+        expect(wrapper.text()).toContain('Introduce un teléfono español válido: 9 dígitos, con +34 opcional.')
         expect(fetchMock).not.toHaveBeenCalled()
+    })
+
+    it.each([
+        '60000000', '+34', '500000000', '+33600000000',
+        '++34600000000', '600+000000', '60000000a', '6        1',
+    ])('does not submit a checkout with invalid phone %s', async phone => {
+        localStorage.setItem('tierras-cart', JSON.stringify([
+            { id: 1, name: 'Queso', price: 12.5, quantity: 1, image: '/queso.jpg', farmName: 'Finca' },
+        ]))
+        const fetchMock = vi.spyOn(globalThis, 'fetch')
+        const wrapper = mountCheckoutPage()
+        const values = ['Ana', 'Garcia', 'Oviedo', '33001', 'Calle Mayor 12', '', phone]
+        const inputs = wrapper.findAll('input')
+        for (let index = 0; index < values.length; index += 1) {
+            await inputs[index].setValue(values[index])
+        }
+
+        await wrapper.get('.order-summary_button').trigger('click')
+
+        expect(wrapper.get('[role="alert"]').text())
+            .toContain('9 d\u00edgitos, con +34 opcional.')
+        expect(fetchMock).not.toHaveBeenCalled()
+        wrapper.unmount()
+    })
+
+    it.each([
+        [2, 101, 'La ciudad no puede superar los 100 caracteres.'],
+        [4, 201, 'La direcci\u00f3n no puede superar los 200 caracteres.'],
+        [5, 101, 'El piso o la puerta no puede superar los 100 caracteres.'],
+        [2, 0, 'Completa los datos de entrega antes de continuar.'],
+        [4, 0, 'Completa los datos de entrega antes de continuar.'],
+    ])('rejects invalid address input in field %s before sending', async (field, length, message) => {
+        localStorage.setItem('tierras-cart', JSON.stringify([
+            { id: 1, name: 'Queso', price: 12.5, quantity: 1, image: '/queso.jpg', farmName: 'Finca' },
+        ]))
+        const fetchMock = vi.spyOn(globalThis, 'fetch')
+        const wrapper = mountCheckoutPage()
+        const values = ['Ana', 'Garcia', 'Oviedo', '33001', 'Calle Mayor 12', '', '600000000']
+        values[field] = length ? 'x'.repeat(length) : '   '
+        const inputs = wrapper.findAll('input')
+        for (let index = 0; index < values.length; index += 1) {
+            await inputs[index].setValue(values[index])
+        }
+
+        await wrapper.get('.order-summary_button').trigger('click')
+
+        expect(wrapper.get('[role="alert"]').text()).toBe(message)
+        expect(fetchMock).not.toHaveBeenCalled()
+        wrapper.unmount()
     })
 })

@@ -6,6 +6,7 @@ import { useCartStore } from '@/stores/cartStore'
 import { computed, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { getCsrfHeaders } from '@/services/csrfApi'
+import { normalizeSpanishPhone } from '@/utils/phone'
 
 const deliveryForm = reactive({
     firstName: '',
@@ -24,8 +25,20 @@ const isPostalCodeValid = computed(() => {
     return /^\d{5}$/.test(deliveryForm.postalCode.trim())
 })
 
-const isPhoneValid = computed(() => {
-    return /^\+?\d[\d\s]{8,}$/.test(deliveryForm.phone.trim())
+const normalizedPhone = computed(() => normalizeSpanishPhone(deliveryForm.phone))
+const isPhoneValid = computed(() => normalizedPhone.value !== null)
+
+const addressLengthError = computed(() => {
+    if (deliveryForm.city.trim().length > 100) {
+        return 'La ciudad no puede superar los 100 caracteres.'
+    }
+    if (deliveryForm.streetAddress.trim().length > 200) {
+        return 'La dirección no puede superar los 200 caracteres.'
+    }
+    if (deliveryForm.apartment.trim().length > 100) {
+        return 'El piso o la puerta no puede superar los 100 caracteres.'
+    }
+    return ''
 })
 
 const isDeliveryFormValid = computed(() => {
@@ -38,6 +51,7 @@ const isDeliveryFormValid = computed(() => {
         && deliveryForm.phone.trim()
         && isPostalCodeValid.value
         && isPhoneValid.value
+        && !addressLengthError.value
     )
 })
 
@@ -59,7 +73,7 @@ function createOrderPayload() {
             postalCode: deliveryForm.postalCode.trim(),
             streetAddress: deliveryForm.streetAddress.trim(),
             apartment: deliveryForm.apartment.trim(),
-            phone: deliveryForm.phone.trim(),
+            phone: normalizedPhone.value,
         },
         items: cartStore.items.map((item) => ({
             productId: item.id,
@@ -93,13 +107,18 @@ async function handleCheckoutConfirm() {
         return
     }
 
+    if (addressLengthError.value) {
+        checkoutError.value = addressLengthError.value
+        return
+    }
+
     if (!isPostalCodeValid.value) {
         checkoutError.value = 'Introduce un código postal válido de 5 dígitos.'
         return
     }
 
     if (!isPhoneValid.value) {
-        checkoutError.value = 'Introduce un teléfono válido.'
+        checkoutError.value = 'Introduce un teléfono español válido: 9 dígitos, con +34 opcional.'
         return
     }
 
@@ -172,7 +191,7 @@ async function handleCheckoutConfirm() {
                         @update:model-value="Object.assign(deliveryForm, $event)"
                     />
 
-                    <p v-if="checkoutError" class="checkout-page_error">
+                    <p v-if="checkoutError" class="checkout-page_error" role="alert">
                         {{ checkoutError }}
                     </p>
 
