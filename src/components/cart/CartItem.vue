@@ -23,7 +23,7 @@ const emit = defineEmits(['increase', 'decrease', 'remove'])
             </div>
 
             <span class="cart-item_price">
-                {{ item.price }}€
+                {{ (item.price * item.quantity).toFixed(2) }}€
             </span>
 
             <QuantityControl

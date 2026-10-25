@@ -76,7 +76,53 @@ describe('CartPage', () => {
 
         expect(wrapper.text()).toContain('Sidra Natural')
         expect(wrapper.text()).toContain('Llagar Asturias')
-        expect(wrapper.text()).toContain('4.2')
+        expect(wrapper.get('.cart-item_price').text()).toBe('8.40\u20ac')
+    })
+
+    it.each([
+        [12.5, 1, '12.50'],
+        [12.5, 3, '37.50'],
+        [4.2, 2, '8.40'],
+        [0.1, 3, '0.30'],
+    ])('displays the line total for unit price %s and quantity %s', (price, quantity, total) => {
+        localStorage.setItem('tierras-cart', JSON.stringify([
+            { id: 1, name: 'Queso', image: '/queso.jpg', farmName: 'Finca', price, quantity },
+        ]))
+        const wrapper = mountCartPage()
+
+        expect(wrapper.get('.cart-item_price').text()).toBe(`${total}\u20ac`)
+        expect(wrapper.get('.order-summary_total strong').text()).toBe(`${total}\u20ac`)
+        expect(useCartStore().items[0].price).toBe(price)
+        wrapper.unmount()
+    })
+
+    it('updates each line and the summary when quantity changes without changing unit prices', async () => {
+        localStorage.setItem('tierras-cart', JSON.stringify([
+            { id: 1, name: 'Sidra', image: '/sidra.jpg', farmName: 'Llagar', price: 4.2, quantity: 2 },
+            { id: 2, name: 'Queso', image: '/queso.jpg', farmName: 'Finca', price: 12.5, quantity: 1 },
+        ]))
+        const wrapper = mountCartPage()
+        const first = wrapper.findAll('.cart-item')[0]
+        const second = wrapper.findAll('.cart-item')[1]
+
+        expect(first.get('.cart-item_price').text()).toBe('8.40\u20ac')
+        expect(second.get('.cart-item_price').text()).toBe('12.50\u20ac')
+        expect(wrapper.get('.order-summary_total strong').text()).toBe('20.90\u20ac')
+
+        await first.get('button[aria-label="Increase quantity"]').trigger('click')
+
+        expect(first.get('.cart-item_price').text()).toBe('12.60\u20ac')
+        expect(second.get('.cart-item_price').text()).toBe('12.50\u20ac')
+        expect(wrapper.get('.order-summary_total strong').text()).toBe('25.10\u20ac')
+
+        await first.get('button[aria-label="Decrease quantity"]').trigger('click')
+
+        expect(first.get('.cart-item_price').text()).toBe('8.40\u20ac')
+        expect(wrapper.get('.order-summary_total strong').text()).toBe('20.90\u20ac')
+        expect(useCartStore().items[0].price).toBe(4.2)
+        expect(JSON.parse(localStorage.getItem('tierras-cart'))[0])
+            .toMatchObject({ price: 4.2, quantity: 2 })
+        wrapper.unmount()
     })
 
     it('renders the empty cart state', () => {
