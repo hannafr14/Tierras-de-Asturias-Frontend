@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount, RouterLinkStub } from '@vue/test-utils'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { flushPromises, mount, RouterLinkStub } from '@vue/test-utils'
 import { createPinia } from 'pinia'
 import ProductsPage from '@/views/ProductsPage.vue'
 import MapSection from '@/components/map/MapSection.vue'
@@ -177,5 +177,41 @@ describe('ProductsPage', () => {
         expect(cartStore.items).toHaveLength(1)
         expect(cartStore.items[0].name).toBe('Queso Gamoneu')
         expect(cartStore.items[0].quantity).toBe(2)
+    })
+})
+
+describe('shared product sort menu', () => {
+    let wrapper
+    afterEach(() => wrapper?.unmount())
+
+    it.each([
+        [1, [1, 2]],
+        [2, [2, 1]],
+        [3, [2, 1]],
+        [4, [1, 2]],
+    ])('preserves product sorting option %s after sharing the menu', async (option, ids) => {
+        wrapper = mount(ProductsPage, {
+            global: {
+                plugins: [createPinia()],
+                stubs: {
+                    RouterLink: RouterLinkStub,
+                    CatalogLayout: {
+                        template: '<div><slot name="content" /><slot name="map" /></div>',
+                    },
+                    MapSection: true,
+                },
+            },
+        })
+        await flushPromises()
+
+        expect(wrapper.findAll('.catalog-sort_list button')).toHaveLength(5)
+        await wrapper.findAll('.catalog-sort_list button')[option].trigger('click')
+
+        expect(wrapper.findAllComponents(ProductCard).map(card => card.props('productId')))
+            .toEqual(ids)
+
+        await wrapper.findAll('.catalog-sort_list button')[0].trigger('click')
+        expect(wrapper.findAllComponents(ProductCard).map(card => card.props('productId')))
+            .toEqual([1, 2])
     })
 })

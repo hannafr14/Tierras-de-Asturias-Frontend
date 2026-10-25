@@ -7,7 +7,7 @@ import CatalogLayout from '@/components/catalog/CatalogLayout.vue';
 import CategoryFilter from '@/components/catalog/CategoryFilter.vue';
 import CatalogTabs from '@/components/catalog/CatalogTabs.vue';
 import SearchBar from '@/components/catalog/SearchBar.vue';
-import FiltersButton from '@/components/catalog/FiltersButton.vue';
+import CatalogSortMenu from '@/components/catalog/CatalogSortMenu.vue';
 import FarmCard from '@/components/cards/FarmCard.vue';
 import MapSection from '@/components/map/MapSection.vue';
 
@@ -18,6 +18,12 @@ const openFarm = (id) => {
 }
 const activeCategory = ref('Todos');
 const searchQuery = ref('');
+const sortOrder = ref('default')
+const sortOptions = [
+    { value: 'default', label: 'Por defecto' },
+    { value: 'name-asc', label: 'Nombre: A\u2013Z' },
+    { value: 'name-desc', label: 'Nombre: Z\u2013A' },
+]
 const farms = ref([]);
 const selectedFarmId = ref(null);
 const isLoading = ref(false);
@@ -43,6 +49,24 @@ const filteredFarms = computed(() => {
 
         return matchesCategory && matchesSearch
     })
+})
+
+const sortedFarms = computed(() => {
+    const result = [...filteredFarms.value]
+
+    if (sortOrder.value === 'name-asc') {
+        return result.sort((a, b) =>
+            a.name.localeCompare(b.name, 'es', { sensitivity: 'base' })
+        )
+    }
+
+    if (sortOrder.value === 'name-desc') {
+        return result.sort((a, b) =>
+            b.name.localeCompare(a.name, 'es', { sensitivity: 'base' })
+        )
+    }
+
+    return result
 })
 
 onMounted(async () => {
@@ -86,7 +110,7 @@ onMounted(async () => {
                         placeholder="Buscar granjas"
                     />
 
-                    <FiltersButton />
+                    <CatalogSortMenu v-model="sortOrder" :options="sortOptions" />
                 </div>
 
                 <StateMessage
@@ -109,7 +133,7 @@ onMounted(async () => {
 
                 <div v-else class="catalog-page_list">
                     <FarmCard
-                        v-for="farm in filteredFarms"
+                        v-for="farm in sortedFarms"
                         :key="farm.id"
                         :image="farm.image"
                         :name="farm.name"
