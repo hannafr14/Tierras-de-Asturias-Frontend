@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import { hasProductPrice } from '@/utils/productAvailability'
 
 const CART_STORAGE_KEY = 'tierras-cart'
 
@@ -10,7 +11,7 @@ function getStoredCartItems() {
         return []
     }
 
-    return JSON.parse(storedCart)
+    return JSON.parse(storedCart).filter(hasProductPrice)
 }
 
 export const useCartStore = defineStore('cart', () => {
@@ -43,6 +44,10 @@ export const useCartStore = defineStore('cart', () => {
     }
 
     function addToCart(product) {
+        if (!hasProductPrice(product)) {
+            return
+        }
+
         const existingItem = items.value.find((item) => {
             return item.id === product.id
         })

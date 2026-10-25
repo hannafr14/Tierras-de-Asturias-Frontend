@@ -16,6 +16,32 @@ describe('cartStore', () => {
         setActivePinia(createPinia())
     })
 
+    it.each([0, null, undefined, -1, NaN, Infinity, '12.5'])(
+        'does not add a product with invalid price %s', price => {
+            const cartStore = useCartStore()
+
+            cartStore.addToCart({ ...product, price })
+
+            expect(cartStore.items).toEqual([])
+            expect(cartStore.total).toBe(0)
+            expect(localStorage.getItem('tierras-cart')).toBeNull()
+        }
+    )
+
+    it('hides saved products without prices while preserving valid cart quantities', () => {
+        const valid = { ...product, quantity: 3 }
+        localStorage.setItem('tierras-cart', JSON.stringify([
+            valid, { ...product, id: 2, price: 0, quantity: 2 },
+            { ...product, id: 3, price: null, quantity: 1 },
+        ]))
+
+        const cartStore = useCartStore()
+
+        expect(cartStore.items).toEqual([valid])
+        expect(cartStore.itemsCount).toBe(1)
+        expect(cartStore.subtotal).toBe(37.5)
+    })
+
     it('increases product quantity', () => {
         const cartStore = useCartStore()
 

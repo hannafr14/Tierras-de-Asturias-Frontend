@@ -1,3 +1,5 @@
+import { hasProductPrice } from '@/utils/productAvailability'
+
 export async function getProducts() {
     const response = await fetch('/api/products')
 
@@ -5,7 +7,8 @@ export async function getProducts() {
         throw new Error('Failed to load products')
     }
 
-    return response.json()
+    const products = await response.json()
+    return products.filter(hasProductPrice)
 }
 
 export async function getFarms() {
@@ -33,7 +36,13 @@ export async function getProductById(id) {
         )
     }
 
-    return response.json()
+    const product = await response.json()
+
+    if (!hasProductPrice(product)) {
+        throw new Error('Producto no encontrado.')
+    }
+
+    return product
 }
 
 export async function getFarmById(id) {
@@ -69,5 +78,6 @@ export async function getFarmProducts(id) {
         )
     }
 
-    return response.json()
+    const products = await response.json()
+    return products.filter(hasProductPrice)
 }
