@@ -1,0 +1,97 @@
+{
+  "retrievedOn": "2026-10-27",
+  "rightsNotice": "Copyright and trademark rights remain with their owners. Permission for republication has not been verified; attribution is not a licence. Confirm permission before public/commercial publication.",
+  "scope": "Actual product photos for nine new reference-priced demo products and the existing Oro D'Ibias bottle. No generated product photos.",
+  "images": [
+    {
+      "farmExternalId": "bodega_vina_cuedo",
+      "product": "Vino blanco Oro D'Ibias",
+      "file": "/images/products/bodega-vina-cuedo/oro-dibias-750ml.jpg",
+      "source": "https://aldeastur.com/wp-content/uploads/822-Vino-Blanco-Verdin-Oro-de-Ibias.jpg",
+      "sourcePage": "https://aldeastur.com/tienda/producto/vino-blanco-oro-dibias/",
+      "sha256": "a778c3bd8cbe571fbb5fe94307da040bcfe25f759316da66a77f90aa058adf1d",
+      "bytes": 96676
+    },
+    {
+      "farmExternalId": "queseria_temia",
+      "product": "Queso Don Gonzalo Temia",
+      "file": "/images/products/queseria-temia/don-gonzalo-300g.jpg",
+      "source": "https://cdn.shopify.com/s/files/1/0954/6648/8181/files/rn-image_picker_lib_temp_022d949d-2f6f-4523-9e79-63acc0c2a1d0.jpg?v=1782905140",
+      "sourcePage": "https://laqueseriagijon.com/products/queso-don-gonzalo-temia",
+      "sha256": "34c94c0ab1fc19db847702d62c66934a68b560c7b298afcbfb4827ea1b62fe6b",
+      "bytes": 112804
+    },
+    {
+      "farmExternalId": "queseria_ca_sanchu",
+      "product": "Afuega'l Pitu DOP Atroncado Blanco Ca Sanchu",
+      "file": "/images/products/queseria-ca-sanchu/atroncado-blanco-300g.jpg",
+      "source": "https://www.quesosasturianos.com/3820-large_default/afuega-l-pitu-dop-atroncado-blanco-ca-sanchu.jpg",
+      "sourcePage": "https://www.quesosasturianos.com/es/quesos-vaca/afuega-l-pitu-dop-atroncado-blanco-ca-sanchu",
+      "sha256": "f7bfcb0455e0a5d370bdf1dd5f58f43e7ca74360f83f9a09dd99ed8d69153da3",
+      "bytes": 34804
+    },
+    {
+      "farmExternalId": "queseria_ca_sanchu",
+      "product": "Afuega'l Pitu DOP Atroncado Rojo Ca Sanchu",
+      "file": "/images/products/queseria-ca-sanchu/atroncado-rojo-300g.jpg",
+      "source": "https://www.quesosasturianos.com/3824-large_default/afuega-l-pitu-dop-atroncado-rojo-ca-sanchu.jpg",
+      "sourcePage": "https://www.quesosasturianos.com/es/quesos-vaca/afuega-l-pitu-dop-atroncado-rojo-ca-sanchu",
+      "sha256": "7e5e0fb669e01216fc3fceba7824105113b3b6c7f7c1f7c0d44ae5a690924c51",
+      "bytes": 42292
+    },
+    {
+      "farmExternalId": "reinastur",
+      "product": "Miel ecológica de castaño ReinAstur",
+      "file": "/images/products/reinastur/castano-500g.webp",
+      "source": "https://cdn.shopify.com/s/files/1/0994/7329/3696/files/reinasturproductoresdemieldecastanobote500gr.webp?v=1783261062",
+      "sourcePage": "https://www.reinastur.com/products/miel-ecologica-de-castano-rica-en-hierro-y-minerales",
+      "sha256": "b4ff697493e56591895b87e2b8938694b0854a31eeb9dcddfe63adb54913c34d",
+      "bytes": 124517
+    },
+    {
+      "farmExternalId": "reinastur",
+      "product": "Miel ecológica de eucalipto ReinAstur",
+      "file": "/images/products/reinastur/eucalipto-500g.webp",
+      "source": "https://cdn.shopify.com/s/files/1/0994/7329/3696/files/Tarro_de_500_gramos_de_miel_ecologica_de_Eucalipto_Reinastur_con_precinto_negro_y_dorado_sobre_fondo_blanco.webp?v=1783242797",
+      "sourcePage": "https://www.reinastur.com/products/miel-ecologica-eucalipto-frescor-de-la-costa",
+      "sha256": "f9f945b27b66321d4893cc2ad8f18b9707e569b98758fae8e8bbd455b6015fac",
+      "bytes": 106189
+    },
+    {
+      "farmExternalId": "miel_la_boalesa",
+      "product": "Miel La Boalesa 440 g",
+      "file": "/images/products/miel-la-boalesa/miel-440g.jpg",
+      "source": "https://www.supermasymasonline.com/dw/image/v2/BGBS_PRD/on/demandware.static/-/Sites-masymas-master/default/dwedc7d146/images/master/0002420/0002420_1.jpg?sw=500&sh=500",
+      "sourcePage": "https://www.supermasymasonline.com/miel-la-boalesa-440g/0002420.html",
+      "sha256": "a1797027daf11ce4cbc745762b838a3b2bdc41550e2996e55103a8677559ef38",
+      "bytes": 20430
+    },
+    {
+      "farmExternalId": "llagar_bernueces",
+      "product": "Zumo de manzana sin alcohol Sidradulce Bernueces",
+      "file": "/images/products/llagar-bernueces/sidradulce-750ml.jpg",
+      "source": "https://www.supermasymasonline.com/dw/image/v2/BGBS_PRD/on/demandware.static/-/Sites-masymas-master/default/dw2acadf12/images/master/0056506/0056506_1.jpg?sw=500&sh=500",
+      "sourcePage": "https://www.supermasymasonline.com/zumo-de-manzana-sin-alcohol-sidradulce-bernueces-75cl/0056506.html",
+      "sha256": "a351dddc7103d07f15bcc312bd1afd2169505f78dc8c3cc365b23f076d76a975",
+      "bytes": 13731
+    },
+    {
+      "farmExternalId": "quesos_taramundi",
+      "product": "Queso Taramundi con nueces y avellanas",
+      "file": "/images/products/quesos-taramundi/nueces-avellanas-550g.jpg",
+      "source": "https://www.pimientayperejil.com/wp-content/uploads/2024/03/Taramundi-Nueces-y-Avellanas.jpg",
+      "sourcePage": "https://www.pimientayperejil.com/tienda/quesos/vaca/queso-taramundi-con-nueces-y-avellanas/",
+      "sha256": "a006f70607929abc162a33750c167ac42824300cb29c23dc5f9790ca04804071",
+      "bytes": 150068
+    },
+    {
+      "farmExternalId": "queseria_demues",
+      "product": "Gamonéu DOP Demués - cuña de 300 g",
+      "file": "/images/products/queseria-demues/gamoneu-cuna-300g.jpg",
+      "source": "https://www.quesosasturianos.com/4125-large_default/gamoneu-demues-cuna.jpg",
+      "sourcePage": "https://www.quesosasturianos.com/es/quesos-asturianos/gamoneu-demues-cuna",
+      "sha256": "589eb2d96122d1e07b34f4018e99322b50aa20ae091fdb3060e48304f5ef43f8",
+      "bytes": 74026
+    }
+  ]
+}

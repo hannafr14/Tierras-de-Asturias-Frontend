@@ -1,0 +1,98 @@
+{
+  "retrievedOn": "2026-10-27",
+  "rightsNotice": "Copyright and trademark rights remain with their owners. Permission for republication has not been verified; attribution is not a licence. Confirm permission before public/commercial publication.",
+  "scope": "Ten actual product photographs from Bodega Monasterio de Corias. Local copies replace remote URLs which failed in Chromium with ERR_HTTP2_PROTOCOL_ERROR. The wine jelly's generic basket illustration was replaced with the actual jar photograph from its individual producer product page. Prices and all other product data are unchanged.",
+  "images": [
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Finca La Zorrina",
+      "file": "/images/products/bodega-monasterio-de-corias/finca-la-zorrina.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/17-1.png",
+      "sourcePage": "https://monasteriodecorias.es/tienda/",
+      "sha256": "533b55015f85d1c46f91e0d48ce3e25abefdaf6751d1436e4253267dca859574",
+      "bytes": 275984
+    },
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Tsana Rosado de Lágrima",
+      "file": "/images/products/bodega-monasterio-de-corias/tsana-rosado.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/23-1.png",
+      "sourcePage": "https://monasteriodecorias.es/tienda/",
+      "sha256": "362c5ba796b28de4704c445c660aa73d71f1c90ff1fab90afba683eb15db06e4",
+      "bytes": 290135
+    },
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Guilfa Blanco Carbayu",
+      "file": "/images/products/bodega-monasterio-de-corias/guilfa-blanco-carbayu.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/Productos-Monasterio-de-Corias-PNG-Trasnparencia-6.png",
+      "sourcePage": "https://monasteriodecorias.es/tienda/",
+      "sha256": "3e1feeeebb783b1a1215bc45d85f6f57be7c52d1e464f8e78ee93ee657c627d2",
+      "bytes": 297294
+    },
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Viña Grandiella",
+      "file": "/images/products/bodega-monasterio-de-corias/vina-grandiella.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/Productos-Monasterio-de-Corias-PNG-Trasnparencia-7.png",
+      "sourcePage": "https://monasteriodecorias.es/tienda/",
+      "sha256": "8c2eb0d3b77fc335e08e5acf98813e7ccd61e2c6be0bff1cb4b3e325436db6ac",
+      "bytes": 353802
+    },
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Aguardiente de orujo Reserva 5 años",
+      "file": "/images/products/bodega-monasterio-de-corias/aguardiente-reserva-5-anos.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/16.png",
+      "sourcePage": "https://monasteriodecorias.es/tienda/",
+      "sha256": "dc52e5d21eb190035b99c8f1163a2e3b9b5f1bafd0d6a69c2e66a6cbfb350988",
+      "bytes": 366750
+    },
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Licor de arándanos",
+      "file": "/images/products/bodega-monasterio-de-corias/licor-arandanos.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/4.png",
+      "sourcePage": "https://monasteriodecorias.es/tienda/",
+      "sha256": "4c1fc4d07f98ea3856f6338bbb593e68aa6c9920add4a4c3db40884c227f5fbb",
+      "bytes": 331503
+    },
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Vermut blanco",
+      "file": "/images/products/bodega-monasterio-de-corias/vermut-blanco.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/2.png",
+      "sourcePage": "https://monasteriodecorias.es/tienda/",
+      "sha256": "86316b152953cb02deb7ba7e1dbec70d997872cdb1e7932e44af95864e7a7f37",
+      "bytes": 420430
+    },
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Vermut de barrica",
+      "file": "/images/products/bodega-monasterio-de-corias/vermut-barrica.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/1-1.png",
+      "sourcePage": "https://monasteriodecorias.es/tienda/",
+      "sha256": "c5080d7b95a1881e48faee29bda46c146cc426ebf579b5240eeae1489021807a",
+      "bytes": 395170
+    },
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Vermut de manzana",
+      "file": "/images/products/bodega-monasterio-de-corias/vermut-manzana.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/Productos-Monasterio-de-Corias-PNG-Trasnparencia-1.png",
+      "sourcePage": "https://monasteriodecorias.es/tienda/",
+      "sha256": "4c3918c16cf2178a970158ff20d94432a175c8031fdabf46b80458403099bbc6",
+      "bytes": 355904
+    },
+    {
+      "farmExternalId": "bodega_monasterio_de_corias",
+      "product": "Gelatina de vino tinto",
+      "file": "/images/products/bodega-monasterio-de-corias/gelatina-vino-tinto.png",
+      "source": "https://monasteriodecorias.es/wp-content/uploads/2024/05/26-1.png",
+      "sourcePage": "https://monasteriodecorias.es/gelatinas/gelatina-de-vino-tinto/",
+      "replacedSource": "https://monasteriodecorias.es/wp-content/uploads/2024/05/14.svg",
+      "sha256": "275cd079824994874ea8bab0ac8175044364d7b0913f20c1cd94e7a2d0021707",
+      "bytes": 411784
+    }
+  ]
+}
