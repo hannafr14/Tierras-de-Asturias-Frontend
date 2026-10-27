@@ -176,7 +176,7 @@ watch(
                 <StateMessage v-else-if="productsError" role="alert"
                     type="error" :message="productsError" />
                 <StateMessage v-else-if="!products.length" role="status"
-                    type="empty" message="Esta granja todavía no tiene productos." />
+                    type="empty" message="Esta granja no tiene productos disponibles por el momento." />
 
                 <div v-else class="farm-details_products-grid">
                     <ProductCard

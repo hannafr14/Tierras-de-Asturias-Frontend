@@ -207,7 +207,7 @@ describe('FarmDetailsView', () => {
         await mountPage()
 
         expect(wrapper.get('.farm-details_products [role="status"]').text())
-            .toBe('Esta granja todavía no tiene productos.')
+            .toBe('Esta granja no tiene productos disponibles por el momento.')
         expect(wrapper.find('.product-card').exists()).toBe(false)
     })
 
