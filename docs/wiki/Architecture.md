@@ -14,6 +14,24 @@ flowchart LR
 
 In production, hosting must serve the SPA and route `/api` to the backend. The Vite development server is not assumed to be present.
 
+## Planned User Flow
+
+This original planning diagram describes the intended full product, including future functionality. It is not an inventory of completed screens or API endpoints. Open the image to read it at full resolution.
+
+[![Planned public, customer, and administrator user flows](../images/flujo.png)](../images/flujo.png)
+
+The current MVP supports catalog browsing, product and farm details, a cart, guest and authenticated order creation, registration, login, and private own-order history and details.
+
+The following parts of the diagram are **not implemented**:
+
+- Public guest-order tracking using an order number and email.
+- Email order confirmations and automatic association of earlier guest orders with a newly registered account.
+- Profile editing, saved account addresses, and password changes.
+- The administrator login, dashboard, and management screens.
+- Payment-method selection or online payment during checkout. The current checkout creates an order without charging money; online Stripe integration is future work.
+
+The diagram's checkout email requirement and bidirectional product/farm navigation describe the intended design, not guarantees of the current forms or links.
+
 ## Organization
 
 | Directory | Responsibility |

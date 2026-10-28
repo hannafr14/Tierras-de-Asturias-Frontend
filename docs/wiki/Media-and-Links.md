@@ -25,7 +25,23 @@ Links were supplied by the project author. Access permissions and Jira completio
 
 ## Frontend Screenshots
 
-Planned location: `docs/images/`. Image embeds will be added once the files exist, avoiding broken images in the README.
+### Available Testing Evidence
+
+The screenshots supplied on 2026-10-28 are stored in `docs/images/` and embedded on the [Testing page](Testing.md).
+
+| File | Content |
+|---|---|
+| [frontend-tests.png](../images/frontend-tests.png) | Vitest: 315 passing tests in 33 files |
+| [frontend-coverage.png](../images/frontend-coverage.png) | Coverage: 91.48% lines and 86.65% branches; the 90% branch threshold is not met in this snapshot |
+| [frontend-e2e-tests.png](../images/frontend-e2e-tests.png) | Playwright: 30 passing Chromium checks; the legacy starter test is excluded |
+
+### Available Planning Diagram
+
+[flujo.png](../images/flujo.png) is the original full-product user-flow diagram. It is embedded in [Architecture: Planned User Flow](Architecture.md#planned-user-flow), where implemented functionality is distinguished from future plans, including administration and guest-order tracking.
+
+### Planned Application Screenshots
+
+Application screenshots can also be stored in `docs/images/`. The following files have not yet been supplied and are not embedded.
 
 | File | Content | Priority |
 |---|---|---|
