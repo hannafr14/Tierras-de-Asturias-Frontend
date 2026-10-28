@@ -1,8 +1,10 @@
 <template>
     <section class="checkout-payment-info">
-        <h2 class="checkout-payment-info_title">Pago seguro</h2>
+        <h2 class="checkout-payment-info_title">Pago fuera de la web</h2>
         <p class="checkout-payment-info_text">
-            El pago se realizará de forma segura con Stripe en el siguiente paso
+            Por ahora, el pago se realiza fuera de la web.
+            Al confirmar el pedido no se realiza ningún cobro.
+            Más adelante se añadirá el pago online con Stripe.
         </p>
     </section>
 </template>

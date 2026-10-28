@@ -22,7 +22,7 @@ defineProps({
     },
     buttonText: {
         type: String,
-        default: 'Continuar al pago',
+        default: 'Continuar con el pedido',
     },
     buttonTo: {
         type: String,

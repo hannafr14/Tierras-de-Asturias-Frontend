@@ -56,17 +56,20 @@ describe('CheckoutPage', () => {
         })
 
         expect(wrapper.text()).toContain('Información de Entrega')
-        expect(wrapper.text()).toContain('Pago seguro')
+        expect(wrapper.text()).toContain('Pago fuera de la web')
+        expect(wrapper.text()).toContain('Al confirmar el pedido no se realiza ningún cobro.')
+        expect(wrapper.text()).toContain('Más adelante se añadirá el pago online con Stripe.')
         expect(wrapper.text()).toContain('Resumen del pedido')
         expect(wrapper.text()).toContain('Queso Gamoneu')
-        expect(wrapper.text()).toContain('Confirmar y pagar')
+        expect(wrapper.get('.order-summary_button').text()).toBe('Confirmar pedido')
+        expect(wrapper.text()).not.toContain('Confirmar y pagar')
     })
 
     it('renders empty checkout state when the cart is empty', () => {
         const wrapper = mountCheckoutPage()
 
         expect(wrapper.text()).toContain('Tu cesta está vacía.')
-        expect(wrapper.text()).toContain('Añade productos antes de continuar con el pago.')
+        expect(wrapper.text()).toContain('Añade productos antes de confirmar el pedido.')
         expect(wrapper.text()).toContain('Ver productos')
         expect(wrapper.find('.checkout-page_empty-link').attributes('href')).toBe('/productos')
         expect(wrapper.find('.order-summary_button').exists()).toBe(false)

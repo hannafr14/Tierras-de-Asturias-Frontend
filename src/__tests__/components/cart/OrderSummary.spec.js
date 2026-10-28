@@ -43,6 +43,8 @@ describe('OrderSummary', () => {
         expect(wrapper.text()).toContain('Gratis')
         expect(wrapper.text()).toContain('Impuestos')
         expect(wrapper.text()).toContain('4.34')
+        expect(wrapper.get('.order-summary_button').text()).toBe('Continuar con el pedido')
+        expect(wrapper.get('.order-summary_button').attributes('href')).toBe('/checkout')
     })
 
     it('renders the total amount', () => {

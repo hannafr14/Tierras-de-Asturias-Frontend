@@ -171,7 +171,7 @@ async function handleCheckoutConfirm() {
         >
             <h1 class="checkout-page_empty-title">Tu cesta está vacía.</h1>
             <p class="checkout-page_empty-text">
-                Añade productos antes de continuar con el pago.
+                Añade productos antes de confirmar el pedido.
             </p>
 
             <RouterLink class="checkout-page_empty-link" to="/productos">
@@ -203,7 +203,7 @@ async function handleCheckoutConfirm() {
                     :shipping="cartStore.shipping"
                     :taxes="cartStore.taxes"
                     :total="cartStore.total"
-                    button-text="Confirmar y pagar"
+                    button-text="Confirmar pedido"
                     :button-to="null"
                     :items="cartStore.items"
                     :is-loading="isSubmitting"
