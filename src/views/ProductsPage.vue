@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, nextTick, onActivated, onBeforeUnmount, onDeactivated, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router'
 import { getFarms, getProducts } from '@/services/catalogApi';
 import StateMessage from '@/components/common/StateMessage.vue';
@@ -179,11 +179,22 @@ onMounted(async () => {
     }
 })
 
-onBeforeUnmount(() => {
+const stopScrollTracking = () => {
     document
     .querySelector('.app-main')
     ?.removeEventListener('scroll', updateScrollActionsVisibility)
+}
+
+onActivated(async () => {
+    document
+    .querySelector('.app-main')
+    ?.addEventListener('scroll', updateScrollActionsVisibility)
+    await nextTick()
+    updateScrollActionsVisibility()
 })
+
+onDeactivated(stopScrollTracking)
+onBeforeUnmount(stopScrollTracking)
 </script>
 
 <template>

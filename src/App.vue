@@ -2,10 +2,35 @@
 import HeaderComponent from './components/header/HeaderComponent.vue';
 import FooterComponent from './components/footer/FooterComponent.vue';
 import { useAuthStore } from '@/stores/authStore';
-import { useRouter } from 'vue-router';
+import { nextTick, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const authStore = useAuthStore();
 const router = useRouter();
+const route = useRoute();
+const appMain = ref(null);
+const catalogRoutes = new Set(['granjas', 'productos']);
+const catalogPositions = new Map();
+
+watch(() => route.fullPath, async (path, previousPath, onCleanup) => {
+    let cancelled = false;
+    onCleanup(() => { cancelled = true; });
+
+    const container = appMain.value;
+    if (!container) return;
+
+    // Capture the old view before Vue replaces its contents.
+    if (catalogRoutes.has(router.resolve(previousPath).name)) {
+        catalogPositions.set(previousPath, container.scrollTop);
+    }
+
+    await nextTick();
+    if (cancelled) return;
+
+    container.scrollTop = catalogRoutes.has(route.name)
+        ? catalogPositions.get(path) ?? 0
+        : 0;
+});
 
 async function retrySession() {
     if (authStore.isRestoringSession) return;
@@ -28,7 +53,7 @@ async function retrySession() {
 <template>
   <HeaderComponent/>
   
-  <main class="app-main">
+  <main ref="appMain" class="app-main">
     <div v-if="authStore.sessionError" class="app-session-error">
         <p role="alert">{{ authStore.sessionError }}</p>
         <button type="button" @click="retrySession"
@@ -37,7 +62,11 @@ async function retrySession() {
             {{ authStore.isRestoringSession ? 'Comprobando...' : 'Reintentar' }}
         </button>
     </div>
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+        <KeepAlive include="GranjasPage,ProductsPage">
+            <component :is="Component" />
+        </KeepAlive>
+    </RouterView>
     <FooterComponent />
   </main>
 </template>
