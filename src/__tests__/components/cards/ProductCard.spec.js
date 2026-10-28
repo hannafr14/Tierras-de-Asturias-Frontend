@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import ProductCard from '@/components/cards/ProductCard.vue'
+import fallbackImage from '@/assets/image-placeholder.svg'
 
 const mountProductCard = () => {
     return mount(ProductCard, {
@@ -22,6 +23,13 @@ const mountProductCard = () => {
 }
 
 describe('ProductCard', () => {
+    it('replaces a broken product image with the placeholder', async () => {
+        const wrapper = mountProductCard()
+        await wrapper.get('.product-card_image').trigger('error')
+        expect(wrapper.get('.product-card_image').attributes('src')).toBe(fallbackImage)
+        wrapper.unmount()
+    })
+
     it('renders the farm variant with quantity controls and without farm metadata', async () => {
         const wrapper = mountProductCard()
         await wrapper.setProps({ variant: 'farm', description: 'Queso artesano.' })
