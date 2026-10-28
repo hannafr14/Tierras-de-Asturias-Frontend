@@ -8,6 +8,7 @@ Academic project under development. Order creation is implemented; Stripe paymen
 
 - [Frontend](https://github.com/hannafr14/Tierras-de-Asturias-Frontend)
 - [Backend](https://github.com/hannafr14/Tierras-de-Asturias-backend)
+- [Project presentation (Spanish)](https://docs.google.com/presentation/d/1Yn5bRhzrTvO0jzYGpZPvcEDlCiJybbf84Nfpn8CbZb4/edit?slide=id.h45e99d6f897da351_0_31#slide=id.h45e99d6f897da351_0_31)
 - [Frontend Wiki](docs/wiki/Home.md)
 - [Screenshots and Project Links](docs/wiki/Media-and-Links.md)
 
