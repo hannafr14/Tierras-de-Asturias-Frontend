@@ -1,5 +1,6 @@
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { nextTick, ref } from 'vue'
 import CatalogSortMenu from '@/components/catalog/CatalogSortMenu.vue'
 
 const options = [
@@ -9,7 +10,10 @@ const options = [
 ]
 let wrapper
 
-afterEach(() => wrapper?.unmount())
+afterEach(() => {
+    wrapper?.unmount()
+    vi.restoreAllMocks()
+})
 
 function mountMenu(modelValue = 'default') {
     wrapper = mount(CatalogSortMenu, {
@@ -57,5 +61,76 @@ describe('CatalogSortMenu', () => {
         await wrapper.setProps({ modelValue: 'name-asc' })
 
         expect(wrapper.get('button[aria-pressed="true"]').text()).toBe('Nombre: A-Z')
+    })
+
+    it('closes outside without changing the selection or moving focus from the clicked input', () => {
+        mountMenu('name-desc')
+        wrapper.get('details').element.open = true
+        const input = document.createElement('input')
+        document.body.append(input)
+        try {
+            input.focus()
+            input.click()
+
+            expect(wrapper.get('details').element.open).toBe(false)
+            expect(wrapper.emitted('update:modelValue')).toBeUndefined()
+            expect(document.activeElement).toBe(input)
+        } finally {
+            input.remove()
+        }
+    })
+
+    it('closes even when an outside control stops click propagation', () => {
+        mountMenu()
+        wrapper.get('details').element.open = true
+        const button = document.createElement('button')
+        button.addEventListener('click', event => event.stopPropagation())
+        document.body.append(button)
+        try {
+            button.click()
+            expect(wrapper.get('details').element.open).toBe(false)
+        } finally {
+            button.remove()
+        }
+    })
+
+    it('does not close for a click inside the list without selecting an option', async () => {
+        mountMenu()
+        wrapper.get('details').element.open = true
+
+        await wrapper.get('.catalog-sort_list').trigger('click')
+
+        expect(wrapper.get('details').element.open).toBe(true)
+        expect(wrapper.emitted('update:modelValue')).toBeUndefined()
+    })
+
+    it('removes its document listener on unmount', () => {
+        mountMenu()
+        const removeListener = vi.spyOn(document, 'removeEventListener')
+
+        wrapper.unmount()
+        wrapper = undefined
+
+        expect(removeListener).toHaveBeenCalledWith('click', expect.any(Function), true)
+    })
+
+    it('closes on deactivation and handles outside clicks after reactivation', async () => {
+        const visible = ref(true)
+        wrapper = mount({
+            components: { CatalogSortMenu },
+            setup: () => ({ visible, options }),
+            template: '<KeepAlive><CatalogSortMenu v-if="visible" :options="options" /></KeepAlive>',
+        }, { attachTo: document.body })
+        wrapper.get('details').element.open = true
+
+        visible.value = false
+        await nextTick()
+        visible.value = true
+        await nextTick()
+        expect(wrapper.get('details').element.open).toBe(false)
+
+        wrapper.get('details').element.open = true
+        document.body.click()
+        expect(wrapper.get('details').element.open).toBe(false)
     })
 })

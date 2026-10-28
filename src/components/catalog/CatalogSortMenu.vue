@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { onActivated, onBeforeUnmount, onDeactivated, onMounted, ref } from 'vue'
 import filterIcon from '@/assets/filter.svg'
 
 defineProps({
@@ -10,12 +10,35 @@ defineProps({
 const emit = defineEmits(['update:modelValue'])
 const menu = ref(null)
 
-function closeMenu() {
+function closeMenu(restoreFocus = true) {
     if (menu.value) {
         menu.value.open = false
-        menu.value.querySelector('summary')?.focus()
+        if (restoreFocus) menu.value.querySelector('summary')?.focus()
     }
 }
+
+function handleOutsideClick(event) {
+    if (menu.value?.open && !menu.value.contains(event.target)) {
+        closeMenu(false)
+    }
+}
+
+function startListening() {
+    // Capture also handles clicks on controls that stop event propagation.
+    document.addEventListener('click', handleOutsideClick, true)
+}
+
+function stopListening() {
+    document.removeEventListener('click', handleOutsideClick, true)
+}
+
+onMounted(startListening)
+onActivated(startListening)
+onBeforeUnmount(stopListening)
+onDeactivated(() => {
+    stopListening()
+    closeMenu(false)
+})
 
 function chooseSort(value) {
     emit('update:modelValue', value)
@@ -24,7 +47,7 @@ function chooseSort(value) {
 </script>
 
 <template>
-    <details ref="menu" class="catalog-sort" @keydown.esc.stop.prevent="closeMenu">
+    <details ref="menu" class="catalog-sort" @keydown.esc.stop.prevent="closeMenu()">
         <summary class="catalog-sort_trigger">
             <img :src="filterIcon" alt="">
             <span>Filtros</span>
